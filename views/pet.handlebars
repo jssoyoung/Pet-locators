@@ -1,0 +1,36 @@
+
+  <main>
+    <div class='pet-info'>
+      <img src='' />
+      <h3 class=''>Max</h3>
+      <a href='owner'>Emily Horseshoe</a>
+      <ul class='likes'>
+        <li>Hiking</li>
+        <li>Park</li>
+        <li>Coffee</li>
+        <li>...</li>
+      </ul>
+    </div>
+    <div>
+      <div class='images-n-comments'>
+        <div class=''>
+          <div class='pic-wrapper'>
+            <img src='' />
+            <button>Previous</button>
+            <button>Next</button>
+          </div>
+          <div class='comments'>
+            <ul class='comments-ul'>
+              <li class='comments'>chris, nice pic! 6/23/2023</li>
+              <li class='comments'>jen, this picture is so cute! 6/19/2023</li>
+            </ul>
+            <button class='like-button'>Like</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form action='/upload' method='POST' enctype='multipart/form-data'>
+      <input type='file' name='file' required />
+      <button type='submit'>+Picture</button>
+    </form>
+  </main>
