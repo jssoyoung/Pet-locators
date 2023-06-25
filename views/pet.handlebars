@@ -1,36 +1,47 @@
-
-  <main>
-    <div class='pet-info'>
-      <img src='' />
-      <h3 class=''>Max</h3>
-      <a href='owner'>Emily Horseshoe</a>
-      <ul class='likes'>
-        <li>Hiking</li>
-        <li>Park</li>
-        <li>Coffee</li>
-        <li>...</li>
-      </ul>
-    </div>
-    <div>
-      <div class='images-n-comments'>
-        <div class=''>
-          <div class='pic-wrapper'>
-            <img src='' />
-            <button>Previous</button>
-            <button>Next</button>
-          </div>
-          <div class='comments'>
-            <ul class='comments-ul'>
-              <li class='comments'>chris, nice pic! 6/23/2023</li>
-              <li class='comments'>jen, this picture is so cute! 6/19/2023</li>
-            </ul>
-            <button class='like-button'>Like</button>
-          </div>
-        </div>
+<main class='h-[90vh] mx-auto px-4 py-8'>
+  <div class='pet-info bg-white rounded-lg shadow-lg p-8 mb-8'>
+    <img src='' alt='Pet Image' class='mb-4' />
+    <h3 class='text-2xl font-bold mb-2'>Max</h3>
+    <a href='owner' class='text-blue-500'>Emily Horseshoe</a>
+    <ul class='flex flex-wrap mt-4 -ml-2'>
+      <li class='p-2 mr-2 mb-2 bg-gray-100 rounded-md'>Hiking</li>
+      <li class='p-2 mr-2 mb-2 bg-gray-100 rounded-md'>Park</li>
+      <li class='p-2 mr-2 mb-2 bg-gray-100 rounded-md'>Coffee</li>
+      <li class='p-2 mr-2 mb-2 bg-gray-100 rounded-md'>...</li>
+    </ul>
+  </div>
+  <div class='images-n-comments bg-white rounded-lg shadow-lg p-8 mb-8'>
+    <div class='mb-4'>
+      <div class='pic-wrapper relative'>
+        <img src='' alt='Image' class='mb-4' />
+        <button
+          class='absolute left-0 top-1/2 transform -translate-y-1/2 px-4 py-2'
+        >Previous</button>
+        <button
+          class='absolute right-0 top-1/2 transform -translate-y-1/2 px-4 py-2'
+        >Next</button>
+      </div>
+      <div class='comments mt-4'>
+        <ul class='comments-ul'>
+          <li class='comments mb-2'>chris, nice pic! 6/23/2023</li>
+          <li class='comments mb-2'>jen, this picture is so cute! 6/19/2023</li>
+        </ul>
+        <button
+          class='like-button bg-blue-500 text-white px-4 py-2 rounded-md'
+        >Like</button>
       </div>
     </div>
-    <form action='/upload' method='POST' enctype='multipart/form-data'>
-      <input type='file' name='file' required />
-      <button type='submit'>+Picture</button>
-    </form>
-  </main>
+  </div>
+  <form
+    action='/upload'
+    method='POST'
+    enctype='multipart/form-data'
+    class='flex mb-8'
+  >
+    <input type='file' name='file' required />
+    <button
+      type='submit'
+      class='bg-blue-500 text-white px-4 py-2 rounded-md'
+    >+Picture</button>
+  </form>
+</main>

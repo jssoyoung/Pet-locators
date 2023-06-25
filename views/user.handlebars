@@ -1,33 +1,31 @@
-
-  <main>
-    <div class=''>
-      <img class='profile__face' src='' />
-      <div class='divider'>Status</div>
-      <div class=''>Available/Away</div>
-      <div class=''>Total Likes</div>
-      <div class=''>Total Comments</div>
-      <a href=''>Edit Profile</a>
+<main class='h-[90vh] mx-auto py-8 px-4'>
+  <div class='flex items-center justify-between mb-6'>
+    <img
+      class='profile__face w-16 h-16 rounded-full'
+      src=''
+      alt='Profile Image'
+    />
+    <div class='flex flex-col'>
+      <div class='text-lg font-semibold'>Emily Horseshoe</div>
+      <div class='text-sm text-gray-500'>San Diego, CA</div>
     </div>
+  </div>
+  <div class='mb-6'>
+    <div class='text-xl font-semibold mb-2'>About</div>
+    <div class='text-gray-600'>
+      <p>Email: emily@example.com</p>
+      <p>Location: San Diego, CA</p>
+    </div>
+  </div>
+  <div class='mb-6'>
+    <div class='text-xl font-semibold mb-2'>Pets</div>
     <div>
-      <div class='name_n_location'>
-        <h2>Emily Horseshoe</h2>
-        <h3>San Diego, CA</h3>
-      </div>
-      <div>
-        <a class=''>About</a>
-        <div class=''>
-          <p>email</p>
-          <p>location</p>
-        </div>
-        <a class=''>Pets</a>
-        <div class=''>
-          <ul>
-            <li><a href=''>Charlie</a></li>
-            <li><a href=''>Choco</a></li>
-            <li><a href=''>Max</a></li>
-          </ul>
-          <button>Add Pet</button>
-        </div>
-      </div>
+      <ul class='list-disc list-inside'>
+        <li><a href=''>Charlie</a></li>
+        <li><a href=''>Choco</a></li>
+        <li><a href=''>Max</a></li>
+      </ul>
+      <button class='bg-red-500 text-white px-4 py-2 rounded-full mt-2'>Add Pet</button>
     </div>
-  </main>
+  </div>
+</main>

@@ -1,4 +1,4 @@
-<html lang='en'>
+<html class="text-[62.5%] bg-[f1f1f2] scroll-smooth" lang='en'>
 
 <head>
     <meta charset='UTF-8' />
@@ -11,85 +11,137 @@
         href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
     <link rel='stylesheet' href='../dist/output.css' />
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet" />
     <title>Pet Locators</title>
 </head>
 
-<body class="font-sans bg-[#f3f3f3] w-[70%] mx-auto">
-    <header class=''>
-        <nav class='flex justify-between pt-6'>
-            <img class='w-[200px] p-6' src='../public/images/logo.png' />
-            <ul class='flex'>
-                <li class='p-6'>
-                    <a class='' href='./home.html'>About</a>
-                </li>
-                <li class='p-6'>
-                    <a class='' href='./locator.html'>Pet Locator</a>
-                </li>
-                <li class='p-6'>
-                    <a class='' href='./user.html'>My Profile</a>
-                </li>
-                <li class='p-6'>
-                    <a class='' target="_blank" href='./auth.html'>Login/Sign-Up</a>
-                </li>
-            </ul>
-        </nav>
+<body class="font-sans font-light leading-relaxed mx-auto">
+    <header class='sticky top-0 w-[100%] z-50'>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+        <div class="w-full text-gray-700 bg-white bg-opacity-80 dark-mode:text-gray-200 dark-mode:bg-red-800">
+            <div x-data="{ open: false }"
+                class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+                <div class="p-4 flex flex-row items-center justify-between">
+                    <a href="#"><img class='w-[200px] p-4' src='../public/images/logo.png' /></a>
+                    <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+                            <path x-show="!open" fill-rule="evenodd"
+                                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                                clip-rule="evenodd"></path>
+                            <path x-show="open" fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+                <nav :class="{'flex': open, 'hidden': !open}"
+                    class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
+                    <a class="px-4 py-2 mt-2 text-xl font-semibold text-gray-900 rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300"
+                        href="#">LOCATOR</a>
+                    <a class="px-4 py-2 mt-2 text-xl font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300"
+                        href="#">MY PAGE</a>
+                    <a class="px-4 py-2 mt-2 text-xl font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300"
+                        href="#">ABOUT</a>
+                    <div @click.away="open = false" class="relative" x-data="{ open: false }">
+                        <button @click="open = !open"
+                            class="flex flex-row items-center w-full px-4 py-2 mt-2 text-xl font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300">
+                            <span>LOGIN / PROFILE</span>
+                            <svg fill="currentColor" viewBox="0 0 20 20"
+                                :class="{'rotate-180': open, 'rotate-0': !open}"
+                                class="inline w-5 h-5 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                        <div x-show="open" x-transition:enter="transition ease-out duration-300 transform"
+                            x-transition:enter-start="opacity-0 scale-0" x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-300 transform"
+                            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-0"
+                            class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
+                            <div class="px-2 py-2 bg-white rounded-md shadow">
+                                <a class="block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300"
+                                    href="#">MY PAGE</a>
+                                <a class="block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300"
+                                    href="#">SETTINGS</a>
+                                <a class="block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300"
+                                    href="#">SIGN OUT</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
     </header>
-    <main>
-        <div class='pet-info'>
-            <img src='' />
-            <h3 class=''>Max</h3>
-            <a href='owner'>Emily Horseshoe</a>
-            <ul class='likes'>
-                <li>Hiking</li>
-                <li>Park</li>
-                <li>Coffee</li>
-                <li>...</li>
+
+    <main class="h-[90vh] mx-auto px-4 py-8">
+        <div class="pet-info bg-white rounded-lg shadow-lg p-8 mb-8">
+            <img src="" alt="Pet Image" class="mb-4">
+            <h3 class="text-2xl font-bold mb-2">Max</h3>
+            <a href="owner" class="text-blue-500">Emily Horseshoe</a>
+            <ul class="flex flex-wrap mt-4 -ml-2">
+                <li class="p-2 mr-2 mb-2 bg-gray-100 rounded-md">Hiking</li>
+                <li class="p-2 mr-2 mb-2 bg-gray-100 rounded-md">Park</li>
+                <li class="p-2 mr-2 mb-2 bg-gray-100 rounded-md">Coffee</li>
+                <li class="p-2 mr-2 mb-2 bg-gray-100 rounded-md">...</li>
             </ul>
         </div>
-        <div>
-            <div class='images-n-comments'>
-                <div class=''>
-                    <div class='pic-wrapper'>
-                        <img src='' />
-                        <button>Previous</button>
-                        <button>Next</button>
-                    </div>
-                    <div class='comments'>
-                        <ul class='comments-ul'>
-                            <li class='comments'>chris, nice pic! 6/23/2023</li>
-                            <li class='comments'>jen, this picture is so cute! 6/19/2023</li>
-                        </ul>
-                        <button class='like-button'>Like</button>
-                    </div>
+        <div class="images-n-comments bg-white rounded-lg shadow-lg p-8 mb-8">
+            <div class="mb-4">
+                <div class="pic-wrapper relative">
+                    <img src="" alt="Image" class="mb-4">
+                    <button class="absolute left-0 top-1/2 transform -translate-y-1/2 px-4 py-2">Previous</button>
+                    <button class="absolute right-0 top-1/2 transform -translate-y-1/2 px-4 py-2">Next</button>
+                </div>
+                <div class="comments mt-4">
+                    <ul class="comments-ul">
+                        <li class="comments mb-2">chris, nice pic! 6/23/2023</li>
+                        <li class="comments mb-2">jen, this picture is so cute! 6/19/2023</li>
+                    </ul>
+                    <button class="like-button bg-blue-500 text-white px-4 py-2 rounded-md">Like</button>
                 </div>
             </div>
         </div>
-        <form action='/upload' method='POST' enctype='multipart/form-data'>
-            <input type='file' name='file' required />
-            <button type='submit'>+Picture</button>
+        <form action="/upload" method="POST" enctype="multipart/form-data" class="flex mb-8">
+            <input type="file" name="file" required>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">+Picture</button>
         </form>
     </main>
+
+    <footer class="bg-[424242] py-20">
+        <div class="container mx-auto flex flex-col items-center">
+            <ul class="flex justify-center mb-10">
+                <li class="mr-6">
+                    <a class="text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300"
+                        href="#">About</a>
+                </li>
+                <li class="mr-6">
+                    <a class="text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300" href="#">Terms
+                        of
+                        Use</a>
+                </li>
+                <li class="mr-6">
+                    <a class="text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300"
+                        href="#">Privacy
+                        Policy</a>
+                </li>
+                <li>
+                    <a class="text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300"
+                        href="#">Contact
+                        Us</a>
+                </li>
+            </ul>
+            <img src="../public/images/logo-dark.png" class="w-64 mb-6" alt="Hero Image" />
+            <p class="text-white text-[1.5rem]">©2023 All Rights Reserved</p>
+            <p class="text-white text-[1.5rem]">
+                Made with
+                <i class="em em-coffee" aria-role="presentation" aria-label="HOT BEVERAGE"></i>
+                &
+                <i class="em em-heart" aria-role="presentation" aria-label="HEAVY BLACK HEART"></i>
+            </p>
+            <p class="text-white text-[1.5rem]">by Team Pet Locators</p>
+        </div>
+    </footer>
 </body>
-<footer class=''>
-    <ul class=''>
-        <li class=''>
-            <a class='' href='#'>About</a>
-        </li>
-        <li class=''>
-            <a class='' href='#'>Terms of Use</a>
-        </li>
-        <li class=''>
-            <a class='' href='#'>Privacy Policy</a>
-        </li>
-        <li class=''>
-            <a class='' href='#'>Contact Us</a>
-        </li>
-    </ul>
-    <img src='' />
-    <p class=''>
-        &copy; Copyright by
-        <a class='' target='' href=''>Team Pet Locators</a>
-    </p>
-</footer>
 
 </html>
