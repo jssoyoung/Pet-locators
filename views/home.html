@@ -4,6 +4,8 @@
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+    <script defer src="../public/js/main.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="shortcut icon" type="image/png" href="../public/images/favicon-32x32.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,13 +13,13 @@
         href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
     <link rel='stylesheet' href='../dist/output.css' />
+    <link rel="stylesheet" href="../public/css/style.css" />
     <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet" />
     <title>Pet Locators</title>
 </head>
 
 <body class="font-sans font-light leading-relaxed mx-auto">
-    <header class='sticky top-0 w-[100%] z-50'>
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <header class='sticky top-0 w-[100%] z-40'>
         <div class="w-full text-gray-700 bg-white bg-opacity-80 dark-mode:text-gray-200 dark-mode:bg-red-800">
             <div x-data="{ open: false }"
                 class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
@@ -41,7 +43,7 @@
                     <a class="px-4 py-2 mt-2 text-xl font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300"
                         href="./user.html">MY PAGE</a>
                     <a class="px-4 py-2 mt-2 text-xl font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300"
-                        href="#">ABOUT</a>
+                        href="#">CONTACT</a>
                     <div @click.away="open = false" class="relative" x-data="{ open: false }">
                         <button @click="open = !open"
                             class="flex flex-row items-center w-full px-4 py-2 mt-2 text-xl font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300">
@@ -72,6 +74,8 @@
                 </nav>
             </div>
         </div>
+        <div class="login hidden">
+        </div>
     </header>
     <main>
         <section class='relative text-center pt-[20rem] w-[100vw] h-[100vh] xl:w-[90vw] xl:h-[75vh]'>
@@ -89,7 +93,8 @@
             <img src='../public/images/5b8d339ba639e004e1cab52b.png'
                 class=' w-[5rem] xl:w-[10rem] absolute bottom-[20rem] right-0 xl:bottom-0 xl:right-[35rem]'
                 alt='happy dog' />
-            <button class="text-red-500 text-[2.5rem] font-bold absolute bottom-[20rem] xl:bottom-[0]"><span
+            <button id="btn__learnMore"
+                class="text-red-500 text-[2.5rem] font-bold absolute bottom-[20rem] xl:bottom-[0]"><span
                     class="inline-block animate-bounce">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
                         <path fill-rule="evenodd"
@@ -109,7 +114,7 @@
 
         </section>
 
-        <section class='px-[10rem] py-[10rem] transition-transform duration-1000 transition-opacity duration-1000'>
+        <section id="section__learnMore" class='px-[10rem] py-[10rem] transition-transform duration-1000'>
             <div class='max-w-[100rem] mx-auto my-[7.5rem]'>
                 <h2 class='text-[3rem] text-red-400 font-bold mb-[2rem]'>Features</h2>
                 <h3 class='text-6xl text-[424242]'>
@@ -118,7 +123,7 @@
             </div>
 
             <div class='xl:grid grid-cols-2 gap-16 mx-auto lg:w-[70vw] xl:w-[60vw]'>
-                <img class="self-auto" src='../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg' alt='' />
+                <img class="self-auto rounded-lg" src='../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg' alt='' />
                 <div class=''>
                     <div class='flex justify-start items-center gap-6 pt-6'>
                         <img class="w-[40px]" src="../public/images/Paw_Print.svg" alt='free'>
@@ -138,9 +143,9 @@
                         Your pictures are saved securely in our cloud storage.
                     </p>
                 </div>
-                <img class='self-auto' src='../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg' alt='' />
+                <img class='self-auto rounded-lg' src='../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg' alt='' />
 
-                <img class='self-auto' src='../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg' alt='' />
+                <img class='self-auto rounded-lg' src='../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg' alt='' />
                 <div class=''>
                     <div class='flex justify-start items-center gap-6 pt-6'>
                         <img class="w-[40px]" src="../public/images/Paw_Print.svg">
@@ -153,7 +158,7 @@
             </div>
         </section>
 
-        <section class="px-[10rem] py-[10rem] transition-transform duration-1000 transition-opacity duration-1000">
+        <section class="section px-[10rem] py-[10rem] transition-transform duration-1000">
             <div class='max-w-[100rem] mx-auto my-[7.5rem]'>
                 <h2 class='text-[3rem] text-red-400 font-bold mb-[2rem]'>How It Works</h2>
                 <h3 class='text-6xl text-[424242]'>
@@ -161,26 +166,26 @@
                 </h3>
             </div>
 
-            <div class='max-w-[120rem] h-[50rem] mt-12 mr-auto mb-0 ml-auto bg-white mx-auto'>
-                <div class='flex justify-center ml-10'>
-                    <button
-                        class='text-[1.5rem] mr-[2.5rem] translate-y-[-50%] bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full'>
+            <div class='max-w-[120rem] h-[50rem] mt-12 mr-auto mb-0 ml-auto bg-white mx-auto shadow-lg rounded-lg'>
+                <div id='tabContainer' class='flex justify-center ml-10'>
+                    <button id='btn__tab-01' data-tab="1"
+                        class='btn__tab btn__active text-[1.5rem] mr-[2.5rem] translate-y-[-50%] bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full'>
                         <span class="mr-[1rem] font-bold">01</span> Upload Pet's Pictures
                     </button>
-                    <button
-                        class='text-[1.5rem] mr-[2.5rem] translate-y-[-50%] bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-full'>
+                    <button id='btn__tab-02' data-tab="2"
+                        class='btn__tab text-[1.5rem] mr-[2.5rem] translate-y-[-50%] bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-full'>
                         <span class="mr-[1rem] font-bold">02</span> See Pets' Pictures
                     </button>
-                    <button
-                        class='text-[1.5rem] mr-[2.5rem] translate-y-[-50%] bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
+                    <button id='btn__tab-03' data-tab="3"
+                        class='btn__tab text-[1.5rem] mr-[2.5rem] translate-y-[-50%] bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
                         <span class="mr-[1rem] font-bold">03</span> Like and Comment
                     </button>
-                    <button
-                        class='text-[1.5rem] mr-[2.5rem] translate-y-[-50%] bg-yellow-600 hover:bg-yellow-800 text-white font-bold py-2 px-4 rounded-full'>
+                    <button id='btn__tab-04' data-tab="4"
+                        class='btn__tab text-[1.5rem] mr-[2.5rem] translate-y-[-50%] bg-yellow-600 hover:bg-yellow-800 text-white font-bold py-2 px-4 rounded-full'>
                         <span class="mr-[1rem] font-bold">04</span> Set up a playdate
                     </button>
                 </div>
-                <div class="flex flex-col">
+                <div id='tabContent__1' class="tabContent flex flex-col">
                     <div class='flex justify-center items-center ml-[-5rem]'>
                         <div class='flex items-center justify-center h-[7rem] w-[7rem]'>
                             <img class="w-[55px]" src="../public/images/upload.png" />
@@ -196,36 +201,36 @@
                         our gallery. Upload your pet's pictures to our gallery.
                     </p>
                 </div>
-                <div class="hidden flex flex-col">
+                <div id='tabContent__2' class="tabContent hidden flex flex-col">
                     <div class='flex justify-center items-center ml-[-5rem]'>
                         <div class='flex items-center justify-center h-[7rem] w-[7rem]'>
                             <img class="w-[55px]" src="../public/images/share.png" />
                         </div>
-                        <h5 class='self-center text-[1.75rem] font-bold'>
-                            Check out other pets' pictures
+                        <h5 class='self-center text-[2.75rem] font-bold'>
+                            Share your pet-pictures with others
                         </h5>
                     </div>
                     <p class='self-center text-[1.75rem] font-light px-[10rem] py-[2.5rem] font-light'>Check out pics!
                     </p>
                 </div>
-                <div class="hidden flex flex-col">
+                <div id='tabContent__3' class="tabContent hidden flex flex-col">
                     <div class='flex justify-center items-center ml-[-5rem]'>
                         <div class='flex items-center justify-center h-[7rem] w-[7rem]'>
                             <img class="w-[55px]" src="../public/images/likencomment.png" />
                         </div>
-                        <h5 class='self-center text-[1.75rem] font-bold'>
+                        <h5 class='self-center text-[2.75rem] font-bold'>
                             Like and comment on cute pets
                         </h5>
                     </div>
                     <p class='self-center text-[1.75rem] font-light px-[10rem] py-[2.5rem] font-light'>Check out pics!
                     </p>
                 </div>
-                <div class="hidden flex flex-col">
+                <div id='tabContent__4' class="tabContent hidden flex flex-col">
                     <div class='flex justify-center items-center ml-[-5rem]'>
                         <div class='flex items-center justify-center h-[7rem] w-[7rem]'>
                             <img class="w-[55px]" src="../public/images/calendar.png" />
                         </div>
-                        <h5 class='self-center text-[1.75rem] font-bold'>
+                        <h5 class='self-center text-[2.75rem] font-bold'>
                             Set up a playdate with your pet's friends
                         </h5>
                     </div>
@@ -235,87 +240,104 @@
             </div>
         </section>
 
-        <section class="px-[10rem] py-[10rem] transition-transform duration-1000 transition-opacity duration-1000">
+        <section class="section px-[10rem] py-[10rem] mb-[5rem] transition-transform duration-1000">
             <div class='max-w-[100rem] mx-auto my-[7.5rem]'>
                 <h2 class='text-[3rem] text-red-400 font-bold mb-[2rem]'>Not sure yet?</h2>
                 <h3 class='text-6xl text-[424242]'>
                     See our users and their testimonials!
                 </h3>
             </div>
-            <div class='relative max-w-[120rem] h-[50rem] mx-auto overflow-hidden'>
+            <div class='relative max-w-[120rem] h-[55rem] mx-auto overflow-hidden bg-white shadow-lg rounded-lg'>
                 <div
-                    class='flex items-center justify-center absolute top-0 w-[100%] h-[50rem] transition-transform duration-1000'>
+                    class='slide slide__1 pb-[15rem] flex items-center justify-center absolute top-0 w-[100%] h-[50rem] transition-transform duration-1000'>
                     <div class='relative w-[65%]'>
-                        <h5 class='text-[2.5rem] font-bold mb-[1.5rem]'>Testimonial</h5>
-                        <blockquote class='font-[2rem] mb-[3.5rem] text-[424242]'>
+                        <h5 class='text-[4rem] font-bold mb-[1.5rem]'>"My pet is very happy.."</h5>
+                        <p class='text-[1rem] mb-[3.5rem] text-[424242]'>
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                             Accusantium quas quisquam non? Quas voluptate nulla minima
                             deleniti optio ullam nesciunt, numquam corporis et asperiores
                             laboriosam sunt, praesentium suscipit blanditiis. Necessitatibus
                             id alias reiciendis, perferendis facere pariatur dolore veniam
                             autem esse non voluptatem saepe provident nihil molestiae.
-                        </blockquote>
-                        <address class='grid grid-cols-1 gap-x-5 ml-[3rem] font-normal'>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                            Accusantium quas quisquam non? Quas voluptate nulla minima
+                            deleniti optio ullam nesciunt, numquam corporis et asperiores
+                            laboriosam sunt, praesentium suscipit blanditiis. Necessitatibus
+                            id alias reiciendis, perferendis facere pariatur dolore veniam
+                            autem esse non voluptatem saepe provident nihil molestiae.
+                        </p>
+                        <address class='absolute grid grid-cols-1 gap-x-5 right-0 font-normal'>
                             <img class="w-[10rem] rounded-full"
-                                src='../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg'
+                                src='../public/images/michael-dam-mEZ3PoFGs_k-unsplash.jpg'
                                 alt="testimonial author's photo" />
                             <h6 class='text-[2rem] font-bold self-end m-0'>Emily Horshoe</h6>
-                            <p class='text-[1.75rem]'>Los Angeles, CA</p>
+                            <p class='text-[1.5rem]'>Los Angeles, CA</p>
                         </address>
                     </div>
                 </div>
 
                 <div
-                    class='flex items-center justify-center absolute top-0 w-[100%] h-[50rem] transition-transform duration-1000'>
+                    class='slide slide__2 pb-[15rem] flex items-center justify-center absolute top-0 w-[100%] h-[50rem] transition-transform duration-1000'>
                     <div class='relative w-[65%]'>
-                        <h5 class='text-[2.5rem] font-bold mb-[1.5rem]'>Testimonial</h5>
-                        <blockquote class='font-[2rem] mb-[3.5rem] text-[424242]'>
+                        <h5 class='text-[4rem] font-bold mb-[1.5rem]'>"Nice pictures.."</h5>
+                        <p class='text-[1rem] mb-[3.5rem] text-[424242]'>
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                             Accusantium quas quisquam non? Quas voluptate nulla minima
                             deleniti optio ullam nesciunt, numquam corporis et asperiores
                             laboriosam sunt, praesentium suscipit blanditiis. Necessitatibus
                             id alias reiciendis, perferendis facere pariatur dolore veniam
                             autem esse non voluptatem saepe provident nihil molestiae.
-                        </blockquote>
-                        <address class='grid grid-cols-1 gap-x-5 ml-[3rem] font-normal'>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                            Accusantium quas quisquam non? Quas voluptate nulla minima
+                            deleniti optio ullam nesciunt, numquam corporis et asperiores
+                            laboriosam sunt, praesentium suscipit blanditiis. Necessitatibus
+                            id alias reiciendis, perferendis facere pariatur dolore veniam
+                            autem esse non voluptatem saepe provident nihil molestiae.
+                        </p>
+                        <address class='absolute grid grid-cols-1 gap-x-5 right-0 font-normal'>
                             <img class="w-[10rem] rounded-full"
-                                src='../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg'
+                                src='../public/images/joseph-gonzalez-iFgRcqHznqg-unsplash.jpg'
                                 alt="testimonial author's photo" />
-                            <h6 class='text-[2rem] font-bold self-end m-0'>Emily Horshoe</h6>
-                            <p class='text-[1.75rem]'>Los Angeles, CA</p>
+                            <h6 class='text-[2rem] font-bold self-end m-0'>Chris Aquino</h6>
+                            <p class='text-[1.5rem]'>San Diego, CA</p>
                         </address>
                     </div>
                 </div>
 
                 <div
-                    class='flex items-center justify-center absolute top-0 w-[100%] h-[50rem] transition-transform duration-1000'>
+                    class='slide slide__3 pb-[15rem] flex items-center justify-center absolute top-0 w-[100%] h-[50rem] transition-transform duration-1000'>
                     <div class='relative w-[65%]'>
-                        <h5 class='text-[2.5rem] font-bold mb-[1.5rem]'>Testimonial</h5>
-                        <blockquote class='font-[2rem] mb-[3.5rem] text-[424242]'>
+                        <h5 class='text-[4rem] font-bold mb-[1.5rem]'>"Great website.."</h5>
+                        <p class='text-[1rem] mb-[3.5rem] text-[424242]'>
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                             Accusantium quas quisquam non? Quas voluptate nulla minima
                             deleniti optio ullam nesciunt, numquam corporis et asperiores
                             laboriosam sunt, praesentium suscipit blanditiis. Necessitatibus
                             id alias reiciendis, perferendis facere pariatur dolore veniam
                             autem esse non voluptatem saepe provident nihil molestiae.
-                        </blockquote>
-                        <address class='grid grid-cols-1 gap-x-5 ml-[3rem] font-normal'>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                            Accusantium quas quisquam non? Quas voluptate nulla minima
+                            deleniti optio ullam nesciunt, numquam corporis et asperiores
+                            laboriosam sunt, praesentium suscipit blanditiis. Necessitatibus
+                            id alias reiciendis, perferendis facere pariatur dolore veniam
+                            autem esse non voluptatem saepe provident nihil molestiae.
+                        </p>
+                        <address class='absolute grid grid-cols-1 gap-x-5 right-0 font-normal'>
                             <img class="w-[10rem] rounded-full"
-                                src='../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg'
+                                src='../public/images/ayo-ogunseinde-sibVwORYqs0-unsplash.jpg'
                                 alt="testimonial author's photo" />
-                            <h6 class='text-[2rem] font-bold self-end m-0'>Emily Horshoe</h6>
-                            <p class='text-[1.75rem]'>Los Angeles, CA</p>
+                            <h6 class='text-[2rem] font-bold self-end m-0'>Ken Kim</h6>
+                            <p class='text-[1.5rem]'>San Francisco, CA</p>
                         </address>
                     </div>
                 </div>
-                <button
-                    class='w-[6rem] h-[6rem] text-[4rem] bg-gray text-[424242] absolute top-[50%] left-[6%] z-30 rounded-[50%]'>&larr;</button>
-                <button
-                    class='w-[6rem] h-[6rem] text-[4rem] bg-gray text-[424242] absolute top-[50%] right-[6%] z-30 rounded-[50%]'>&rarr;</button>
+                <button id="btn__left"
+                    class='w-[6rem] h-[6rem] text-[4rem] bg-gray text-[424242] absolute top-[40%] left-[6%] z-30 rounded-[50%]'>&larr;</button>
+                <button id="btn__right"
+                    class='w-[6rem] h-[6rem] text-[4rem] bg-gray text-[424242] absolute top-[40%] right-[6%] z-30 rounded-[50%]'>&rarr;</button>
             </div>
         </section>
-        <section
-            class="text-center px-[10rem] py-[10rem] transition-transform duration-1000 transition-opacity duration-1000 bg-[424242] bt-0">
+        <section class="section text-center px-[10rem] py-[10rem] bg-[424242] bt-0 transition-transform duration-1000">
             <div class='mb-[6rem]'>
                 <h3 class='text-[4.75rem] text-white font-bold'>
                     Ready to find your pet's playmate?
@@ -330,7 +352,6 @@
 
         </section>
     </main>
-
     <footer class="bg-[424242] py-20">
         <div class="container mx-auto flex flex-col items-center">
             <ul class="flex justify-center mb-10">
@@ -365,6 +386,79 @@
             <p class="text-white text-[1.5rem]">by Team Pet Locators</p>
         </div>
     </footer>
+
+    <div
+        class="hidden fixed top-0 left-[20%] md:left-[35%] xl:left-[40%] z-[9999] bg-grey-lighter min-h-screen flex flex-col">
+        <div class="max-w-lg mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                <h1 class="mb-8 text-3xl text-center">Sign up</h1>
+                <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="fullname"
+                    placeholder="Full Name" />
+
+                <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="email"
+                    placeholder="Email" />
+
+                <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4" name="password"
+                    placeholder="Password" />
+                <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4"
+                    name="confirm_password" placeholder="Confirm Password" />
+
+                <button type="submit"
+                    class="w-full text-center py-3 rounded bg-green-400 text-black hover:bg-green-dark focus:outline-none my-1">Create
+                    Account</button>
+
+                <div class="text-center text-sm text-grey-dark mt-4">
+                    By signing up, you agree to the
+                    <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                        Terms of Service
+                    </a> and
+                    <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                        Privacy Policy
+                    </a>
+                </div>
+            </div>
+            <div class="text-grey-dark mt-6">
+                Already have an account?
+                <a class="no-underline border-b border-blue text-blue" href="">
+                    Log in
+                </a>.
+            </div>
+        </div>
+    </div>
+    <div
+        class="hidden fixed top-0 left-[20%] md:left-[35%] xl:left-[40%] z-[9999] bg-grey-lighter min-h-screen flex flex-col">
+        <div class="max-w-lg mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                <h1 class="mb-8 text-3xl text-center">Log in</h1>
+                <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="email"
+                    placeholder="Email" />
+                <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4" name="password"
+                    placeholder="Password" />
+
+                <button type="submit"
+                    class="w-full text-center py-3 rounded bg-green-400 text-black hover:bg-green-dark focus:outline-none my-1">Log
+                    in</button>
+
+                <div class="text-center text-sm text-grey-dark mt-4">
+                    By logging in, you agree to the
+                    <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                        Terms of Service
+                    </a> and
+                    <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                        Privacy Policy
+                    </a>
+                </div>
+            </div>
+            <div class="text-grey-dark mt-6">
+                Don't have an account?
+                <a class="no-underline border-b border-blue text-blue" href="">
+                    Sign up
+                </a>.
+            </div>
+        </div>
+    </div>
+    <div class="hidden fixed w-[100%] h-[100%] top-0 left-0 z-50 backdrop-blur-sm"></div>
+
 </body>
 
 </html>

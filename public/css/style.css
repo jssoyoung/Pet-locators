@@ -1,0 +1,21 @@
+.btn__active {
+  transform: translateY(-70%);
+}
+
+.section__hidden {
+  opacity: 0;
+  transform: translateY(20rem);
+}
+
+.section__fade-in {
+  animation: fade-in 1.5s ease forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
