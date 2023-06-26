@@ -43,7 +43,7 @@
                     <a class="px-4 py-2 mt-2 text-xl font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300"
                         href="./user.html">MY PAGE</a>
                     <a class="px-4 py-2 mt-2 text-xl font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300"
-                        href="#">CONTACT</a>
+                        href="./contact.html">CONTACT</a>
                     <div @click.away="open = false" class="relative" x-data="{ open: false }">
                         <button @click="open = !open"
                             class="flex flex-row items-center w-full px-4 py-2 mt-2 text-xl font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300">
@@ -77,7 +77,6 @@
         <div class="login hidden">
         </div>
     </header>
-
     <main class="h-auto">
         <div class="flex flex-1 h-auto w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md">
             <div class="border-r-2 ml-2 mr-8 w-[17.5rem]">
@@ -150,7 +149,8 @@
         <div class="container mx-auto flex flex-col items-center">
             <ul class="flex justify-center mb-10">
                 <li class="mr-6">
-                    <a class="text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300" href="#">About</a>
+                    <a class="text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300"
+                        href="#">About</a>
                 </li>
                 <li class="mr-6">
                     <a class="text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300" href="#">Terms
@@ -158,7 +158,8 @@
                         Use</a>
                 </li>
                 <li class="mr-6">
-                    <a class="text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300" href="#">Privacy
+                    <a class="text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300"
+                        href="#">Privacy
                         Policy</a>
                 </li>
                 <li>
@@ -178,7 +179,7 @@
             <p class="text-white text-[1.5rem]">by Team Pet Locators</p>
         </div>
     </footer>
-    
+
     <div
         class="hidden fixed top-0 left-[20%] md:left-[35%] xl:left-[40%] z-[9999] bg-grey-lighter min-h-screen flex flex-col">
         <div class="max-w-lg mx-auto flex-1 flex flex-col items-center justify-center px-2">
@@ -186,19 +187,19 @@
                 <h1 class="mb-8 text-3xl text-center">Sign up</h1>
                 <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="fullname"
                     placeholder="Full Name" />
-    
+
                 <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="email"
                     placeholder="Email" />
-    
+
                 <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4" name="password"
                     placeholder="Password" />
                 <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4"
                     name="confirm_password" placeholder="Confirm Password" />
-    
+
                 <button type="submit"
                     class="w-full text-center py-3 rounded bg-green-400 text-black hover:bg-green-dark focus:outline-none my-1">Create
                     Account</button>
-    
+
                 <div class="text-center text-sm text-grey-dark mt-4">
                     By signing up, you agree to the
                     <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
@@ -226,11 +227,11 @@
                     placeholder="Email" />
                 <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4" name="password"
                     placeholder="Password" />
-    
+
                 <button type="submit"
                     class="w-full text-center py-3 rounded bg-green-400 text-black hover:bg-green-dark focus:outline-none my-1">Log
                     in</button>
-    
+
                 <div class="text-center text-sm text-grey-dark mt-4">
                     By logging in, you agree to the
                     <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
@@ -250,7 +251,7 @@
         </div>
     </div>
     <div class="hidden fixed w-[100%] h-[100%] top-0 left-0 z-50 backdrop-blur-sm"></div>
-    
-    </body>
-    
-    </html>
+
+</body>
+
+</html>
