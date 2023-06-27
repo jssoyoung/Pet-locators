@@ -7,6 +7,11 @@ User.hasMany(Pets, {
   onDelete: 'CASCADE'
 });
 
+User.hasMany(Comments, {
+  foreignKey: 'pet_id',
+  onDelete: 'CASCADE',
+});
+
 Pets.belongsTo(User, {
   foreignKey: 'user_id'
 });
@@ -19,4 +24,4 @@ Likes.hasMany(Pets, {
   foreignKey: 'pet_id'
 });
 
-module.exports = { User, Pets, Likes };
+module.exports = { User, Pets, Likes, Comments };
