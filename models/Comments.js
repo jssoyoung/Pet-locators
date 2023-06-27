@@ -1,9 +1,9 @@
 const sequelize = require('sequelize');
-const { Model, Datatype } = require('../config/connection')
+const { Model, Datatype } = require('../config/connection');
 
-class Favorties extends Model {}
+class Comments extends Model {}
 
-Favorties.init(
+Comments.init(
   {
     id: {
       type: Datatypes.INTEGER,
@@ -19,14 +19,19 @@ Favorties.init(
         key: 'id',
       },
     },
-    pet_id: {
+    picture_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'pet',
         key: 'id',
       },
-    }
+    },
+    comment: {
+      type: Datatypes.STRING,
+      allowNull: true,
+      autoIncrement: true,
+    },
   },
   {
     sequelize,
@@ -37,4 +42,4 @@ Favorties.init(
   },
 );
 
-module.exports = Favorties;
+module.exports = Comments;

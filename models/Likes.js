@@ -1,0 +1,44 @@
+const sequelize = require('sequelize');
+const { Model, Datatype } = require('../config/connection')
+
+class Likes extends Model {}
+
+Likes.init(
+  {
+    id: {
+      type: Datatypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
+    picture_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'pet',
+        key: 'id',
+      },
+    },
+    like: {
+      type: Datatypes.INTEGER,
+      allowNull: true,
+    }
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'pets',
+  },
+);
+
+module.exports = Likes;
