@@ -20,14 +20,6 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    picture_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'pet',
-        key: 'id',
-      },
-    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -43,15 +35,6 @@ User.init(
         len: [8],
       },
     },
-    favorites: [
-      {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'pet',
-        key: 'id',
-      },
-  }]
   },
   {
     hooks: {
