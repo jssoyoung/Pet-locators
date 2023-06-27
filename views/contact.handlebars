@@ -1,41 +1,48 @@
-<main class='flex flex-col justify-evenly mx-auto w-[50%] h-[90vh]'>
-  <div class='mx-auto'>
-    <img class='mt-[-7.5rem] w-[70rem]' src='../public/images/listening.png' />
-  </div>
-  <div class='mt-[-5rem] flex flex-col xl:flex xl:flex-row items-center'>
-    <img class='w-[50rem] h-[30rem]' src='../public/images/dog-png-9104.png' />
-    <form action='/contact' method='POST' class='w-[50rem] max-w-lg mx-auto'>
-      <label for='name' class='block mb-2'>Name:</label>
-      <input
-        type='text'
-        id='name'
-        name='name'
-        required
-        class='w-full px-4 py-2 mb-6 rounded-md'
+<main class='h-auto py-12'>
+  <div
+    class='flex flex-col mx-auto w-[100%] sm:w-[80%] md:w-[70%] lg:w-[50%] xl:w-[50%] h-[90vh]'
+  >
+    <div class='py-12 mx-auto'>
+      <img class='w-[70rem]' src='../public/images/listening.png' />
+    </div>
+    <div class='flex flex-col justfiy-center xl:flex xl:flex-row items-center'>
+      <img
+        class='w-[45rem] h-[30rem]'
+        src='../public/images/dog-png-9104.png'
       />
+      <form action='/contact' method='POST' class='w-[65rem] max-w-xl mx-auto'>
+        <label for='name' class='block mb-2'>Name:</label>
+        <input
+          type='text'
+          id='name'
+          name='name'
+          required
+          class='w-full px-4 py-2 mb-6 rounded-md'
+        />
 
-      <label for='email' class='block mb-2'>Email:</label>
-      <input
-        type='email'
-        id='email'
-        name='email'
-        required
-        class='w-full px-4 py-2 mb-6 rounded-md'
-      />
+        <label for='email' class='block mb-2'>Email:</label>
+        <input
+          type='email'
+          id='email'
+          name='email'
+          required
+          class='w-full px-4 py-2 mb-6 rounded-md'
+        />
 
-      <label for='message' class='block mb-2'>Message:</label>
-      <textarea
-        id='message'
-        name='message'
-        rows='4'
-        required
-        class='w-full px-4 py-2 mb-6 rounded-md'
-      ></textarea>
+        <label for='message' class='block mb-2'>Message:</label>
+        <textarea
+          id='message'
+          name='message'
+          rows='4'
+          required
+          class='w-full px-4 py-2 mb-6 rounded-md'
+        ></textarea>
 
-      <button
-        type='submit'
-        class='bg-blue-500 text-white px-6 py-2 rounded-md'
-      >Send</button>
-    </form>
+        <button
+          type='submit'
+          class='bg-blue-500 text-white px-6 py-2 rounded-md'
+        >Send</button>
+      </form>
+    </div>
   </div>
 </main>

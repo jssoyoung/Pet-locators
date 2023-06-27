@@ -78,21 +78,59 @@
         </div>
     </header>
     <main
-        class="flex flex-col h-[90vh] w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md overflow-hidden">
-        <div class="my-24 pt-2 relative mx-auto text-gray-600 w-[35rem]">
-            <input class="border-2 border-red-300 bg-white h-12 w-[35rem] px-5 rounded-lg text-sm focus:outline-none"
-                type="search" name="search" placeholder="Search">
-            <button type="submit" class="absolute right-0 top-[0.1rem] mt-5 mr-4">
-                <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
-                    viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
-                    width="512px" height="512px">
-                    <path
-                        d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
-                </svg>
-            </button>
+        class="flex flex-col h-auto w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md overflow-hidden">
+        <div class="mx-auto w-[100%] sm:w-[70.5%] pt-12">
+            <form class="font-sans">
+                <div class="flex">
+                    <label for="search-dropdown" class="mb-2 text-2xl text-gray-900 sr-only dark:text-white">Your
+                        Email</label>
+                    <button id="dropdown-button" data-dropdown-toggle="dropdown"
+                        class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-2xl text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
+                        type="button">All categories <svg aria-hidden="true" class="w-4 h-4 ml-1" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg></button>
+                    <div id="dropdown"
+                        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
+                            <li>
+                                <button type="button"
+                                    class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Type</button>
+                            </li>
+                            <li>
+                                <button type="button"
+                                    class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Breed</button>
+                            </li>
+                            <li>
+                                <button type="button"
+                                    class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Age</button>
+                            </li>
+                            <li>
+                                <button type="button"
+                                    class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Location</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="relative w-full">
+                        <input type="search" id="search-dropdown"
+                            class="block p-2.5 w-full z-20 text-2xl text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+                            placeholder="Search based on Type, Breed, Age, Location.." required>
+                        <button type="submit"
+                            class="absolute top-0 right-0 p-2.5 text-2xl text-white bg-red-700 rounded-r-lg border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                            <svg aria-hidden="true" class="w-8 h-8" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                            <span class="sr-only">Search</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 xl:w-[70%] mx-auto py-12">
+        <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 xl:w-[70%] mx-auto py-12">
             <div class="bg-white p-6 rounded-md shadow">
                 <img src="../public/images/Paw_Print.svg" alt="Pet Image" class="w-[100px] mx-auto rounded-full mb-4">
                 <h3 class="text-xl font-bold">Java</h3>
