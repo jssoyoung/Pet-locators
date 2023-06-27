@@ -5,35 +5,27 @@ const session = require("express-session");
 const handlebars = require("express-handlebars");
 
 const app = express();
-app.engine(
-  "handlebars", handlebars({
+app.use(express.static("public"))
+app.use(express.static("dist"))
+app.engine("handlebars", handlebars({
     defaultLayout: 'main',
   })
 )
-app.set(
-  "view engine","handlebars")
-
+app.set("view engine","handlebars")
 app.set("views","views")
-
-
 app.use(express.json())
-
 app.use(express.urlencoded({
   extended: false
 }));
 
 app.use(routes)
 
-
-
-
-
 sequelize.sync({
   force: true
-})
-.then(() => {app.listen(3001, () => {
+}).then(() => {app.listen(3001, () => {
   console.log('Server running on port 3001');
-})}).catch(error => {
+  })
+}).catch(error => {
   console.log(`Error ${error}`);
 }) 
 

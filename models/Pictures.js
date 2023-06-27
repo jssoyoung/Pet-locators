@@ -1,9 +1,9 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize')
 const sequelize = require('../config/connection');
 
-class Pets extends Model {}
+class Pictures extends Model {}
 
-Pets.init(
+Pictures.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,24 +11,18 @@ Pets.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    pictureUrl: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    breed: {
-      type: DataTypes.STRING,
-    },
-    description: {
-      type: DataTypes.STRING,
-    },
+    }
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'pets',
+    modelName: 'pictures',
   },
 );
 
-module.exports = Pets;
+module.exports = Pictures;

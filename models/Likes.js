@@ -1,12 +1,12 @@
-const sequelize = require('sequelize');
-const { Model, Datatype } = require('../config/connection')
+const { Model, DataTypes } = require('sequelize')
+const sequelize = require('../config/connection');
 
 class Likes extends Model {}
 
 Likes.init(
   {
     id: {
-      type: Datatypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
@@ -28,7 +28,7 @@ Likes.init(
       },
     },
     like: {
-      type: Datatypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: true,
     }
   },

@@ -4,7 +4,7 @@
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <meta http-equiv='X-UA-Compatible' content='ie=edge' />
-    <script defer src='../public/js/main.js'></script>
+    <script defer src='/js/main.js'></script>
     <script
       defer
       src='https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js'
@@ -12,7 +12,7 @@
     <link
       rel='shortcut icon'
       type='image/png'
-      href='../public/images/favicon-32x32.png'
+      href='/images/favicon-32x32.png'
     />
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
@@ -20,8 +20,8 @@
       href='https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'
       rel='stylesheet'
     />
-    <link rel='stylesheet' href='../dist/output.css' />
-    <link rel='stylesheet' href='../public/css/style.css' />
+    <link rel='stylesheet' href='/output.css' />
+    <link rel='stylesheet' href='/css/style.css' />
     <link href='https://emoji-css.afeld.me/emoji.css' rel='stylesheet' />
     <title>Pet Locators</title>
   </head>
@@ -36,9 +36,9 @@
           class='flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8'
         >
           <div class='p-4 flex flex-row items-center justify-between'>
-            <a href='./home.html'><img
+            <a href='/'><img
                 class='w-[200px] p-4'
-                src='../public/images/logo.png'
+                src='/images/logo.png'
               /></a>
             <button
               class='md:hidden rounded-lg focus:outline-none focus:shadow-outline'
@@ -66,15 +66,15 @@
           >
             <a
               class='px-4 py-2 mt-2 text-xl font-semibold text-gray-900 rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
-              href='./locator.html'
+              href='/locator'
             >LOCATOR</a>
             <a
               class='px-4 py-2 mt-2 text-xl font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
-              href='./user.html'
+              href='/user'
             >MY PAGE</a>
             <a
               class='px-4 py-2 mt-2 text-xl font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
-              href='./contact.html'
+              href='/contact'
             >CONTACT</a>
             <div
               @click.away='open = false'
@@ -112,7 +112,7 @@
                 <div class='px-2 py-2 bg-white rounded-md shadow'>
                   <a
                     class='block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
-                    href='./user.html'
+                    href='/user'
                   >MY PAGE</a>
                   <a
                     class='block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
@@ -131,7 +131,7 @@
       <div class='login hidden'>
       </div>
     </header>
-    {{{main}}}
+    {{{body}}}
     <footer class='bg-[424242] py-20'>
       <div class='container mx-auto flex flex-col items-center'>
         <ul class='flex justify-center mb-10'>
@@ -156,12 +156,12 @@
           <li>
             <a
               class='text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300'
-              href='./contact.html'
+              href='/contact'
             >Contact Us</a>
           </li>
         </ul>
         <img
-          src='../public/images/logo-dark.png'
+          src='/images/logo-dark.png'
           class='w-64 mb-6'
           alt='Hero Image'
         />
