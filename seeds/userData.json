@@ -1,0 +1,20 @@
+[
+    {
+      "user_name": "Shelly",
+      "email": "shelly@hotmail.com",
+      "password": "password1",
+      "favorites": [1,2,3]
+    },
+    {
+      "user_name": "Matt",
+      "email": "matt@gmail.com",
+      "password": "password2",
+      "favorites": [1,2,3]
+    },
+    {
+      "user_name": "Anna",
+      "email": "anna@aol.com",
+      "password": "password3",
+      "favorties": [1,2,3]
+    }
+  ]

@@ -11,15 +11,30 @@ Favorties.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: Datatypes.STRING,
-    },
-    breed: {
-      type: Datatypes.STRING,
+    user_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
     },
-    description: {
-      type: Datatypes.STRING,
-    },
-  }
-)
+    pet_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'pet',
+        key: 'id',
+      },
+    }
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'pets',
+  },
+);
+
+module.exports = Favorties;
