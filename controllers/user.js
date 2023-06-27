@@ -1,19 +1,20 @@
 exports.getHome = (req, res) => {
-    res.render('home');
-}
+  res.render('home');
+};
 
 exports.getLocator = (req, res) => {
-    res.render('locator');
-}
+  res.render('locator');
+};
 
 exports.getUser = (req, res) => {
-    res.render('user');
-}
+  res.render('user');
+};
 
 exports.getContact = (req, res) => {
-    res.render('contact');
-}
+  res.render('contact');
+};
 
 exports.postSearch = (req, res) => {
-    console.log(req.search)
-}
+  console.log(req.body.userSearch);
+  res.render('home');
+};
