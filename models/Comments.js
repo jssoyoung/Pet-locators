@@ -1,12 +1,12 @@
-const sequelize = require('sequelize');
-const { Model, Datatype } = require('../config/connection');
+const { Model, DataTypes } = require('sequelize')
+const sequelize = require('../config/connection');
 
 class Comments extends Model {}
 
 Comments.init(
   {
     id: {
-      type: Datatypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
@@ -28,9 +28,8 @@ Comments.init(
       },
     },
     comment: {
-      type: Datatypes.STRING,
+      type: DataTypes.STRING,
       allowNull: true,
-      autoIncrement: true,
     },
   },
   {
