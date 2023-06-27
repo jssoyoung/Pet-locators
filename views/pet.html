@@ -1,0 +1,257 @@
+<html class="text-[62.5%] bg-[f1f1f2] scroll-smooth" lang='en'>
+
+<head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+    <script defer src="../public/js/main.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../public/images/favicon-32x32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel='stylesheet' href='../dist/output.css' />
+    <link rel="stylesheet" href="../public/css/style.css" />
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet" />
+    <title>Pet Locators</title>
+</head>
+
+<body class="font-sans font-light leading-relaxed mx-auto">
+    <header class='sticky top-0 w-[100%] z-40'>
+        <div class="w-full text-gray-700 bg-white bg-opacity-80 dark-mode:text-gray-200 dark-mode:bg-red-800">
+            <div x-data="{ open: false }"
+                class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+                <div class="p-4 flex flex-row items-center justify-between">
+                    <a href="./home.html"><img class='w-[200px] p-4' src='../public/images/logo.png' /></a>
+                    <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+                            <path x-show="!open" fill-rule="evenodd"
+                                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                                clip-rule="evenodd"></path>
+                            <path x-show="open" fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+                <nav :class="{'flex': open, 'hidden': !open}"
+                    class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
+                    <a class="px-4 py-2 mt-2 text-xl font-semibold text-gray-900 rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300"
+                        href="./locator.html">LOCATOR</a>
+                    <a class="px-4 py-2 mt-2 text-xl font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300"
+                        href="./user.html">MY PAGE</a>
+                    <a class="px-4 py-2 mt-2 text-xl font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300"
+                        href="./contact.html">CONTACT</a>
+                    <div @click.away="open = false" class="relative" x-data="{ open: false }">
+                        <button @click="open = !open"
+                            class="flex flex-row items-center w-full px-4 py-2 mt-2 text-xl font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300">
+                            <span>LOGIN / PROFILE</span>
+                            <svg fill="currentColor" viewBox="0 0 20 20"
+                                :class="{'rotate-180': open, 'rotate-0': !open}"
+                                class="inline w-5 h-5 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                        <div x-show="open" x-transition:enter="transition ease-out duration-300 transform"
+                            x-transition:enter-start="opacity-0 scale-0" x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-300 transform"
+                            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-0"
+                            class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
+                            <div class="px-2 py-2 bg-white rounded-md shadow">
+                                <a class="block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300"
+                                    href="./user.html">MY PAGE</a>
+                                <a class="block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300"
+                                    href="#">SETTINGS</a>
+                                <a class="block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300"
+                                    href="#">SIGN OUT</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="login hidden">
+        </div>
+    </header>
+    <main class="h-auto">
+        <div class="flex flex-col h-auto w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md">
+            <div class="mb-4 h-auto">
+                <div class="mx-auto relative w-[70%]">
+                    <img class="mx-auto mb-4 w-[90%] h-auto" src="../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg"
+                        alt="Image">
+                    <div
+                        class="absolute left-0 top-0 w-full h-full flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity">
+                        <button class="bg-transparent hover:bg-transparent focus:outline-none">
+                            <img class="w-12" src="../public/images/heart.svg" alt="Heart">
+                        </button>
+                    </div>
+                    <button
+                        class="text-2xl h-[100%] absolute left-0 top-1/2 transform -translate-y-1/2 px-4 py-2">&lt;&lt;</button>
+                    <button
+                        class="text-2xl h-[100%] absolute right-0 top-1/2 transform -translate-y-1/2 px-4 py-2">&gt;&gt;</button>
+                </div>
+                <div class="relative comments mt-4">
+                    <ul class="comments-ul">
+                        <li class="comments mb-2">chris, nice pic! 6/23/2023</li>
+                        <li class="comments mb-2">jen, this picture is so cute! 6/19/2023</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex justify-between">
+                <form action="/comment" method="POST" class="flex mb-8">
+                    <input type="text" name="comment" placeholder="Add a comment..." required>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Post</button>
+                </form>
+                <form action="/upload" method="POST" enctype="multipart/form-data" class="flex mb-8">
+                    <input type="file" name="file" required>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">+Picture</button>
+                </form>
+            </div>
+        </div>
+        <div class="flex flex-1 h-auto w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md">
+            <div class="border-r-2 ml-2 mr-8 w-[17.5rem]">
+                <img class="w-24" src="../public/images/Paw_Print.svg" alt="Pet Profile">
+                <h3 class="text-5xl font-bold mb-2">Max</h3>
+                <a href="owner" class="text-xl text-blue-500">Owner: Sam Pai</a>
+                <ul class="py-6">
+                    <li>DOB: August 21st, 2021</li>
+                    <li>Breed: Corgi</li>
+                    <li>Sex: Boy</li>
+                </ul>
+                <h3 class="text-2xl font-bold mt-4">Likes:</h3>
+                <ul class="grid grid-cols-2 mt-4 -ml-2">
+                    <li class="p-2 mr-2 mb-2 bg-gray-100 rounded-md">Corgi</li>
+                    <li class="p-2 mr-2 mb-2 bg-gray-100 rounded-md">Kong</li>
+                    <li class="p-2 mr-2 mb-2 bg-gray-100 rounded-md">Tennis Ball</li>
+                    <li class="p-2 mr-2 mb-2 bg-gray-100 rounded-md">Hide and Seek</li>
+                </ul>
+            </div>
+            <div class="">
+                <ul class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-8 gap-6">
+                    <li><a href="imgUrl"><img class="w-36 rounded opacity-75 hover:opacity-100 transition duration-300"
+                                src="../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg"></a></li>
+                    <li><a href="imgUrl"><img class="w-36 rounded opacity-75 hover:opacity-100 transition duration-300"
+                                src="../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg"></a></li>
+                    <li><a href="imgUrl"><img class="w-36 rounded opacity-75 hover:opacity-100 transition duration-300"
+                                src="../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg"></a></li>
+                    <li><a href="imgUrl"><img class="w-36 rounded opacity-75 hover:opacity-100 transition duration-300"
+                                src="../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg"></a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[424242] py-20">
+        <div class="container mx-auto flex flex-col items-center">
+            <ul class="flex justify-center mb-10">
+                <li class="mr-6">
+                    <a class="text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300"
+                        href="#">About</a>
+                </li>
+                <li class="mr-6">
+                    <a class="text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300" href="#">Terms
+                        of
+                        Use</a>
+                </li>
+                <li class="mr-6">
+                    <a class="text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300"
+                        href="#">Privacy
+                        Policy</a>
+                </li>
+                <li>
+                    <a class="text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300"
+                        href="./contact.html">Contact
+                        Us</a>
+                </li>
+            </ul>
+            <img src="../public/images/logo-dark.png" class="w-64 mb-6" alt="Hero Image" />
+            <p class="text-white text-[1.5rem]">©2023 All Rights Reserved</p>
+            <p class="text-white text-[1.5rem]">
+                Made with
+                <i class="em em-coffee" aria-role="presentation" aria-label="HOT BEVERAGE"></i>
+                &
+                <i class="em em-heart" aria-role="presentation" aria-label="HEAVY BLACK HEART"></i>
+            </p>
+            <p class="text-white text-[1.5rem]">by Team Pet Locators</p>
+        </div>
+    </footer>
+
+    <div
+        class="hidden fixed top-0 left-[20%] md:left-[35%] xl:left-[40%] z-[9999] bg-grey-lighter min-h-screen flex flex-col">
+        <div class="max-w-lg mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                <h1 class="mb-8 text-3xl text-center">Sign up</h1>
+                <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="fullname"
+                    placeholder="Full Name" />
+
+                <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="email"
+                    placeholder="Email" />
+
+                <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4" name="password"
+                    placeholder="Password" />
+                <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4"
+                    name="confirm_password" placeholder="Confirm Password" />
+
+                <button type="submit"
+                    class="w-full text-center py-3 rounded bg-green-400 text-black hover:bg-green-dark focus:outline-none my-1">Create
+                    Account</button>
+
+                <div class="text-center text-sm text-grey-dark mt-4">
+                    By signing up, you agree to the
+                    <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                        Terms of Service
+                    </a> and
+                    <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                        Privacy Policy
+                    </a>
+                </div>
+            </div>
+            <div class="text-grey-dark mt-6">
+                Already have an account?
+                <a class="no-underline border-b border-blue text-blue" href="">
+                    Log in
+                </a>.
+            </div>
+        </div>
+    </div>
+    <div
+        class="hidden fixed top-0 left-[20%] md:left-[35%] xl:left-[40%] z-[9999] bg-grey-lighter min-h-screen flex flex-col">
+        <div class="max-w-lg mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                <h1 class="mb-8 text-3xl text-center">Log in</h1>
+                <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="email"
+                    placeholder="Email" />
+                <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4" name="password"
+                    placeholder="Password" />
+
+                <button type="submit"
+                    class="w-full text-center py-3 rounded bg-green-400 text-black hover:bg-green-dark focus:outline-none my-1">Log
+                    in</button>
+
+                <div class="text-center text-sm text-grey-dark mt-4">
+                    By logging in, you agree to the
+                    <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                        Terms of Service
+                    </a> and
+                    <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                        Privacy Policy
+                    </a>
+                </div>
+            </div>
+            <div class="text-grey-dark mt-6">
+                Don't have an account?
+                <a class="no-underline border-b border-blue text-blue" href="">
+                    Sign up
+                </a>.
+            </div>
+        </div>
+    </div>
+    <div class="hidden fixed w-[100%] h-[100%] top-0 left-0 z-50 backdrop-blur-sm"></div>
+
+</body>
+
+</html>
