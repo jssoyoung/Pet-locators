@@ -1,5 +1,5 @@
 const express = require('express');
-//const routes = require('./routes/user');
+const routes = require('./routes/user');
 const sequelize = require('./config/connection');
 const session = require("express-session");
 const handlebars = require("express-handlebars");
@@ -7,7 +7,7 @@ const handlebars = require("express-handlebars");
 const app = express();
 app.engine(
   "handlebars", handlebars({
-    defaultLayout: 'layout',
+    defaultLayout: 'main',
   })
 )
 app.set(
@@ -22,7 +22,7 @@ app.use(express.urlencoded({
   extended: false
 }));
 
-//app.use(routes)
+app.use(routes)
 
 
 
