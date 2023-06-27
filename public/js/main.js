@@ -13,6 +13,12 @@ const tabContents = document.querySelectorAll('.tabContent');
 const slides = document.querySelectorAll('.slide');
 const btnRight = document.getElementById('btn__right');
 const btnLeft = document.getElementById('btn__left');
+const btnSignup = document.getElementById('btn__signup');
+const modalSignup = document.getElementById('modal__signup');
+const overlay = document.getElementById('overlay');
+const modalLogin = document.getElementById('modal__login');
+const linkLogin = document.getElementById('link__login');
+const linkSignup = document.getElementById('link__signup');
 const maxSlide = slides.length - 1;
 let curSlide = 0;
 
@@ -87,4 +93,38 @@ btnLeft.addEventListener('click', prevSlide);
 document.addEventListener('keydown', function (e) {
   e.key === 'ArrowRight' && nextSlide();
   e.key === 'ArrowLeft' && prevSlide();
+});
+
+const openModal = (e) => {
+  e.preventDefault();
+  modalSignup.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
+
+const closeModal = (e) => {
+  e.preventDefault();
+  modalSignup.classList.add('hidden');
+  overlay.classList.add('hidden');
+  modalLogin.classList.add('hidden');
+};
+
+btnSignup.addEventListener('click', openModal);
+overlay.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && !modalSignup.classList.contains('hidden')) {
+    closeModal();
+  }
+});
+
+linkLogin.addEventListener('click', (e) => {
+  e.preventDefault();
+  modalSignup.classList.add('hidden');
+  modalLogin.classList.remove('hidden');
+});
+
+linkSignup.addEventListener('click', (e) => {
+  e.preventDefault();
+  modalSignup.classList.remove('hidden');
+  modalLogin.classList.add('hidden');
 });

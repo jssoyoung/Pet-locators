@@ -343,7 +343,7 @@
                     Ready to find your pet's playmate?
                 </h3>
             </div>
-            <button
+            <button id="btn__signup"
                 class="relative overflow-hidden group text-6xl text-white font-extrabold px-8 py-20 bg-red-500 rounded-full">
                 Sign up for your free account today!
                 <span
@@ -387,7 +387,7 @@
         </div>
     </footer>
 
-    <div
+    <div id="modal__signup"
         class="hidden fixed top-0 left-[20%] md:left-[35%] xl:left-[40%] z-[9999] bg-grey-lighter min-h-screen flex flex-col">
         <div class="max-w-lg mx-auto flex-1 flex flex-col items-center justify-center px-2">
             <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
@@ -419,13 +419,13 @@
             </div>
             <div class="text-grey-dark mt-6">
                 Already have an account?
-                <a class="no-underline border-b border-blue text-blue" href="">
+                <a id="link__login" class="no-underline border-b border-blue text-blue" href="">
                     Log in
                 </a>.
             </div>
         </div>
     </div>
-    <div
+    <div id="modal__login"
         class="hidden fixed top-0 left-[20%] md:left-[35%] xl:left-[40%] z-[9999] bg-grey-lighter min-h-screen flex flex-col">
         <div class="max-w-lg mx-auto flex-1 flex flex-col items-center justify-center px-2">
             <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
@@ -451,13 +451,13 @@
             </div>
             <div class="text-grey-dark mt-6">
                 Don't have an account?
-                <a class="no-underline border-b border-blue text-blue" href="">
+                <a id="link__signup" class="no-underline border-b border-blue text-blue" href="">
                     Sign up
                 </a>.
             </div>
         </div>
     </div>
-    <div class="hidden fixed w-[100%] h-[100%] top-0 left-0 z-50 backdrop-blur-sm"></div>
+    <div id="overlay" class="hidden fixed w-[100%] h-[100%] top-0 left-0 z-50 backdrop-blur-sm"></div>
 
 </body>
 
