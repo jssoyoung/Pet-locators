@@ -11,6 +11,15 @@ Pets.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    picture_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      references: {
+        model: 'pet',
+        key: 'id',
+      },
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
