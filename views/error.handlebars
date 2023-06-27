@@ -1,0 +1,92 @@
+<h1>Models</h1>
+<p>User: 1. one user has many pets</p>
+<p>Pet: 1. many pets belong to one user; 2. one pet has many pictures</p>
+<p>Picture: 1. many pictures belong to one pet; 2. one picture has many likes;
+  3. one picture has many comments</p>
+<p>Like: 1. many likes belong to one user; 2. many likes belong to one picture</p>
+<p>Comment: 1. many comments belong to one user; 2. many comments belong to one
+  picture</p>
+
+<locator>:
+When a user searches:
+Retrieve the search term from the request.
+Search the Pet table for matches based on the search term (e.g., pet name, breed).
+Display the matching pets, including the pet's name, profile photo, and the user's location.
+
+<user 'settings'>:
+When a user wants to update their information:
+Retrieve the updated information from the POST request.
+Update the user's information in the database.
+Send a response/render back to the user, indicating the success or failure of the update.
+
+<user>:
+When a user visits their "my page":
+Retrieve the user's userId from the request.
+Find the user in the database and render their user page with the following details:
+User's profile picture, name, location, pronouns.
+User's likes and liked.
+User's pets, including their names, profile photos, and other relevant details.
+Contact information from the database.
+
+<user> (clicks on pet's link):
+When a user clicks on a pet's link:
+Get the pet's ID from the GET request.
+Find the corresponding pet in the database.
+Take the user to the pet's page using the pet's ID.
+
+<pet>:
+When a user visits a pet's page:
+Get the pet's ID from the GET request.
+Find the matching pet in the database and display the following details:
+Pet's name, owner, date of birth (DOB), breed, sex.
+Pet's pictures, including the associated likes and comments.
+For each picture, display the number of likes and the comments associated with it.
+
+<pet> (leaving or deleting a comment on a picture):
+When a user leaves a comment on a picture:
+Get the user's userId from the POST request.
+Find the picture's ID.
+Save the comment in the database, associating it with the user's ID and the picture's ID.
+Render the saved comment on the page.
+
+<pet> (liking or unliking a picture):
+When a user likes a picture:
+Get the user's userId from the POST request.
+Find the picture's ID.
+Increment the like count for the picture, associating it with the user's ID and the picture's ID.
+Render the total number of likes for the picture.
+
+<pet> (uploading a picture):
+When a user uploads a picture:
+Get the user's userId from the POST request.
+Upload the picture to a cloud storage service, including the user's ID and a UUID in the picture's metadata.
+Render the uploaded picture using the public URL from the cloud storage.
+
+<pet> (deleting a picture):
+When a user deletes a picture:
+Get the targeted picture's ID from the DELETE request.
+Find the picture in the cloud storage using the picture's ID and delete it.
+Remove the picture from the database.
+Render a response indicating the success or failure of the deletion.
+
+<pet> (updating pet information):
+When a user wants to update their pet's information:
+Get the updated information from the POST request.
+Find the pet using the pet's ID and update the information in the database.
+Send a response/render back to the user, indicating the success or failure of the update.
+
+<contact>:
+When a user sends a contact form:
+Receive the contact form via email.
+Process the form data, validate it, and take appropriate actions based on the content.
+
+<signout>:
+When a user clicks on sign out:
+End the session.
+Render the main page to the user.
+
+
+These if we have extra time:
+<pagination> for results, pictures and comments </pagination>
+<messaging> send message between users </messaging>
+<admin> deleting bad comments, pictures, blocking users </admin>
