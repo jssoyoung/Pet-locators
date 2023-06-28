@@ -53,11 +53,9 @@ exports.getPets = async (req, res) => {
       pet_id: pet.id,
     },
   });
-  const urlList = petPictures.map((picture) => picture.pictureUrl);
-  console.log(urlList);
-
   res.render('pet', {
-    pictures: urlList,
+    pet: pet,
+    pictures: petPictures,
     isLoggedIn: req.session.isLoggedIn,
   });
 };
@@ -68,7 +66,5 @@ exports.postComment = async (req, res) => {
     picture_id: 3,
     comment: req.body.comment,
   });
-  res.render('pet', {
-    comment: newComment.comment,
-  });
+  res.redirect('/pets');
 };
