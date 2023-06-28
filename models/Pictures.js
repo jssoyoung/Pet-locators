@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize')
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Pictures extends Model {}
@@ -14,7 +14,15 @@ Pictures.init(
     pictureUrl: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
+    },
+    pet_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'pets',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,
@@ -22,7 +30,7 @@ Pictures.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'pictures',
-  },
+  }
 );
 
 module.exports = Pictures;

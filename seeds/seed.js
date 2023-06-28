@@ -1,9 +1,15 @@
 const sequelize = require('../config/connection');
-const { User, Pets } = require('../models');
-
+const Pets = require('../models/Pets');
+const User = require('../models/User');
+const Pictures = require('../models/Pictures');
+const Likes = require('../models/Likes');
+const Comments = require('../models/Comments');
 
 const userData = require('./userData.json');
 const petsData = require('./petsData.json');
+const pictureData = require('./pictureData.json');
+const likeData = require('./likeData.json');
+const commentData = require('./commentData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -13,12 +19,10 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  for (const pets of petsData) {
-    await Pets.create({
-      ...pets,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
-    });
-  }
+  const pets = await Pets.bulkCreate(petsData);
+  const pictures = await Pictures.bulkCreate(pictureData);
+  const likes = await Likes.bulkCreate(likeData);
+  const comments = await Comments.bulkCreate(commentData);
 
   process.exit(0);
 };

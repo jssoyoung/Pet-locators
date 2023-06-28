@@ -13,7 +13,7 @@ const tabContents = document.querySelectorAll('.tabContent');
 const slides = document.querySelectorAll('.slide');
 const btnRight = document.getElementById('btn__right');
 const btnLeft = document.getElementById('btn__left');
-const btnSignup = document.getElementById('btn__signup');
+const btnSignup = document.querySelectorAll('.btn__signup');
 const modalSignup = document.getElementById('modal__signup');
 const overlay = document.getElementById('overlay');
 const modalLogin = document.getElementById('modal__login');
@@ -108,7 +108,10 @@ const closeModal = (e) => {
   modalLogin.classList.add('hidden');
 };
 
-btnSignup.addEventListener('click', openModal);
+for (const btn of btnSignup) {
+  btn.addEventListener('click', openModal);
+}
+
 overlay.addEventListener('click', closeModal);
 
 document.addEventListener('keydown', function (e) {

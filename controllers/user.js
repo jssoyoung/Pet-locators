@@ -1,20 +1,79 @@
+const User = require('../models/User');
+const Pets = require('../models/Pets');
+const Likes = require('../models/Likes');
+const Comments = require('../models/Comments');
+const Pictures = require('../models/Pictures');
+const { all } = require('../routes/user');
+
 exports.getHome = (req, res) => {
-  res.render('home');
+  res.render('home', {
+    isLoggedIn: req.session.isLoggedIn,
+  });
 };
 
 exports.getLocator = (req, res) => {
-  res.render('locator');
+  res.render('locator', {
+    isLoggedIn: req.session.isLoggedIn,
+  });
 };
 
-exports.getUser = (req, res) => {
-  res.render('user');
+exports.getUser = async (req, res) => {
+  let currentUser = req.session.user;
+  currentUser = await User.findOne({
+    raw: true,
+    where: {
+      id: currentUser.id,
+    },
+  });
+  res.render('user', {
+    username: currentUser.user_name,
+    email: currentUser.email,
+    location: 'Los Angeles, CA',
+    pronouns: 'They/Them',
+    isLoggedIn: req.session.isLoggedIn,
+  });
 };
 
 exports.getContact = (req, res) => {
-  res.render('contact');
+  res.render('contact', {
+    isLoggedIn: req.session.isLoggedIn,
+  });
 };
 
 exports.postSearch = (req, res) => {
   console.log(req.body.userSearch);
-  res.render('home');
+  res.render('home', {
+    isLoggedIn: req.session.isLoggedIn,
+  });
+};
+
+exports.getPets = (req, res) => {
+  res.render('pet', {
+    isLoggedIn: req.session.isLoggedIn,
+  });
+};
+
+exports.postComment = async (req, res) => {
+  const newComment = await Comments.create({
+    user_id: 1,
+    picture_id: 3,
+    comment: req.body.comment,
+  });
+  res.render('pet', {
+    comment: newComment.comment,
+  });
+};
+
+exports.getAllPetPictures = async (req, res) => {
+  const allPictures = await Pictures.findAll({
+    raw: true,
+    where: {
+      pet_id: 1,
+    },
+  });
+
+  console.log(allPictures);
+  res.render('pet', {
+    allPets: allPictures,
+  });
 };
