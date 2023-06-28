@@ -64,11 +64,11 @@
   >
     <div class='border-r-2 ml-2 mr-8 w-[17.5rem]'>
       <img class='w-24' src='/images/Paw_Print.svg' alt='Pet Profile' />
-      <h3 class='text-5xl font-bold mb-2'>Max</h3>
+      <h3 class='text-5xl font-bold mb-2'>{{this.pet.name}}</h3>
       <a href='owner' class='text-xl text-blue-500'>Owner: Sam Pai</a>
       <ul class='py-6'>
         <li>DOB: August 21st, 2021</li>
-        <li>Breed: Corgi</li>
+        <li>Breed: {{this.pet.breed}} </li>
         <li>Sex: Boy</li>
       </ul>
       <h3 class='text-2xl font-bold mt-4'>Likes:</h3>
@@ -83,8 +83,8 @@
       <ul
         class='grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-8 gap-6'
       >
-        {{#each allPets}}
-          <li><a href='imgUrl'><img
+        {{#each pictures}}
+          <li><a href=''><img
                 class='w-36 rounded opacity-75 hover:opacity-100 transition duration-300'
                 src='{{this.pictureUrl}}'
               /></a></li>
