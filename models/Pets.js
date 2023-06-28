@@ -21,6 +21,14 @@ Pets.init(
     description: {
       type: DataTypes.STRING,
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,
@@ -28,7 +36,7 @@ Pets.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'pets',
-  },
+  }
 );
 
 module.exports = Pets;
