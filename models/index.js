@@ -27,12 +27,12 @@ Pets.belongsTo(User, {
 });
 
 Pets.hasMany(Pictures, {
-  foreignKey: 'pets_id',
+  foreignKey: 'pet_id',
   as: 'pictures',
 });
 
 Pictures.belongsTo(Pets, {
-  foreignKey: 'pets_id',
+  foreignKey: 'pet_id',
   as: 'pet',
 });
 

@@ -1,9 +1,4 @@
-const User = require('../models/User');
-const Pets = require('../models/Pets');
-const Likes = require('../models/Likes');
-const Comments = require('../models/Comments');
-const Pictures = require('../models/Pictures');
-const { all } = require('../routes/user');
+const { User, Pets, Likes, Comments, Pictures } = require('../models/index');
 
 exports.getHome = (req, res) => {
   res.render('home', {
@@ -47,8 +42,22 @@ exports.postSearch = (req, res) => {
   });
 };
 
-exports.getPets = (req, res) => {
+exports.getPets = async (req, res) => {
+  // const pet = Pets.findByPk(req.params.id, {raw: true,})
+  const pet = await Pets.findByPk(1, {
+    raw: true,
+  });
+  const petPictures = await Pictures.findAll({
+    raw: true,
+    where: {
+      pet_id: pet.id,
+    },
+  });
+  const urlList = petPictures.map((picture) => picture.pictureUrl);
+  console.log(urlList);
+
   res.render('pet', {
+    pictures: urlList,
     isLoggedIn: req.session.isLoggedIn,
   });
 };
@@ -61,19 +70,5 @@ exports.postComment = async (req, res) => {
   });
   res.render('pet', {
     comment: newComment.comment,
-  });
-};
-
-exports.getAllPetPictures = async (req, res) => {
-  const allPictures = await Pictures.findAll({
-    raw: true,
-    where: {
-      pet_id: 1,
-    },
-  });
-
-  console.log(allPictures);
-  res.render('pet', {
-    allPets: allPictures,
   });
 };
