@@ -62,9 +62,10 @@
   </div>
   <div class='flex shrink-1 flex-col mb-6'>
     <div class='flex flex-col h-[30vh] pb-12'>
-      <p class='text-[5rem]'>Mike Pai
-        <span class='text-[2rem]'>San Diego, CA</span></p>
-      <p class='text-[1.5rem]'>Pronouns: They/Them </p>
+      <p class='text-[5rem]'>
+        {{this.username}}
+        <span class='text-[2rem]'>{{this.location}}</span></p>
+      <p class='text-[1.5rem]'>{{this.pronouns}} </p>
       <div class='flex py-12 gap-12'>
         <button>Send Message</button>
         <button>Report User</button>
@@ -80,7 +81,7 @@
           <p class='text-2xl'>Phone: 123-456-7890 </p>
         </li>
         <li class='mb-6'>
-          <p class='text-2xl'>Email: emily@example.com</p>
+          <p class='text-2xl'>Email: {{this.email}} </p>
         </li>
         <li class='mb-6'>
           <p class='text-2xl'>Twitter: @example</p>

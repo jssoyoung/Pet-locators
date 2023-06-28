@@ -83,11 +83,7 @@
       />
       <div class=''>
         <div class='flex justify-start items-center gap-6 pt-6'>
-          <img
-            class='w-[40px]'
-            src='/images/Paw_Print.svg'
-            alt='free'
-          />
+          <img class='w-[40px]' src='/images/Paw_Print.svg' alt='free' />
           <h5 class='text-4xl font-light'>There's no cost to start!</h5>
         </div>
         <p class='text-5xl font-extralight xl:leading-loose'>
@@ -366,14 +362,26 @@
         Ready to find your pet's playmate?
       </h3>
     </div>
-    <button
-      class='relative overflow-hidden group text-6xl text-white font-extrabold px-8 py-20 bg-red-500 rounded-full'
-    >
-      Sign up for your free account today!
-      <span
-        class='absolute inset-0 bg-white opacity-[10%] transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100'
-      ></span>
-    </button>
+    {{#if isLoggedIn}}
+      <button
+        id=''
+        class='relative overflow-hidden group text-6xl text-white font-extrabold px-8 py-20 bg-red-500 rounded-full'
+      >
+        You're logged in, enjoy our great features!
+        <span
+          class='absolute inset-0 bg-white opacity-[10%] transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100'
+        ></span>
+      </button>
+    {{else}}
+      <button
+        class='btn__signup relative overflow-hidden group text-6xl text-white font-extrabold px-8 py-20 bg-red-500 rounded-full'
+      >
+        Sign up for your free account today!
+        <span
+          class='absolute inset-0 bg-white opacity-[10%] transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100'
+        ></span>
+      </button>
+    {{/if}}
 
   </section>
 </main>

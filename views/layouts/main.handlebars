@@ -4,11 +4,11 @@
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <meta http-equiv='X-UA-Compatible' content='ie=edge' />
-    <script defer src='/js/main.js'></script>
     <script
       defer
       src='https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js'
     ></script>
+    <script defer src='/js/main.js'></script>
     <link
       rel='shortcut icon'
       type='image/png'
@@ -36,10 +36,7 @@
           class='flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8'
         >
           <div class='p-4 flex flex-row items-center justify-between'>
-            <a href='/'><img
-                class='w-[200px] p-4'
-                src='/images/logo.png'
-              /></a>
+            <a href='/'><img class='w-[200px] p-4' src='/images/logo.png' /></a>
             <button
               class='md:hidden rounded-lg focus:outline-none focus:shadow-outline'
               @click='open = !open'
@@ -64,67 +61,83 @@
             :class="{'flex': open, 'hidden': !open}"
             class='flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row'
           >
-            <a
-              class='px-4 py-2 mt-2 text-xl font-semibold text-gray-900 rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
-              href='/locator'
-            >LOCATOR</a>
-            <a
-              class='px-4 py-2 mt-2 text-xl font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
-              href='/user'
-            >MY PAGE</a>
-            <a
-              class='px-4 py-2 mt-2 text-xl font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
-              href='/contact'
-            >CONTACT</a>
-            <div
-              @click.away='open = false'
-              class='relative'
-              x-data='{ open: false }'
-            >
-              <button
-                @click='open = !open'
-                class='flex flex-row items-center w-full px-4 py-2 mt-2 text-xl font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
-              >
-                <span>LOGIN / PROFILE</span>
-                <svg
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  :class="{'rotate-180': open, 'rotate-0': !open}"
-                  class='inline w-5 h-5 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1'
-                >
-                  <path
-                    fill-rule='evenodd'
-                    d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'
-                    clip-rule='evenodd'
-                  ></path>
-                </svg>
-              </button>
+            {{#if isLoggedIn}}
+              <a
+                class='px-4 py-2 mt-2 text-xl font-semibold text-gray-900 rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
+                href='/locator'
+              >LOCATOR</a>
+              <a
+                class='px-4 py-2 mt-2 text-xl font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
+                href='/user'
+              >MY PAGE</a>
+              <a
+                class='px-4 py-2 mt-2 text-xl font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
+                href='/contact'
+              >CONTACT</a>
               <div
-                x-show='open'
-                x-transition:enter='transition ease-out duration-300 transform'
-                x-transition:enter-start='opacity-0 scale-0'
-                x-transition:enter-end='opacity-100 scale-100'
-                x-transition:leave='transition ease-in duration-300 transform'
-                x-transition:leave-start='opacity-100 scale-100'
-                x-transition:leave-end='opacity-0 scale-0'
-                class='absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48'
+                @click.away='open = false'
+                class='relative'
+                x-data='{ open: false }'
               >
-                <div class='px-2 py-2 bg-white rounded-md shadow'>
-                  <a
-                    class='block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
-                    href='/user'
-                  >MY PAGE</a>
-                  <a
-                    class='block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
-                    href='#'
-                  >SETTINGS</a>
-                  <a
-                    class='block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
-                    href='#'
-                  >SIGN OUT</a>
+                <button
+                  @click='open = !open'
+                  class='flex flex-row items-center w-full px-4 py-2 mt-2 text-xl font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
+                >
+
+                  <span>PROFILE</span>
+                  <svg
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                    :class="{'rotate-180': open, 'rotate-0': !open}"
+                    class='inline w-5 h-5 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1'
+                  >
+                    <path
+                      fill-rule='evenodd'
+                      d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'
+                      clip-rule='evenodd'
+                    ></path>
+                  </svg>
+                </button>
+                <div
+                  x-show='open'
+                  x-transition:enter='transition ease-out duration-300 transform'
+                  x-transition:enter-start='opacity-0 scale-0'
+                  x-transition:enter-end='opacity-100 scale-100'
+                  x-transition:leave='transition ease-in duration-300 transform'
+                  x-transition:leave-start='opacity-100 scale-100'
+                  x-transition:leave-end='opacity-0 scale-0'
+                  class='absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48'
+                >
+                  <div class='px-2 py-2 bg-white rounded-md shadow'>
+                    <a
+                      class='block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
+                      href='/user'
+                    >MY PAGE</a>
+                    <a
+                      class='block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
+                      href='#'
+                    >SETTINGS</a>
+                    <form
+                      class='text-center'
+                      action='/user/logout'
+                      method='POST'
+                    >
+                      <button
+                        type='submit'
+                        class='mx-auto text-center px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 focus:outline-none focus:shadow-outline transition duration-300'
+                      >
+                        SIGN OUT
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
-            </div>
+            {{else}}
+              <a
+                class='btn__signup px-4 py-2 mt-2 text-xl font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-red-400 focus:text-gray-900 focus:bg-red-400 focus:outline-none focus:shadow-outline transition duration-300'
+                href=''
+              >SIGN UP/LOGIN</a>
+            {{/if}}
           </nav>
         </div>
       </div>
@@ -160,11 +173,7 @@
             >Contact Us</a>
           </li>
         </ul>
-        <img
-          src='/images/logo-dark.png'
-          class='w-64 mb-6'
-          alt='Hero Image'
-        />
+        <img src='/images/logo-dark.png' class='w-64 mb-6' alt='Hero Image' />
         <p class='text-white text-[1.5rem]'>©2023 All Rights Reserved</p>
         <p class='text-white text-[1.5rem]'>
           Made with
@@ -185,6 +194,7 @@
     </footer>
 
     <div
+      id='modal__signup'
       class='hidden fixed top-0 left-[20%] md:left-[35%] xl:left-[40%] z-[9999] bg-grey-lighter min-h-screen flex flex-col'
     >
       <div
@@ -192,38 +202,36 @@
       >
         <div class='bg-white px-6 py-8 rounded shadow-md text-black w-full'>
           <h1 class='mb-8 text-3xl text-center'>Sign up</h1>
-          <input
-            type='text'
-            class='block border border-grey-light w-full p-3 rounded mb-4'
-            name='fullname'
-            placeholder='Full Name'
-          />
-
-          <input
-            type='text'
-            class='block border border-grey-light w-full p-3 rounded mb-4'
-            name='email'
-            placeholder='Email'
-          />
-
-          <input
-            type='password'
-            class='block border border-grey-light w-full p-3 rounded mb-4'
-            name='password'
-            placeholder='Password'
-          />
-          <input
-            type='password'
-            class='block border border-grey-light w-full p-3 rounded mb-4'
-            name='confirm_password'
-            placeholder='Confirm Password'
-          />
-
-          <button
-            type='submit'
-            class='w-full text-center py-3 rounded bg-green-400 text-black hover:bg-green-dark focus:outline-none my-1'
-          >Create Account</button>
-
+          <form action='/user/signup' method='POST'>
+            <input
+              type='text'
+              class='block border border-grey-light w-full p-3 rounded mb-4'
+              name='username'
+              placeholder='Username'
+            />
+            <input
+              type='text'
+              class='block border border-grey-light w-full p-3 rounded mb-4'
+              name='email'
+              placeholder='Email'
+            />
+            <input
+              type='password'
+              class='block border border-grey-light w-full p-3 rounded mb-4'
+              name='password'
+              placeholder='Password'
+            />
+            <input
+              type='password'
+              class='block border border-grey-light w-full p-3 rounded mb-4'
+              name='confirmPassword'
+              placeholder='Confirm Password'
+            />
+            <button
+              type='submit'
+              class='w-full text-center py-3 rounded bg-green-400 text-black hover:bg-green-dark focus:outline-none my-1'
+            >Create Account</button>
+          </form>
           <div class='text-center text-sm text-grey-dark mt-4'>
             By signing up, you agree to the
             <a
@@ -243,13 +251,18 @@
         </div>
         <div class='text-grey-dark mt-6'>
           Already have an account?
-          <a class='no-underline border-b border-blue text-blue' href=''>
+          <a
+            id='link__login'
+            class='no-underline border-b border-blue text-blue'
+            href=''
+          >
             Log in
           </a>.
         </div>
       </div>
     </div>
     <div
+      id='modal__login'
       class='hidden fixed top-0 left-[20%] md:left-[35%] xl:left-[40%] z-[9999] bg-grey-lighter min-h-screen flex flex-col'
     >
       <div
@@ -257,24 +270,24 @@
       >
         <div class='bg-white px-6 py-8 rounded shadow-md text-black w-full'>
           <h1 class='mb-8 text-3xl text-center'>Log in</h1>
-          <input
-            type='text'
-            class='block border border-grey-light w-full p-3 rounded mb-4'
-            name='email'
-            placeholder='Email'
-          />
-          <input
-            type='password'
-            class='block border border-grey-light w-full p-3 rounded mb-4'
-            name='password'
-            placeholder='Password'
-          />
-
-          <button
-            type='submit'
-            class='w-full text-center py-3 rounded bg-green-400 text-black hover:bg-green-dark focus:outline-none my-1'
-          >Log in</button>
-
+          <form action='/user/login' method='POST'>
+            <input
+              type='text'
+              class='block border border-grey-light w-full p-3 rounded mb-4'
+              name='email'
+              placeholder='Email'
+            />
+            <input
+              type='password'
+              class='block border border-grey-light w-full p-3 rounded mb-4'
+              name='password'
+              placeholder='Password'
+            />
+            <button
+              type='submit'
+              class='w-full text-center py-3 rounded bg-green-400 text-black hover:bg-green-dark focus:outline-none my-1'
+            >Log in</button>
+          </form>
           <div class='text-center text-sm text-grey-dark mt-4'>
             By logging in, you agree to the
             <a
@@ -294,13 +307,18 @@
         </div>
         <div class='text-grey-dark mt-6'>
           Don't have an account?
-          <a class='no-underline border-b border-blue text-blue' href=''>
+          <a
+            id='link__signup'
+            class='no-underline border-b border-blue text-blue'
+            href=''
+          >
             Sign up
           </a>.
         </div>
       </div>
     </div>
     <div
+      id='overlay'
       class='hidden fixed w-[100%] h-[100%] top-0 left-0 z-50 backdrop-blur-sm'
     ></div>
 

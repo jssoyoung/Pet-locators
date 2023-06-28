@@ -6,7 +6,7 @@
       <div class='mx-auto relative w-[70%]'>
         <img
           class='mx-auto mb-4 w-[90%] h-auto'
-          src='../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg'
+          src='/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg'
           alt='Image'
         />
         <div
@@ -15,7 +15,7 @@
           <button
             class='bg-transparent hover:bg-transparent focus:outline-none'
           >
-            <img class='w-12' src='../public/images/heart.svg' alt='Heart' />
+            <img class='w-12' src='/images/heart.svg' alt='Heart' />
           </button>
         </div>
         <button
@@ -27,7 +27,7 @@
       </div>
       <div class='relative comments mt-4'>
         <ul class='comments-ul'>
-          <li class='comments mb-2'>chris, nice pic! 6/23/2023</li>
+          <li class='comments mb-2'>{{this.comment}}</li>
           <li class='comments mb-2'>jen, this picture is so cute! 6/19/2023</li>
         </ul>
       </div>
@@ -46,7 +46,7 @@
         >Post</button>
       </form>
       <form
-        action='/upload'
+        action='/pets/upload'
         method='POST'
         enctype='multipart/form-data'
         class='flex mb-8'
@@ -63,11 +63,7 @@
     class='flex flex-1 h-auto w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md'
   >
     <div class='border-r-2 ml-2 mr-8 w-[17.5rem]'>
-      <img
-        class='w-24'
-        src='../public/images/Paw_Print.svg'
-        alt='Pet Profile'
-      />
+      <img class='w-24' src='/images/Paw_Print.svg' alt='Pet Profile' />
       <h3 class='text-5xl font-bold mb-2'>Max</h3>
       <a href='owner' class='text-xl text-blue-500'>Owner: Sam Pai</a>
       <ul class='py-6'>
@@ -87,22 +83,12 @@
       <ul
         class='grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-8 gap-6'
       >
-        <li><a href='imgUrl'><img
-              class='w-36 rounded opacity-75 hover:opacity-100 transition duration-300'
-              src='../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg'
-            /></a></li>
-        <li><a href='imgUrl'><img
-              class='w-36 rounded opacity-75 hover:opacity-100 transition duration-300'
-              src='../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg'
-            /></a></li>
-        <li><a href='imgUrl'><img
-              class='w-36 rounded opacity-75 hover:opacity-100 transition duration-300'
-              src='../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg'
-            /></a></li>
-        <li><a href='imgUrl'><img
-              class='w-36 rounded opacity-75 hover:opacity-100 transition duration-300'
-              src='../public/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg'
-            /></a></li>
+        {{#each allPets}}
+          <li><a href='imgUrl'><img
+                class='w-36 rounded opacity-75 hover:opacity-100 transition duration-300'
+                src='{{this.pictureUrl}}'
+              /></a></li>
+        {{/each}}
       </ul>
     </div>
   </div>
