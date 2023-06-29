@@ -68,3 +68,15 @@ exports.postComment = async (req, res) => {
   });
   res.redirect('/pets');
 };
+
+exports.getComment= async (req, res) => {
+  const comments = await Comments.findByPk(1, {
+    raw: true,
+    where: {
+      comments_id: comment.id,
+    },
+  });
+  res.render('pets', {
+    comments: comments,
+  });
+};
