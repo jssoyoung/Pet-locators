@@ -27,10 +27,9 @@
       </div>
       <div class='relative comments mt-4'>
         <ul class='comments-ul'>
-      {{#each comments as |comment|}}
-          <li class='comments mb-2'>{{comment.comment}}</li>
-      {{/each}}
-          <li class='comments mb-2'>jen, this picture is so cute! 6/19/2023</li>
+          {{#each comments as |comment|}}
+            <li class='comments mb-2'>{{comment.comment}}</li>
+          {{/each}}
         </ul>
       </div>
     </div>
@@ -86,7 +85,7 @@
         class='grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-8 gap-6'
       >
         {{#each pictures}}
-          <li><a href=''><img
+          <li class=''><a href=''><img
                 class='w-36 rounded opacity-75 hover:opacity-100 transition duration-300'
                 src='{{this.pictureUrl}}'
               /></a></li>

@@ -22,7 +22,7 @@ User.belongsToMany(Pictures, {
 });
 
 User.hasMany(Comments, {
-  foreignKey: 'pet_id',
+  foreignKey: 'picture_id',
   onDelete: 'CASCADE',
 });
 
@@ -43,12 +43,12 @@ Pictures.belongsTo(Pets, {
 
 Pictures.belongsToMany(User, {
   through: Likes,
-  foreignKey: 'pictures_id',
+  foreignKey: 'picture_id',
   as: 'likedBy',
 });
 
 Pictures.hasMany(Comments, {
-  foreignKey: 'pictures_id',
+  foreignKey: 'picture_id',
   as: 'comments',
 });
 
@@ -58,12 +58,12 @@ Likes.belongsTo(User, {
 });
 
 Likes.belongsTo(Pictures, {
-  foreignKey: 'pictures_id',
+  foreignKey: 'picture_id',
   as: 'picture',
 });
 
 Comments.belongsTo(Pictures, {
-  foreignKey: 'pictures_id',
+  foreignKey: 'picture_id',
   as: 'picture',
 });
 
