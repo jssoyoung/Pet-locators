@@ -42,7 +42,7 @@ exports.postSearch = (req, res) => {
   });
 };
 
-exports.getPets = async (req, res) => {
+exports.getPets = async (req, res, next) => {
   // const pet = Pets.findByPk(req.params.id, {raw: true,})
   const pet = await Pets.findByPk(1, {
     raw: true,
@@ -58,6 +58,7 @@ exports.getPets = async (req, res) => {
     pictures: petPictures,
     isLoggedIn: req.session.isLoggedIn,
   });
+  next ();
 };
 
 exports.postComment = async (req, res) => {
@@ -69,14 +70,15 @@ exports.postComment = async (req, res) => {
   res.redirect('/pets');
 };
 
-exports.getComment= async (req, res) => {
-  const comments = await Comments.findByPk(1, {
+exports.getComment = async (req, res) => {
+  const comments = await Comments.findAll({
     raw: true,
     where: {
-      comments_id: comment.id,
+      picture_id: 3,
     },
   });
   res.render('pets', {
     comments: comments,
+    isLoggedIn: req.session.isLoggedIn,
   });
 };
