@@ -53,7 +53,14 @@ exports.getPets = async (req, res, next) => {
       pet_id: pet.id,
     },
   });
+  const comments = await Comments.findAll({
+    raw: true,
+    where: {
+      picture_id: 3,
+    },
+  });
   res.render('pet', {
+    comments: comments,
     pet: pet,
     pictures: petPictures,
     isLoggedIn: req.session.isLoggedIn,
@@ -68,17 +75,4 @@ exports.postComment = async (req, res) => {
     comment: req.body.comment,
   });
   res.redirect('/pets');
-};
-
-exports.getComment = async (req, res) => {
-  const comments = await Comments.findAll({
-    raw: true,
-    where: {
-      picture_id: 3,
-    },
-  });
-  res.render('pets', {
-    comments: comments,
-    isLoggedIn: req.session.isLoggedIn,
-  });
 };

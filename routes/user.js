@@ -34,6 +34,7 @@ router.post('/comment', userController.postComment);
 router.post('/user/signup', authController.userSignup);
 router.post('/user/login', authController.userLogin);
 router.post('/user/logout', authController.userLogout);
+// router.get('/user/picture/:`{pictureUrl}`', pictureController.getPicture);
 
 router.post('/pets/upload', upload.single('file'), async (req, res) => {
   const pet = await Pets.findByPk(1, {
