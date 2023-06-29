@@ -21,6 +21,11 @@ User.belongsToMany(Pictures, {
   as: 'likedPictures',
 });
 
+User.hasMany(Comments, {
+  foreignKey: 'pet_id',
+  onDelete: 'CASCADE',
+});
+
 Pets.belongsTo(User, {
   foreignKey: 'user_id',
   as: 'owner',
