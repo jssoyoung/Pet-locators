@@ -72,10 +72,10 @@
       </div>
     </div>
     <div class='flex h-[3.25rem] mt-[1.5rem] border-b-2'>
-      <button class='text-4xl self-start btn mr-6'>About</button>
-      <button class='text-4xl self-start btn mr-6'>Pets</button>
+      <button id='btn__about' class='text-4xl self-start btn mr-6'>About</button>
+      <button id='btn__pets' class='text-4xl self-start btn mr-6'>Pets</button>
     </div>
-    <div class='h-[30vh] flex flex-col gap-6 mt-6 text-gray-600'>
+    <div id='div__about' class='h-[30vh] flex flex-col gap-6 mt-6 text-gray-600'>
       <ul class=''>
         <li class='mb-6'>
           <p class='text-2xl'>Phone: 123-456-7890 </p>
@@ -94,7 +94,7 @@
         </li>
       </ul>
     </div>
-    <div class='mb-6'>
+    <div id='div__pets' class='hidden mb-6'>
       <div class='flex flex-col'>
         <ul class='list-disc list-inside pt-6 pb-12'>
           {{#each petData as |pet|}}
@@ -104,7 +104,7 @@
               >{{pet.petName}}</a></li>
           {{/each}}
         </ul>
-        <button
+        <button id="btn__addPet"
           class='grow-0 bg-red-500 text-white px-4 py-2 rounded-full mt-2'
         >Add Pet</button>
       </div>

@@ -27,6 +27,7 @@ router.get('/user', userController.getUser);
 router.get('/contact', userController.getContact);
 
 router.post('/search', userController.postSearch);
+router.post('/pets/likes', userController.postLike);
 
 router.get('/pets/:petId/:pictureId', userController.getPets);
 router.post('/pets/comment', userController.postComment);

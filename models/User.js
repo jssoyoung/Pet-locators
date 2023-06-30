@@ -26,11 +26,11 @@ User.init(
     },
     city: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     state: {
       type: DataTypes.STRING,
-      allowNull:false,
+      allowNull: true,
     },
     pronouns: {
       type: DataTypes.STRING,
