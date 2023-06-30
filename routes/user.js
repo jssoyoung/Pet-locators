@@ -25,6 +25,7 @@ router.get('/', userController.getHome);
 router.get('/locator', userController.getLocator);
 router.get('/user', userController.getUser);
 router.get('/contact', userController.getContact);
+router.get('/settings', userController.getSettings);
 
 router.post('/search', userController.postSearch);
 router.post('/pets/likes', userController.postLike);
