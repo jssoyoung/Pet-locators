@@ -28,8 +28,8 @@ router.get('/contact', userController.getContact);
 
 router.post('/search', userController.postSearch);
 
-router.get('/pets', userController.getPets);
-router.post('/comment', userController.postComment);
+router.get('/pets/:petId/:pictureId', userController.getPets);
+router.post('/pets/comment', userController.postComment);
 
 router.post('/user/signup', authController.userSignup);
 router.post('/user/login', authController.userLogin);
@@ -37,10 +37,12 @@ router.post('/user/logout', authController.userLogout);
 // router.get('/user/picture/:`{pictureUrl}`', pictureController.getPicture);
 
 router.post('/pets/upload', upload.single('file'), async (req, res) => {
-  const pet = await Pets.findByPk(1, {
+  const petId = req.body.petId;
+  const pictureId = req.body.pictureId;
+  const pet = await Pets.findByPk(petId, {
     raw: true,
   });
-  const petId = await pet.id;
+  const pet_Id = await pet.id;
   const pictureName = uuidv4();
 
   async function setFileMetadata(bucketName, fileName) {
@@ -50,7 +52,7 @@ router.post('/pets/upload', upload.single('file'), async (req, res) => {
       .setMetadata({
         metadata: {
           id: pictureName,
-          pet_id: petId,
+          pet_id: pet_Id,
         },
       });
 
@@ -80,7 +82,7 @@ router.post('/pets/upload', upload.single('file'), async (req, res) => {
     await storage.bucket(bucketName).upload(tempFilePath, options);
 
     console.log('File uploaded successfully');
-    res.redirect('/pets');
+    res.redirect(`/pets/${petId}/${pictureId}`);
   } catch (err) {
     console.error('Error uploading file:', err);
     res.status(500).send('Error uploading file');
