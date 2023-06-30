@@ -11,9 +11,25 @@ Pets.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    profilePicture: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    age: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    gender: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    likes: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     breed: {
       type: DataTypes.STRING,

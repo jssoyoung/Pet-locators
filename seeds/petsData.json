@@ -1,16 +1,22 @@
 [
   {
     "name": "Bento",
+    "user_id": 1,
+    "age": 2,
     "breed": "corgi",
     "description": "Fun out going playful corgi pup, ready to hit the town and make some best buds"
   },
   {
     "name": "Freida",
+    "user_id": 2,
+    "age": 4,
     "breed": "husky",
     "description": "Lonely mature husky looking to make firends for biscuit time"
   },
   {
     "name": "Eggy",
+    "user_id": 3,
+    "age": 1,
     "breed": "chihuahua",
     "description": "Hyperactive brave little guy with a big heart looking for other outgoing pups for some epic adventures"
   }

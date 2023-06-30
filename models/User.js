@@ -16,9 +16,41 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    userPicture: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     user_name: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull:false,
+    },
+    pronouns: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    phoneNumber: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    twitter: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    facebook: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    instagram: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING,
