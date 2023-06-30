@@ -7,6 +7,12 @@ exports.getHome = (req, res) => {
   });
 };
 
+exports.getSettings = (req, res) => {
+  res.render('settings', {
+    isLoggedIn: req.session.isLoggedIn,
+  });
+};
+
 exports.getLocator = (req, res) => {
   res.render('locator', {
     isLoggedIn: req.session.isLoggedIn,
