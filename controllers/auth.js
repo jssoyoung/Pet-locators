@@ -13,7 +13,7 @@ exports.userSignup = async (req, res) => {
     : res
         .status(404)
         .json({ Status: 404, Message: 'Enter a valid email address' });
-  const password = validator.isStrongPassword(req.body.password)
+  const password = (req.body.password) //validator.isStrongPassword(req.body.password)
     ? req.body.password
     : res.status(404).json({
         Status: 404,

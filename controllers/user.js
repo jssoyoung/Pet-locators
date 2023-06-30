@@ -2,6 +2,7 @@ const { User, Pets, Likes, Comments, Pictures } = require('../models/index');
 
 exports.getHome = (req, res) => {
   res.render('home', {
+    isHomePage: true,
     isLoggedIn: req.session.isLoggedIn,
   });
 };
@@ -45,6 +46,7 @@ exports.getUser = async (req, res) => {
   });
 
   res.render('user', {
+    isUserPage: true,
     petData: petData ? petData : null,
     username: currentUser.user_name,
     email: currentUser.email,
@@ -71,6 +73,7 @@ exports.getPets = async (req, res) => {
   // for hidden input values in pet.handlebars;
   const petId = req.params.petId;
   const pictureId = req.params.pictureId;
+  const userId = req.session.user.id;
   // find one pet using id from user's request:
   const pet = await Pets.findByPk(req.params.petId, { raw: true });
   // find main picture:
@@ -79,6 +82,13 @@ exports.getPets = async (req, res) => {
       id: pictureId,
     },
   });
+
+  const totalLikes = await Likes.findAndCountAll({
+    where: {
+      picture_id: pictureId,
+    },
+  });
+  console.log(totalLikes);
 
   // find pictures of the found pet:
   const allPictures = await Pictures.findAll({
@@ -100,6 +110,8 @@ exports.getPets = async (req, res) => {
     },
   });
   res.render('pet', {
+    totalLikes: totalLikes.count,
+    userId: userId,
     pictureId: pictureId,
     petId: petId,
     mainPicture: mainPicture.pictureUrl,
@@ -108,7 +120,7 @@ exports.getPets = async (req, res) => {
     pictures: sortedPetPictures,
     isLoggedIn: req.session.isLoggedIn,
   });
-  next ();
+  // next ();
 };
 
 exports.postComment = async (req, res) => {
@@ -122,4 +134,17 @@ exports.postComment = async (req, res) => {
     comment: req.body.comment,
   });
   res.redirect(`/pets/${petId}/${pictureId}`);
+};
+
+exports.postLike = async (req, res) => {
+  const pictureId = req.body.pictureId;
+  const petId = req.body.petId;
+  const userId = req.session.user.id;
+  const userLiked = await Likes.findOne({where: {user_id: userId, picture_id: pictureId}});
+  if (!userLiked) {
+    const newLike = await Likes.create({user_id: userId, picture_id: pictureId});
+    res.redirect(`/pets/${petId}/${pictureId}`);
+  } else {
+  res.redirect(`/pets/${petId}/${pictureId}`);
+  } 
 };

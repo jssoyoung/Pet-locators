@@ -1,72 +1,44 @@
 <main class='h-auto'>
-  <div
-    class='flex flex-col h-auto w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md'
-  >
+  <div class='flex flex-col h-auto w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md'>
     <div class='mb-4 h-auto'>
       <div class='mx-auto relative w-[70%]'>
-        <img
-          class='mx-auto mb-4 w-[90%] h-auto'
-          src='{{this.mainPicture}}'
-          alt='Image'
-        />
+        <img class='mx-auto mb-4 w-[90%] h-auto' src='{{this.mainPicture}}' alt='Image' />
+        <h1>{{this.totalLikes}}</h1>
         <div
-          class='absolute left-0 top-0 w-full h-full flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity'
-        >
-          <button
-            class='bg-transparent hover:bg-transparent focus:outline-none'
-          >
-            <img class='w-12' src='/images/heart.svg' alt='Heart' />
-          </button>
+          class='absolute left-0 top-0 w-full h-full flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity'>
+          <form action="/pets/likes" method="POST">
+            <button type="submit" class='bg-transparent hover:bg-transparent focus:outline-none'> 
+              <input type="hidden" name="petId" value="{{this.petId}}">
+              <input type="hidden" name="pictureId" value="{{this.pictureId}}">
+              <img class='w-12' src='/images/heart.svg' alt='Heart' />
+            </button>
+          </form>
         </div>
-        <button
-          class='text-2xl h-[100%] absolute left-0 top-1/2 transform -translate-y-1/2 px-4 py-2'
-        >&lt;&lt;</button>
-        <button
-          class='text-2xl h-[100%] absolute right-0 top-1/2 transform -translate-y-1/2 px-4 py-2'
-        >&gt;&gt;</button>
       </div>
       <div class='relative comments mt-4'>
         <ul class='comments-ul'>
           {{#each comments as |comment|}}
-            <li class='comments mb-2'>{{comment.comment}}</li>
+          <li class='comments mb-2'>{{comment.comment}}</li>
           {{/each}}
         </ul>
       </div>
     </div>
     <div class='flex justify-between'>
       <form action='/pets/comment' method='POST' class='flex mb-8'>
-        <input
-          type='text'
-          name='comment'
-          placeholder='Add a comment...'
-          required
-        />
+        <input type='text' name='comment' placeholder='Add a comment...' required />
         <input type='hidden' name='petId' value='{{this.petId}}' />
         <input type='hidden' name='pictureId' value='{{this.pictureId}}' />
-        <button
-          type='submit'
-          class='bg-blue-500 text-white px-4 py-2 rounded-md'
-        >Post</button>
+        <button type='submit' class='bg-blue-500 text-white px-4 py-2 rounded-md'>Post</button>
       </form>
-      <form
-        action='/pets/upload'
-        method='POST'
-        enctype='multipart/form-data'
-        class='flex mb-8'
-      >
+      <form action='/pets/upload' method='POST' enctype='multipart/form-data' class='flex mb-8'>
         <input type='hidden' name='petId' value='{{this.petId}}' />
         <input type='hidden' name='pictureId' value='{{this.pictureId}}' />
         <input type='file' name='file' required />
-        <button
-          type='submit'
-          class='bg-blue-500 text-white px-4 py-2 rounded-md'
-        >+Picture</button>
+        <button type='submit' class='bg-blue-500 text-white px-4 py-2 rounded-md'>+Picture</button>
       </form>
     </div>
   </div>
-  <div
-    class='flex flex-1 h-auto w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md'
-  >
+  <div class='flex flex-1 h-auto w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md'>
     <div class='border-r-2 ml-2 mr-8 w-[17.5rem]'>
       <img class='w-24' src='/images/Paw_Print.svg' alt='Pet Profile' />
       <h3 class='text-5xl font-bold mb-2'>{{this.pet.name}}</h3>
@@ -85,14 +57,10 @@
       </ul>
     </div>
     <div class=''>
-      <ul
-        class='grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-8 gap-6'
-      >
+      <ul class='grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-8 gap-6'>
         {{#each pictures}}
-          <li class=''><a href=''><img
-                class='w-36 rounded opacity-75 hover:opacity-100 transition duration-300'
-                src='{{this.pictureUrl}}'
-              /></a></li>
+        <li class=''><a href=''><img class='w-36 rounded opacity-75 hover:opacity-100 transition duration-300'
+              src='{{this.pictureUrl}}' /></a></li>
         {{/each}}
       </ul>
     </div>
