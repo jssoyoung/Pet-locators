@@ -6,7 +6,7 @@
       <div class='mx-auto relative w-[70%]'>
         <img
           class='mx-auto mb-4 w-[90%] h-auto'
-          src='/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg'
+          src='{{this.mainPicture}}'
           alt='Image'
         />
         <div
@@ -34,13 +34,15 @@
       </div>
     </div>
     <div class='flex justify-between'>
-      <form action='/comment' method='POST' class='flex mb-8'>
+      <form action='/pets/comment' method='POST' class='flex mb-8'>
         <input
           type='text'
           name='comment'
           placeholder='Add a comment...'
           required
         />
+        <input type='hidden' name='petId' value='{{this.petId}}' />
+        <input type='hidden' name='pictureId' value='{{this.pictureId}}' />
         <button
           type='submit'
           class='bg-blue-500 text-white px-4 py-2 rounded-md'
@@ -52,6 +54,8 @@
         enctype='multipart/form-data'
         class='flex mb-8'
       >
+        <input type='hidden' name='petId' value='{{this.petId}}' />
+        <input type='hidden' name='pictureId' value='{{this.pictureId}}' />
         <input type='file' name='file' required />
         <button
           type='submit'
