@@ -3,18 +3,24 @@
       "user_name": "Shelly",
       "email": "shelly@hotmail.com",
       "password": "password1",
+      "city": "Dallas",
+      "state": "Texas",
       "favorites": [1,2,3]
     },
     {
       "user_name": "Matt",
       "email": "matt@gmail.com",
       "password": "password2",
+      "city": "Vancouver",
+      "state": "Washington",
       "favorites": [1,2,3]
     },
     {
       "user_name": "Anna",
       "email": "anna@aol.com",
       "password": "password3",
+      "city": "San Diego",
+      "state": "California",
       "favorties": [1,2,3]
     }
   ]

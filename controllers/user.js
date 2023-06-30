@@ -108,6 +108,7 @@ exports.getPets = async (req, res) => {
     pictures: sortedPetPictures,
     isLoggedIn: req.session.isLoggedIn,
   });
+  next ();
 };
 
 exports.postComment = async (req, res) => {
