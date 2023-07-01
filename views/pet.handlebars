@@ -33,6 +33,7 @@
       <form action='/pets/upload' method='POST' enctype='multipart/form-data' class='flex mb-8'>
         <input type='hidden' name='petId' value='{{this.petId}}' />
         <input type='hidden' name='pictureId' value='{{this.pictureId}}' />
+        <input type="hidden" name='currentUser' value="{{this.userId}}" />
         <input type='file' name='file' required />
         <button type='submit' class='bg-blue-500 text-white px-4 py-2 rounded-md'>+Picture</button>
       </form>
@@ -41,25 +42,25 @@
   <div class='flex flex-1 h-auto w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md'>
     <div class='border-r-2 ml-2 mr-8 w-[17.5rem]'>
       <img class='w-24' src='/images/Paw_Print.svg' alt='Pet Profile' />
-      <h3 class='text-5xl font-bold mb-2'>{{this.pet.name}}</h3>
-      <a href='owner' class='text-xl text-blue-500'>Owner: Sam Pai</a>
+      <h3 class='text-5xl font-bold mb-2'>{{this.pet.dataValues.name}}</h3>
+      <a href='/user/{{this.ownerId}}' class='text-xl text-blue-500'>{{this.owner}}</a>
       <ul class='py-6'>
-        <li>DOB: August 21st, 2021</li>
-        <li>Breed: {{this.pet.breed}} </li>
-        <li>Sex: Boy</li>
+        <li>Age: {{this.pet.dataValues.age}}</li>
+        <li>Breed: {{this.pet.dataValues.breed}} </li>
+        <li>Gender: {{this.pet.dataValues.gender}}</li>
+        <li>Description: {{this.pet.dataValues.description}}</li>
       </ul>
-      <h3 class='text-2xl font-bold mt-4'>Likes:</h3>
+      <h3 class='text-2xl font-bold mt-4'>Likes</h3>
       <ul class='grid grid-cols-2 mt-4 -ml-2'>
-        <li class='p-2 mr-2 mb-2 bg-gray-100 rounded-md'>Corgi</li>
-        <li class='p-2 mr-2 mb-2 bg-gray-100 rounded-md'>Kong</li>
-        <li class='p-2 mr-2 mb-2 bg-gray-100 rounded-md'>Tennis Ball</li>
-        <li class='p-2 mr-2 mb-2 bg-gray-100 rounded-md'>Hide and Seek</li>
+        {{#each petLikes}}
+        <li class='p-2 mr-2 mb-2 bg-gray-100 rounded-md'>{{this}}</li>
+        {{/each}}
       </ul>
     </div>
     <div class=''>
       <ul class='grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-8 gap-6'>
         {{#each pictures}}
-        <li class=''><a href=''><img class='w-36 rounded opacity-75 hover:opacity-100 transition duration-300'
+        <li class=''><a href='/pets/{{this.pet_id}}/{{this.id}}'><img class='w-36 rounded opacity-75 hover:opacity-100 transition duration-300'
               src='{{this.pictureUrl}}' /></a></li>
         {{/each}}
       </ul>

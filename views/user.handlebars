@@ -64,7 +64,7 @@
     <div class='flex flex-col h-[30vh] pb-12'>
       <p class='text-[5rem]'>
         {{this.username}}
-        <span class='text-[2rem]'>{{this.location}}</span></p>
+        <span class='text-[2rem]'>{{this.city}}, {{this.state}}</span></p>
       <p class='text-[1.5rem]'>{{this.pronouns}} </p>
       <div class='flex py-12 gap-12'>
         <button>Send Message</button>
@@ -78,19 +78,19 @@
     <div id='div__about' class='h-[30vh] flex flex-col gap-6 mt-6 text-gray-600'>
       <ul class=''>
         <li class='mb-6'>
-          <p class='text-2xl'>Phone: 123-456-7890 </p>
+          <p class='text-2xl'>Phone: {{this.phone_number}} </p>
         </li>
         <li class='mb-6'>
           <p class='text-2xl'>Email: {{this.email}} </p>
         </li>
         <li class='mb-6'>
-          <p class='text-2xl'>Twitter: @example</p>
+          <p class='text-2xl'>Twitter: {{this.twitter}}</p>
         </li>
         <li class='mb-6'>
-          <p class='text-2xl'>Facebook: @example</p>
+          <p class='text-2xl'>Facebook: {{this.facebook}}</p>
         </li>
         <li class='mb-6'>
-          <p class='text-2xl'>Instagram: @example</p>
+          <p class='text-2xl'>Instagram: {{this.instagram}}</p>
         </li>
       </ul>
     </div>
@@ -104,9 +104,11 @@
               >{{pet.petName}}</a></li>
           {{/each}}
         </ul>
-        <button id="btn__addPet"
+        <form action= "/addPet" method= "GET">
+        <button id="btn__addPet" type= "submit"
           class='grow-0 bg-red-500 text-white px-4 py-2 rounded-full mt-2'
         >Add Pet</button>
+        </form>
       </div>
     </div>
   </div>
