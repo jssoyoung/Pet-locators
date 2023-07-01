@@ -3,7 +3,7 @@ const router = express.Router();
 const userController = require('../controllers/user');
 const authController = require('../controllers/auth');
 const petController = require('../controllers/pet');
-const { Pets, Pictures } = require('../models/index');
+const { Pets, Pictures, User, Likes, Comments } = require('../models/index');
 const { Storage } = require('@google-cloud/storage');
 const multer = require('multer');
 const tmp = require('tmp');
@@ -24,8 +24,13 @@ const upload = multer({
 router.get('/', userController.getHome);
 router.get('/locator', userController.getLocator);
 router.get('/user', userController.getUser);
+router.get('/user/:id', userController.getOtherUser);
 router.get('/contact', userController.getContact);
 router.get('/settings', userController.getSettings);
+router.post('/settings', userController.updateUser);
+router.get('/addPet', userController.getAddPet);
+router.post('/addPet', userController.postAddPet);
+router.get('/cancel', userController.getCancel);
 
 router.post('/search', userController.postSearch);
 router.post('/pets/likes', userController.postLike);
@@ -39,11 +44,16 @@ router.post('/user/logout', authController.userLogout);
 // router.get('/user/picture/:`{pictureUrl}`', pictureController.getPicture);
 
 router.post('/pets/upload', upload.single('file'), async (req, res) => {
+  const currentUserId = req.body.currentUser
   const petId = req.body.petId;
-  const pictureId = req.body.pictureId;
+  let pictureId = req.body.pictureId;
   const pet = await Pets.findByPk(petId, {
-    raw: true,
+    include: {model: User, as: "owner"}
   });
+  if(currentUserId*1 !== pet.owner.id*1) {
+    res.redirect(`/pets/${petId}/${pictureId}`);
+    return
+  } 
   const pet_Id = await pet.id;
   const pictureName = uuidv4();
 
@@ -81,22 +91,21 @@ router.post('/pets/upload', upload.single('file'), async (req, res) => {
     },
   };
   try {
+    let newPicture
     await storage.bucket(bucketName).upload(tempFilePath, options);
-
-    console.log('File uploaded successfully');
-    res.redirect(`/pets/${petId}/${pictureId}`);
-  } catch (err) {
-    console.error('Error uploading file:', err);
-    res.status(500).send('Error uploading file');
-  } finally {
-    fs.unlinkSync(tempFilePath);
     setFileMetadata(bucketName, filePath).then(async (data) => {
       const pet = await Pets.findByPk(data.metadata.pet_id);
-      const newPicture = await Pictures.create({
+      newPicture = await Pictures.create({
         pictureUrl: `https://storage.googleapis.com/${process.env.GOOGLE_CLOUD_BUCKET}/${process.env.GOOGLE_CLOUD_BUCKET_FOLDER}/${pictureName}`,
       });
       await pet.addPicture(newPicture);
+      res.redirect(`/pets/${petId}/${newPicture.dataValues.id}`);
     });
+    
+  } catch (err) {
+    res.status(500).send('Error uploading file');
+  } finally {
+    fs.unlinkSync(tempFilePath);
   }
 });
 
