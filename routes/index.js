@@ -11,6 +11,7 @@ const locatorRoutes = require('./locatorRoutes');
 const homeRoutes = require('./homeRoutes');
 const uploadRoutes = require('./uploadRoutes');
 const settingsRoutes = require('./settingsRoutes');
+const messageRoutes = require('./messageRoutes')
 
 router.use('/', homeRoutes);
 router.use('/user', authRoutes);
@@ -20,7 +21,9 @@ router.use('/comment', commentRoutes);
 router.use('/contact', contactRoutes);
 router.use('/like', likeRoutes);
 router.use('/locator', locatorRoutes);
+router.use('/messages', messageRoutes)
 router.use('/upload', uploadRoutes);
 router.use('/settings', settingsRoutes);
+
 
 module.exports = router;

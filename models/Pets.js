@@ -53,32 +53,15 @@ Pets.init(
     hooks: {
       beforeCreate: async (newPetData) => {
         if (newPetData.profile_picture === null) {
-          try {
-            const randomDogProfilePic = await fetch(
-              'https://dog.ceo/api/breeds/image/random'
-            );
-            const data = await randomDogProfilePic.json();
-            newPetData.profile_picture = data.message;
-          } catch (err) {
-            console.log(err);
-          }
+          newPetData.profile_picture = '/images/Paw_Print.svg'
           return newPetData;
         }
       },
       afterCreate: async (newPetData) => {
-        try {
-          const randomDogPic = await fetch(
-            'https://dog.ceo/api/breeds/image/random'
-          );
-          const data = await randomDogPic.json();
-
-          await Pictures.create({
-            pet_id: newPetData.id,
-            pictureUrl: data.message,
-          });
-        } catch (err) {
-          console.log(err);
-        }
+        await Pictures.create({
+          pet_id: newPetData.id,
+          pictureUrl: '/images/image__welcome.png',
+        });
       },
     },
     sequelize,

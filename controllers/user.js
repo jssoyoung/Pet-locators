@@ -20,10 +20,11 @@ exports.getUser = async (req, res) => {
     }
     return data;
   }, []);
-  
+
   res.render('user', {
     isUserPage: true,
     petData: petData.length > 0 ? petData : null,
+    userId: currentUser.id,
     username: currentUser.user_name,
     userPicture: currentUser.userPicture,
     email: currentUser.email,
@@ -62,6 +63,7 @@ exports.getOtherUser = async (req, res) => {
     isUserPage: true,
     petData: petData.length > 0 ? petData : null,
     userPicture: otherUser.userPicture,
+    userId: otherUser.id,
     username: otherUser.user_name,
     email: otherUser.email,
     city: otherUser.city,

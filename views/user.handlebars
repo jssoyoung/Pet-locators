@@ -67,7 +67,11 @@
         <span class='text-[2rem]'>{{this.city}}, {{this.state}}</span></p>
       <p class='text-[1.5rem]'>{{this.pronouns}} </p>
       <div class='flex py-12 gap-12'>
-        <button>Send Message</button>
+        <form action='/messages/send' method='POST'>
+          <input type='text' name='message' />
+          <input type='hidden' name='userId' value='{{this.userId}}' />
+          <button type='submit'>Send Message</button>
+        </form>
         <button>Report User</button>
       </div>
     </div>
@@ -104,7 +108,11 @@
       <div class='flex flex-col'>
         <ul class='list-disc list-inside pt-6 pb-12'>
           {{#each petData as |pet|}}
-            <li class="flex items-center my-6"><img class="rounded-full w-24 mx-6" src='{{pet.profilePicture}}' /><a class="text-2xl"
+            <li class='flex items-center my-6'><img
+                class='rounded-full w-24 mx-6'
+                src='{{pet.profilePicture}}'
+              /><a
+                class='text-2xl'
                 action='/pets/{{pet.petId}}/{{pet.latestPictureId}}'
                 href='/pets/{{pet.petId}}/{{pet.latestPictureId}}'
               >{{pet.petName}}</a></li>

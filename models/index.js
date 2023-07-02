@@ -3,6 +3,7 @@ const Pets = require('./Pets');
 const Likes = require('./Likes');
 const Comments = require('./Comments');
 const Pictures = require('./Pictures');
+const Messages = require('./Messages');
 
 User.hasMany(Pets, {
   foreignKey: 'user_id',
@@ -72,4 +73,14 @@ Comments.belongsTo(User, {
   as: 'user',
 });
 
-module.exports = { User, Pets, Likes, Comments, Pictures };
+User.hasMany(Messages, {
+  foreignKey: 'sender_id',
+  as: 'sender',
+});
+
+Messages.belongsTo(User, {
+  foreignKey: 'receiver_id',
+  as: 'receiver',
+});
+
+module.exports = { User, Pets, Likes, Comments, Pictures, Messages };
