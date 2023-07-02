@@ -6,7 +6,7 @@
   >
     <img
       class='w-48 h-48 md:w-96 md:h-96 md:mb-[4rem] rounded-full'
-      src='/images/profile-placeholder.jpg'
+      src='{{this.userPicture}}'
       alt='Profile Image'
     />
     <div class='flex flex-col mb-12'>
@@ -72,10 +72,16 @@
       </div>
     </div>
     <div class='flex h-[3.25rem] mt-[1.5rem] border-b-2'>
-      <button id='btn__about' class='text-4xl self-start btn mr-6'>About</button>
+      <button
+        id='btn__about'
+        class='text-4xl self-start btn mr-6'
+      >About</button>
       <button id='btn__pets' class='text-4xl self-start btn mr-6'>Pets</button>
     </div>
-    <div id='div__about' class='h-[30vh] flex flex-col gap-6 mt-6 text-gray-600'>
+    <div
+      id='div__about'
+      class='h-[30vh] flex flex-col gap-6 mt-6 text-gray-600'
+    >
       <ul class=''>
         <li class='mb-6'>
           <p class='text-2xl'>Phone: {{this.phone_number}} </p>
@@ -98,16 +104,18 @@
       <div class='flex flex-col'>
         <ul class='list-disc list-inside pt-6 pb-12'>
           {{#each petData as |pet|}}
-            <li><a
+            <li class="flex items-center my-6"><img class="rounded-full w-24 mx-6" src='{{pet.profilePicture}}' /><a class="text-2xl"
                 action='/pets/{{pet.petId}}/{{pet.latestPictureId}}'
                 href='/pets/{{pet.petId}}/{{pet.latestPictureId}}'
               >{{pet.petName}}</a></li>
           {{/each}}
         </ul>
-        <form action= "/addPet" method= "GET">
-        <button id="btn__addPet" type= "submit"
-          class='grow-0 bg-red-500 text-white px-4 py-2 rounded-full mt-2'
-        >Add Pet</button>
+        <form action='/pets/addPet' method='GET'>
+          <button
+            id='btn__addPet'
+            type='submit'
+            class='grow-0 bg-red-500 text-white px-4 py-2 rounded-full mt-2'
+          >Add Pet</button>
         </form>
       </div>
     </div>

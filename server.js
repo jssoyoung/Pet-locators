@@ -1,9 +1,10 @@
 const express = require('express');
-const routes = require('./routes/user');
+const routes = require('./routes/index');
 const sequelize = require('./config/connection');
 const session = require('express-session');
 const SequelizeStore = require('./utils/session');
 const handlebars = require('express-handlebars');
+const helpers = require('./utils/helpers');
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.engine(
   'handlebars',
   handlebars({
     defaultLayout: 'main',
+    helpers: helpers,
   })
 );
 

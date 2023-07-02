@@ -9,10 +9,10 @@
       src='https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js'
     ></script>
     {{#if isHomePage}}
-    <script defer src='/js/main.js'></script>
+      <script defer src='/js/main.js'></script>
     {{/if}}
     {{#if isUserPage}}
-    <script defer src='/js/user.js'></script>
+      <script defer src='/js/user.js'></script>
     {{/if}}
     <link
       rel='shortcut icon'
@@ -231,6 +231,31 @@
               class='block border border-grey-light w-full p-3 rounded mb-4'
               name='confirmPassword'
               placeholder='Confirm Password'
+            />
+            <label for='pronouns'>Choose your Pronouns:</label>
+            <select
+              required
+              class='block border border-grey-light w-full p-3 rounded mb-4'
+              name='pronouns'
+              placeholder='Pronouns'
+            >
+              <option value='He/Him'>He/Him</option>
+              <option value='She/Her'>She/Her</option>
+              <option value='They/Them'>They/Them</option>
+            </select>
+            <input
+              required
+              type='text'
+              class='block border border-grey-light w-full p-3 rounded mb-4'
+              name='city'
+              placeholder='City'
+            />
+            <input
+              required
+              type='text'
+              class='block border border-grey-light w-full p-3 rounded mb-4'
+              name='state'
+              placeholder='State'
             />
             <button
               type='submit'

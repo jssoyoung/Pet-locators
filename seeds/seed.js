@@ -19,7 +19,11 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  const pets = await Pets.bulkCreate(petsData);
+  const pets = await Pets.bulkCreate(petsData, {
+    individualHooks: true,
+    returning: true,
+  });
+
   const pictures = await Pictures.bulkCreate(pictureData);
   const likes = await Likes.bulkCreate(likeData);
   const comments = await Comments.bulkCreate(commentData);
