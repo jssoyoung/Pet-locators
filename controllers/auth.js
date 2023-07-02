@@ -13,7 +13,7 @@ exports.userSignup = async (req, res) => {
     : res
         .status(404)
         .json({ Status: 404, Message: 'Enter a valid email address' });
-  const password = (req.body.password) //validator.isStrongPassword(req.body.password)
+  const password = req.body.password //validator.isStrongPassword(req.body.password)
     ? req.body.password
     : res.status(404).json({
         Status: 404,
@@ -21,6 +21,7 @@ exports.userSignup = async (req, res) => {
           'Password must be a minimum length of 8 characters, at least one lowercase letter, one uppercase letter, one numerical digit, and one symbol.',
       });
   const confirmPassword = req.body.confirmPassword;
+  const { pronouns, city, state } = req.body;
   const passwordsMatch = password === confirmPassword;
   if (!passwordsMatch) {
     res.status(404).json({
@@ -28,11 +29,17 @@ exports.userSignup = async (req, res) => {
       Message: 'Passwords must match!',
     });
   } else {
-    const newUser = await User.create({
-      user_name: username,
-      email: email,
-      password: password,
-    });
+    const newUser = await User.create(
+      {
+        user_name: username,
+        email: email,
+        password: password,
+        city: city,
+        state: state,
+        pronouns: pronouns,
+      },
+      { individualHooks: true, returning: true }
+    );
     req.session.isLoggedIn = true;
     req.session.user = newUser;
     res.redirect('/user');

@@ -131,3 +131,4 @@ linkSignup.addEventListener('click', (e) => {
   modalSignup.classList.remove('hidden');
   modalLogin.classList.add('hidden');
 });
+

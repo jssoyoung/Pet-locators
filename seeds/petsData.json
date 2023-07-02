@@ -1,23 +1,506 @@
 [
   {
-    "name": "Bento",
-    "user_id": 1,
+    "name": "Max",
+    "age": 3,
+    "gender": "Male",
+    "likes": "Playing fetch",
+    "breed": "Labrador Retriever",
+    "description": "Friendly and energetic dog looking for an active friend.",
+    "user_id": 1
+  },
+  {
+    "name": "Bella",
     "age": 2,
-    "breed": "corgi",
-    "description": "Fun out going playful corgi pup, ready to hit the town and make some best buds"
+    "gender": "Female",
+    "likes": "Cuddling",
+    "breed": "Golden Retriever",
+    "description": "Sweet and gentle dog in search of a loving friend.",
+    "user_id": 2
   },
   {
-    "name": "Freida",
-    "user_id": 2,
-    "age": 4,
-    "breed": "husky",
-    "description": "Lonely mature husky looking to make firends for biscuit time"
+    "name": "Rocky",
+    "age": 5,
+    "gender": "Male",
+    "likes": "Running in the park",
+    "breed": "German Shepherd",
+    "description": "Active and loyal dog seeking an adventurous friend.",
+    "user_id": 1
   },
   {
-    "name": "Eggy",
-    "user_id": 3,
+    "name": "Luna",
     "age": 1,
-    "breed": "chihuahua",
-    "description": "Hyperactive brave little guy with a big heart looking for other outgoing pups for some epic adventures"
+    "gender": "Female",
+    "likes": "Chasing balls",
+    "breed": "Border Collie",
+    "description": "Intelligent and playful dog looking for an active playmate.",
+    "user_id": 2
+  },
+  {
+    "name": "Charlie",
+    "age": 4,
+    "gender": "Male",
+    "likes": "Exploring nature",
+    "breed": "Siberian Husky",
+    "description": "Energetic and friendly dog in need of an outdoor-loving friend.",
+    "user_id": 3
+  },
+  {
+    "name": "Coco",
+    "age": 2,
+    "gender": "Female",
+    "likes": "Snuggling on the couch",
+    "breed": "Poodle",
+    "description": "Cute and affectionate dog searching for a cozy friend.",
+    "user_id": 4
+  },
+  {
+    "name": "Maximus",
+    "age": 3,
+    "gender": "Male",
+    "likes": "Playing with toys",
+    "breed": "Bulldog",
+    "description": "Strong and playful dog seeking an active friend.",
+    "user_id": 5
+  },
+  {
+    "name": "Daisy",
+    "age": 2,
+    "gender": "Female",
+    "likes": "Going for walks",
+    "breed": "Beagle",
+    "description": "Sweet and loyal dog looking for a loving friend.",
+    "user_id": 6
+  },
+  {
+    "name": "Buddy",
+    "age": 4,
+    "gender": "Male",
+    "likes": "Swimming in the lake",
+    "breed": "Labrador Retriever",
+    "description": "Friendly and active dog in search of an adventurous friend.",
+    "user_id": 7
+  },
+  {
+    "name": "Lola",
+    "age": 1,
+    "gender": "Female",
+    "likes": "Chasing squirrels",
+    "breed": "Jack Russell Terrier",
+    "description": "Energetic and curious dog looking for an active playmate.",
+    "user_id": 8
+  },
+  {
+    "name": "Cooper",
+    "age": 3,
+    "gender": "Male",
+    "likes": "Running on the beach",
+    "breed": "Golden Retriever",
+    "description": "Loving and friendly dog seeking a caring friend.",
+    "user_id": 9
+  },
+  {
+    "name": "Mia",
+    "age": 2,
+    "gender": "Female",
+    "likes": "Playing with children",
+    "breed": "Cavalier King Charles Spaniel",
+    "description": "Gentle and affectionate dog in need of a loving friend.",
+    "user_id": 10
+  },
+  {
+    "name": "Rocko",
+    "age": 2,
+    "gender": "Male",
+    "likes": "Chasing squirrels",
+    "breed": "Australian Shepherd",
+    "description": "Active and intelligent dog searching for an playmate who loves outdoor activities.",
+    "user_id": 11
+  },
+  {
+    "name": "Coco",
+    "age": 4,
+    "gender": "Female",
+    "likes": "Cuddling",
+    "breed": "Shih Tzu",
+    "description": "Sweet and affectionate dog in need of a loving friend.",
+    "user_id": 12
+  },
+  {
+    "name": "Max",
+    "age": 3,
+    "gender": "Male",
+    "likes": "Playing with toys",
+    "breed": "French Bulldog",
+    "description": "Friendly and playful dog seeking an energetic friend.",
+    "user_id": 13
+  },
+  {
+    "name": "Luna",
+    "age": 1,
+    "gender": "Female",
+    "likes": "Chasing butterflies",
+    "breed": "Border Collie",
+    "description": "Smart and active dog looking for an playmate who enjoys outdoor adventures.",
+    "user_id": 14
+  },
+  {
+    "name": "Charlie",
+    "age": 5,
+    "gender": "Male",
+    "likes": "Snuggling on the couch",
+    "breed": "Cavalier King Charles Spaniel",
+    "description": "Gentle and affectionate dog in search of a cozy friend.",
+    "user_id": 15
+  },
+  {
+    "name": "Buddy",
+    "age": 2,
+    "gender": "Male",
+    "likes": "Playing with other dogs",
+    "breed": "Golden Doodle",
+    "description": "Friendly and sociable dog seeking a loving friend with a yard to play in.",
+    "user_id": 16
+  },
+  {
+    "name": "Luna",
+    "age": 1,
+    "gender": "Female",
+    "likes": "Running,Jumping",
+    "breed": "Border Collie",
+    "description": "Energetic and intelligent dog looking for an active playmate.",
+    "user_id": 14
+  },
+  {
+    "name": "Charlie",
+    "age": 5,
+    "gender": "Male",
+    "likes": "Cuddling,Sleeping",
+    "breed": "Cavalier King Charles Spaniel",
+    "description": "Affectionate and gentle dog in search of a loving friend.",
+    "user_id": 15
+  },
+  {
+    "name": "Buddy",
+    "age": 2,
+    "gender": "Male",
+    "likes": "Playing,Eating",
+    "breed": "Golden Doodle",
+    "description": "Friendly and sociable dog seeking an active friend.",
+    "user_id": 16
+  },
+  {
+    "name": "Rocky",
+    "age": 3,
+    "gender": "Male",
+    "likes": "Swimming,Exploring",
+    "breed": "Labrador Retriever",
+    "description": "Active and adventurous dog looking for an outdoor-loving friend.",
+    "user_id": 17
+  },
+  {
+    "name": "Daisy",
+    "age": 2,
+    "gender": "Female",
+    "likes": "Chasing,Barking",
+    "breed": "Beagle",
+    "description": "Energetic and vocal dog in search of an active friend.",
+    "user_id": 18
+  },
+  {
+    "name": "Maximus",
+    "age": 4,
+    "gender": "Male",
+    "likes": "Running,Playing",
+    "breed": "German Shepherd",
+    "description": "Athletic and loyal dog seeking an active playmate.",
+    "user_id": 19
+  },
+  {
+    "name": "Luna",
+    "age": 1,
+    "gender": "Female",
+    "likes": "Cuddling,Jumping",
+    "breed": "Poodle",
+    "description": "Affectionate and playful dog looking for a loving friend.",
+    "user_id": 20
+  },
+  {
+    "name": "Simba",
+    "age": 2,
+    "gender": "Male",
+    "likes": "Exploring,Napping",
+    "breed": "Maine Coon",
+    "description": "Curious and relaxed cat in search of a cozy friend.",
+    "user_id": 21
+  },
+  {
+    "name": "Milo",
+    "age": 3,
+    "gender": "Male",
+    "likes": "Hunting,Climbing",
+    "breed": "Bengal",
+    "description": "Active and adventurous cat seeking an playmate who loves to play.",
+    "user_id": 22
+  },
+  {
+    "name": "Charlie",
+    "age": 2,
+    "gender": "Male",
+    "likes": "Running,Digging",
+    "breed": "Beagle",
+    "description": "Energetic and friendly dog looking for an active friend.",
+    "user_id": 23
+  },
+  {
+    "name": "Lucy",
+    "age": 1,
+    "gender": "Female",
+    "likes": "Chasing,Exploring",
+    "breed": "Tabby",
+    "description": "Playful and curious cat in search of a loving friend.",
+    "user_id": 24
+  },
+  {
+    "name": "Rocky",
+    "age": 3,
+    "gender": "Male",
+    "likes": "Swimming,Hiking",
+    "breed": "Golden Retriever",
+    "description": "Active and adventurous dog seeking an playmate who loves the outdoors.",
+    "user_id": 25
+  },
+  {
+    "name": "Cooper",
+    "age": 2,
+    "gender": "Male",
+    "likes": "Playing,Eating",
+    "breed": "Labrador Retriever",
+    "description": "Friendly and playful dog looking for an active friend.",
+    "user_id": 26
+  },
+  {
+    "name": "Luna",
+    "age": 1,
+    "gender": "Female",
+    "likes": "Cuddling,Exploring",
+    "breed": "Ragdoll",
+    "description": "Sweet and affectionate cat in search of a loving friend.",
+    "user_id": 27
+  },
+  {
+    "name": "Maximus",
+    "age": 3,
+    "gender": "Male",
+    "likes": "Running,Swimming",
+    "breed": "German Shepherd",
+    "description": "Active and loyal dog seeking a devoted playmate.",
+    "user_id": 28
+  },
+  {
+    "name": "Oliver",
+    "age": 2,
+    "gender": "Male",
+    "likes": "Chasing,Snuggling",
+    "breed": "British Shorthair",
+    "description": "Adorable and playful cat looking for a loving friend.",
+    "user_id": 29
+  },
+  {
+    "name": "Milo",
+    "age": 1,
+    "gender": "Male",
+    "likes": "Exploring,Climbing",
+    "breed": "Bengal",
+    "description": "Curious and active cat seeking an adventurous friend.",
+    "user_id": 30
+  },
+  {
+    "name": "Sophie",
+    "age": 3,
+    "gender": "Female",
+    "likes": "Cuddling,Playing",
+    "breed": "Golden Retriever",
+    "description": "Gentle and affectionate dog in search of a forever friend.",
+    "user_id": 31
+  },
+  {
+    "name": "Luna",
+    "age": 2,
+    "gender": "Female",
+    "likes": "Running,Fetching",
+    "breed": "Siberian Husky",
+    "description": "Energetic and friendly dog looking for an active friend.",
+    "user_id": 32
+  },
+  {
+    "name": "Charlie",
+    "age": 4,
+    "gender": "Male",
+    "likes": "Snuggling,Chewing",
+    "breed": "Labrador Retriever",
+    "description": "Loyal and playful dog seeking a loving friend.",
+    "user_id": 33
+  },
+  {
+    "name": "Mia",
+    "age": 1,
+    "gender": "Female",
+    "likes": "Exploring,Climbing",
+    "breed": "Siamese",
+    "description": "Curious and affectionate cat in search of a forever friend.",
+    "user_id": 34
+  },
+  {
+    "name": "Charlie",
+    "age": 4,
+    "gender": "Male",
+    "likes": "Running,Fetching",
+    "breed": "Border Collie",
+    "description": "Energetic and intelligent dog looking for an active playmate.",
+    "user_id": 38
+  },
+  {
+    "name": "Luna",
+    "age": 2,
+    "gender": "Female",
+    "likes": "Cuddling,Exploring",
+    "breed": "Siamese",
+    "description": "Curious and affectionate cat seeking a loving friend.",
+    "user_id": 39
+  },
+  {
+    "name": "Maximus",
+    "age": 1,
+    "gender": "Male",
+    "likes": "Chasing,Hunting",
+    "breed": "Siberian",
+    "description": "Playful and independent cat looking for a fun environment.",
+    "user_id": 40
+  },
+  {
+    "name": "Rocky",
+    "age": 3,
+    "gender": "Male",
+    "likes": "Swimming,Running",
+    "breed": "Golden Retriever",
+    "description": "Active and friendly dog looking for an outdoor-loving friend.",
+    "user_id": 35
+  },
+  {
+    "name": "Milo",
+    "age": 2,
+    "gender": "Male",
+    "likes": "Cuddling,Exploring",
+    "breed": "Maine Coon",
+    "description": "Gentle and playful cat seeking a cozy friend.",
+    "user_id": 36
+  },
+  {
+    "name": "Daisy",
+    "age": 1,
+    "gender": "Female",
+    "likes": "Chasing,Jumping",
+    "breed": "Bengal",
+    "description": "Active and adventurous cat in need of a loving friend.",
+    "user_id": 37
+  },
+  {
+    "name": "Oscar",
+    "age": 3,
+    "gender": "Male",
+    "likes": "Swimming,Sunbathing",
+    "breed": "Golden Retriever",
+    "description": "Friendly and outgoing dog in need of an active friend.",
+    "user_id": 41
+  },
+  {
+    "name": "Daisy",
+    "age": 2,
+    "gender": "Female",
+    "likes": "Napping,Chasing",
+    "breed": "Maine Coon",
+    "description": "Sweet and playful cat looking for a loving friend.",
+    "user_id": 42
+  },
+  {
+    "name": "Milo",
+    "age": 1,
+    "gender": "Male",
+    "likes": "Exploring,Hiding",
+    "breed": "Bengal",
+    "description": "Curious and active cat seeking an adventurous playmate.",
+    "user_id": 43
+  },
+  {
+    "name": "Lola",
+    "age": 2,
+    "gender": "Female",
+    "likes": "Cuddling,Chewing",
+    "breed": "French Bulldog",
+    "description": "Affectionate and playful dog looking for a loving friend.",
+    "user_id": 44
+  },
+  {
+    "name": "Rocky",
+    "age": 4,
+    "gender": "Male",
+    "likes": "Running,Fetching",
+    "breed": "German Shepherd",
+    "description": "Active and loyal dog seeking an active playmate.",
+    "user_id": 45
+  },
+  {
+    "name": "Luna",
+    "age": 1,
+    "gender": "Female",
+    "likes": "Exploring,Purring",
+    "breed": "Siamese",
+    "description": "Energetic and affectionate cat in search of a forever friend.",
+    "user_id": 46
+  },
+  {
+    "name": "Charlie",
+    "age": 3,
+    "gender": "Male",
+    "likes": "Playing,Eating",
+    "breed": "Labradoodle",
+    "description": "Friendly and social dog looking for a loving friend.",
+    "user_id": 47
+  },
+  {
+    "name": "Milo",
+    "age": 2,
+    "gender": "Male",
+    "likes": "Running,Jumping",
+    "breed": "Border Collie",
+    "description": "Active and intelligent dog seeking an active playmate.",
+    "user_id": 48
+  },
+  {
+    "name": "Lucy",
+    "age": 1,
+    "gender": "Female",
+    "likes": "Cuddling,Purring",
+    "breed": "Maine Coon",
+    "description": "Affectionate and playful cat in search of a loving friend.",
+    "user_id": 49
+  },
+  {
+    "name": "Buddy",
+    "age": 3,
+    "gender": "Male",
+    "likes": "Fetching,Swimming",
+    "breed": "Golden Retriever",
+    "description": "Friendly and loyal dog looking for an active friend.",
+    "user_id": 50
+  },
+  {
+    "name": "Sophie",
+    "age": 2,
+    "gender": "Female",
+    "likes": "Exploring,Sleeping",
+    "breed": "Ragdoll",
+    "description": "Gentle and relaxed cat in search of a peaceful friend.",
+    "user_id": 51
   }
 ]

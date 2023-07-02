@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Comments extends Model {}
+class Messages extends Model {}
 
-Comments.init(
+Messages.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,23 +11,23 @@ Comments.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    user_id: {
+    sender_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: 'user',
         key: 'id',
       },
     },
-    picture_id: {
+    receiver_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
-        model: 'pictures',
+        model: 'user',
         key: 'id',
       },
     },
-    comment: {
+    message: {
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -42,8 +42,8 @@ Comments.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'comments',
+    modelName: 'messages',
   }
 );
 
-module.exports = Comments;
+module.exports = Messages;

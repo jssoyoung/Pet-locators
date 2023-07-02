@@ -1,0 +1,12 @@
+<main class='h-auto py-12'>
+  <div>Received Messages
+    {{#each receivedMessages as |message|}}
+      <p>{{message.message}}</p>
+    {{/each}}
+  </div>
+  <div>Sent Messages
+    {{#each sentMessages as |message|}}
+      <p>{{message.message}}</p>
+    {{/each}}
+  </div>
+</main>
