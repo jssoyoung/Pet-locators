@@ -62,8 +62,8 @@
   {
     "phone_number": 2134567890,
     "user_name": "Jessica (Admin)",
-    "city": "Seattle",
-    "state": "WA",
+    "city": "Fullerton",
+    "state": "CA",
     "pronouns": "She/Her",
     "email": "jessica@jessica.com",
     "password": "12345678",
@@ -86,7 +86,7 @@
   {
     "phone_number": 2134567890,
     "user_name": "Michael (Admin)",
-    "city": "San Diego",
+    "city": "Fullerton",
     "state": "CA",
     "pronouns": "He/Him",
     "email": "michael@michael.com",

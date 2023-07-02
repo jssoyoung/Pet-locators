@@ -20,9 +20,7 @@ exports.getUser = async (req, res) => {
     }
     return data;
   }, []);
-
-  console.log(petData);
-
+  
   res.render('user', {
     isUserPage: true,
     petData: petData.length > 0 ? petData : null,
@@ -49,16 +47,16 @@ exports.getOtherUser = async (req, res) => {
     },
   });
 
- const petData = otherUser.pets.reduce((data, pet) => {
-   const { name: petName, id: petId, pictures } = pet;
-   if (pictures.length > 0) {
-     const latestPicture = pictures[pictures.length - 1];
-     const latestPictureId = latestPicture.id;
-     const profilePicture = pet.profile_picture;
-     data.push({ petName, petId, latestPictureId, profilePicture });
-   }
-   return data;
- }, []);
+  const petData = otherUser.pets.reduce((data, pet) => {
+    const { name: petName, id: petId, pictures } = pet;
+    if (pictures.length > 0) {
+      const latestPicture = pictures[pictures.length - 1];
+      const latestPictureId = latestPicture.id;
+      const profilePicture = pet.profile_picture;
+      data.push({ petName, petId, latestPictureId, profilePicture });
+    }
+    return data;
+  }, []);
 
   res.render('user', {
     isUserPage: true,
@@ -69,6 +67,10 @@ exports.getOtherUser = async (req, res) => {
     city: otherUser.city,
     state: otherUser.state,
     pronouns: otherUser.pronouns,
+    phone_number: otherUser.phone_number,
+    twitter: otherUser.twitter,
+    facebook: otherUser.facebook,
+    instagram: otherUser.instagram,
     isLoggedIn: req.session.isLoggedIn,
   });
 };
