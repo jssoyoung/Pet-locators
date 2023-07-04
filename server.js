@@ -7,6 +7,7 @@ const handlebars = require('express-handlebars');
 const helpers = require('./utils/helpers');
 
 const app = express();
+const PORT = process.env.PORT || 3001;
 
 app.use(
   session({
@@ -47,7 +48,7 @@ sequelize
     force: false,
   })
   .then(() => {
-    app.listen(3001, () => {
+    app.listen(PORT, () => {
       console.log('Server running on port 3001');
     });
   })
