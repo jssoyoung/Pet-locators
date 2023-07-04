@@ -1,5 +1,18 @@
 const { User, Pets, Likes, Comments, Pictures } = require('../models/index');
 const { Op } = require('sequelize');
+const { Storage } = require('@google-cloud/storage');
+const tmp = require('tmp');
+const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
+
+const storage = new Storage({
+  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+  projectId: process.env.GOOGLE_CLOUD_PROJECT_ID,
+});
+
+const bucketName = process.env.GOOGLE_CLOUD_BUCKET;
+
+
 exports.getPets = async (req, res) => {
   const { petId, pictureId } = req.params;
   const userId = req.session.user.id;
@@ -80,4 +93,45 @@ exports.postAddPet = async (req, res) => {
     user_id: currentUser,
   });
   res.redirect('/user');
+};
+
+exports.getEditPet = (req, res) => {
+  const petId = req.body.petId*1
+  console.log(petId)
+  res.render('addPet', {
+    isLoggedIn: req.session.isLoggedIn,
+    isEdit: true,
+    petId: petId,
+  });
+};
+
+exports.uploadPetProfilePicture = async (req, res) => {
+  const petId = req.body.petId*1;
+  const pet = await Pets.findByPk(petId);
+  const pictureName = uuidv4();
+
+  const file = req.file;
+
+  const tempFilePath = tmp.tmpNameSync();
+  fs.writeFileSync(tempFilePath, file.buffer);
+
+  const filePath = `pet-pictures/${pictureName}`;
+
+  const options = {
+    destination: filePath,
+    metadata: {
+      contentType: file.mimetype,
+    },
+  };
+  try {
+    await storage.bucket(bucketName).upload(tempFilePath, options);
+    await pet.update({
+      profile_picture: `https://storage.googleapis.com/${process.env.GOOGLE_CLOUD_BUCKET}/pet-pictures/${pictureName}`
+    });
+      res.redirect(`/`);
+  } catch (err) {
+    res.status(500).send('Error uploading file');
+  } finally {
+    fs.unlinkSync(tempFilePath);
+  }
 };
