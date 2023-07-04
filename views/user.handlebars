@@ -115,7 +115,12 @@
                 class='text-2xl'
                 action='/pets/{{pet.petId}}/{{pet.latestPictureId}}'
                 href='/pets/{{pet.petId}}/{{pet.latestPictureId}}'
-              >{{pet.petName}}</a></li>
+              >{{pet.petName}}</a>
+              <form action="/pets/edit" method="POST">
+              <input type="hidden" name="petId" value="{{pet.petId}}">
+                <button type="submit">Edit</button>
+                </form>
+                </li>
           {{/each}}
         </ul>
         <form action='/pets/addPet' method='GET'>

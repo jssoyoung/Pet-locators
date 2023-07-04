@@ -76,4 +76,6 @@ const uploadPicture = async (req, res) => {
   }
 };
 
-module.exports = { uploadPicture };
+
+
+module.exports = { uploadPicture};

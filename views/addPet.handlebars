@@ -2,10 +2,9 @@
   <div
     class='flex flex-col mx-auto w-[100%] sm:w-[80%] md:w-[70%] lg:w-[50%] xl:w-[50%] h-[90vh]'
   >
-    <form action='/pets/addPet' method='POST'>
       <div class='space-y-12'>
         <div class='border-b border-gray-900/10 pb-12'>
-          <h2 class='text-base font-semibold leading-7 text-gray-900'>New Pet</h2>
+          <h2 class='text-base font-semibold leading-7 text-gray-900'>{{#if isEdit}}Update{{else}}New{{/if}} Pet</h2>
 
           <div class='col-span-full'>
             <label
@@ -25,10 +24,11 @@
                   clip-rule='evenodd'
                 />
               </svg>
-              <button
-                type='button'
-                class='rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'
-              >Change</button>
+              <form action="/pets/upload" method="POST" enctype='multipart/form-data'>
+                <input type='file' name='file' required />
+                <button type="submit" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Change</button>
+                <input type="hidden" name="petId" value="{{petId}}">
+                </form>
             </div>
           </div>
         </div>
@@ -145,6 +145,5 @@
         >Save</button>
 
       </div>
-    </form>
   </div>
 </main>
