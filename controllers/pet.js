@@ -92,16 +92,6 @@ exports.postAddPet = async (req, res) => {
   res.redirect('/user');
 };
 
-exports.getEditPet = (req, res) => {
-  const petId = req.body.petId * 1;
-  console.log(petId);
-  res.render('addPet', {
-    isLoggedIn: req.session.isLoggedIn,
-    isEdit: true,
-    petId: petId,
-  });
-};
-
 exports.uploadPetProfilePicture = async (req, res) => {
   const petId = req.body.petId * 1;
   const pet = await Pets.findByPk(petId);

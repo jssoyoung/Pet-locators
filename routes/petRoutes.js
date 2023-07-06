@@ -13,7 +13,5 @@ router.get('/addPet', petController.getAddPet);
 router.post('/addPet', petController.postAddPet);
 router.get('/cancel', petController.getCancel);
 router.post('/upload', upload.single('file'), petController.uploadPetProfilePicture);
-router.post('/edit', petController.getEditPet);
-
 
 module.exports = router;

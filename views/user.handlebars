@@ -96,12 +96,6 @@
                 action='/pets/{{pet.petId}}/{{pet.latestPictureId}}'
                 href='/pets/{{pet.petId}}/{{pet.latestPictureId}}'
               >{{pet.petName}}</a>
-              {{#if pet.isOwner}}
-                <form action='/pets/edit' method='POST'>
-                  <input type='hidden' name='petId' value='{{pet.petId}}' />
-                  <button class='mx-6' type='submit'>Click to Edit</button>
-                </form>
-              {{/if}}
             </li>
           {{/each}}
         </ul>
