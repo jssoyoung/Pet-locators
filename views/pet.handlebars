@@ -9,7 +9,9 @@
           src='{{this.mainPicture}}'
           alt='Image'
         />
-        <h1 class="float-right">Likes: {{this.totalLikes}} </h1>
+        <h1 class='text-center text-lg'>TOTAL
+          <img class='inline w-4' src='/images/heart.svg' alt='Heart' />:
+          {{this.totalLikes}}</h1>
         <div
           class='absolute left-0 top-0 w-full h-full flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity'
         >
@@ -47,16 +49,20 @@
         >Post</button>
       </form>
     </div>
-    <div class='relative comments mt-4'>
-      <ul class='flex flex-col justify-center comments-ul'>
+    <div class='flex justify-center relative comments mt-4'>
+      <ul class='flex flex-col justify-center comments-ul w-[50rem]'>
         {{#each comments as |comment|}}
           <li class='comments mb-2'>
-            <span>{{lookup comment 'user.user_name'}}</span>
-            <span>{{comment.comment}}</span>
-            <span>{{time_passed comment.createdAt}}</span>
-            <form class='form__deleteComment'>
+            <span class='text-2xl'>{{lookup comment 'user.user_name'}}
+            </span><span class='text-xl'>
+              {{time_passed comment.createdAt}}</span><br />
+            <span class='text-3xl'>{{comment.comment}} </span><br />
+            <form class='float-right form__deleteComment'>
               <input type='hidden' name='commentId' value='{{comment.id}}' />
-              <button type='submit'>**Delete Comment**</button></form></li>
+              <button
+                type='submit'
+                class='px-3 py-2 text-sm font-medium text-center text-white bg-red-400 rounded-lg hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800'
+              >Delete Comment</button></form></li>
         {{/each}}
       </ul>
       <p id='message__comment'></p>
