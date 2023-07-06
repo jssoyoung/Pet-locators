@@ -10,7 +10,7 @@ The user could also contact us using the "contact" feature on the navigation bar
 
 Here is the link to the repository: https://github.com/jssoyoung/Pet-locators
 
-Here is the link to the deployed application: 
+Here is the link to the deployed application: https://lit-retreat-91915-8f068b8cfb99.herokuapp.com/
 
 Here is a link to the walkthrough video of our website: 
 
