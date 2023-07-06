@@ -4,11 +4,11 @@
   >
     <div class='mb-4 h-auto'>
       <div class='mx-auto relative w-[70%]'>
-        <img
-          class='rounded-md mx-auto mb-4 max-w-[50rem] h-auto'
-          src='{{this.mainPicture}}'
-          alt='Image'
-        />
+        <div
+          id='div__mainPicture'
+          class='rounded-md mx-auto mb-4 w-[70rem] h-[50rem] bg-cover bg-center bg-no-repeat'
+          style="background-image: url('{{this.mainPicture}}');"
+        ></div>
         <h1 class='text-center text-lg'>TOTAL
           <img class='inline w-4' src='/images/heart.svg' alt='Heart' />:
           {{this.totalLikes}}</h1>
@@ -52,17 +52,20 @@
     <div class='flex justify-center relative comments mt-4'>
       <ul class='flex flex-col justify-center comments-ul w-[50rem]'>
         {{#each comments as |comment|}}
-          <li class='comments mb-2'>
-            <span class='text-2xl'>{{lookup comment 'user.user_name'}}
-            </span><span class='text-xl'>
-              {{time_passed comment.createdAt}}</span><br />
-            <span class='text-3xl'>{{comment.comment}} </span><br />
+          <li class='border-b-2 comments mb-2'>
+            <span class='inline-block text-3xl py-3'>{{lookup
+                comment
+                'user.user_name'
+              }}
+            </span><span class='text-md'>
+              ({{time_passed comment.createdAt}})</span><br />
+            <span class='text-3xl pl-12'>{{comment.comment}} </span><br />
             <form class='float-right form__deleteComment'>
               <input type='hidden' name='commentId' value='{{comment.id}}' />
               <button
                 type='submit'
                 class='px-3 py-2 text-sm font-medium text-center text-white bg-red-400 rounded-lg hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800'
-              >Delete Comment</button></form></li>
+              >Delete</button></form></li>
         {{/each}}
       </ul>
       <p id='message__comment'></p>
@@ -77,21 +80,20 @@
         src='{{this.pet.dataValues.profile_picture}}'
         alt='Pet Profile'
       />
-      <h3 class='text-5xl font-bold mb-2'>{{this.pet.dataValues.name}}</h3>
-      <a
-        href='/user/{{this.ownerId}}'
-        class='text-xl text-blue-500'
-      >{{this.owner}}</a>
+      <h3 class='text-5xl font-bold mb-4'>{{this.pet.dataValues.name}}</h3>
+      <a href='/user/{{this.ownerId}}' class='text-xl text-blue-500'>Owner:
+        {{this.owner}}</a>
       <ul class='py-6'>
-        <li>Age: {{this.pet.dataValues.age}}</li>
-        <li>Breed: {{this.pet.dataValues.breed}} </li>
-        <li>Gender: {{this.pet.dataValues.gender}}</li>
-        <li>Description: {{this.pet.dataValues.description}}</li>
+        <li class='text-xl'>Age: {{this.pet.dataValues.age}}</li>
+        <li class='text-xl'>Breed: {{this.pet.dataValues.breed}} </li>
+        <li class='text-xl'>Gender: {{this.pet.dataValues.gender}}</li>
+        <li class='text-xl'>Description:
+          {{this.pet.dataValues.description}}</li>
       </ul>
-      <h3 class='text-2xl font-bold mt-4'>Likes</h3>
+      <h3 class='text-3xl font-bold mt-4'>Likes:</h3>
       <ul class='grid grid-cols-2 mt-4 -ml-2'>
         {{#each petLikes}}
-          <li class='p-2 mr-2 mb-2 bg-gray-100 rounded-md'>{{this}}</li>
+          <li class='text-xl p-2 mr-2 mb-2 bg-gray-100 rounded-md'>{{this}}</li>
         {{/each}}
       </ul>
     </div>

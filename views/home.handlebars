@@ -116,7 +116,7 @@
 
   <section
     id='section__learnMore'
-    class='px-[10rem] py-[10rem] transition-transform duration-1000'
+    class='px-10 py-10 md:px-20 md:py-20 lg:px-40 lg:py-40 xl:px-50 xl:py-50'
   >
     <div class='max-w-[100rem] mx-auto my-[7.5rem]'>
       <h2 class='text-[3rem] text-red-400 font-bold mb-[2rem]'>Features</h2>
@@ -125,48 +125,54 @@
       </h3>
     </div>
 
-    <div class='xl:grid grid-cols-2 gap-16 mx-auto lg:w-[70vw] xl:w-[60vw]'>
-      <img
-        class='self-auto rounded-lg'
-        src='/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg'
-        alt=''
-      />
-      <div class=''>
-        <div class='flex justify-start items-center gap-6 pt-6'>
-          <img class='w-[40px]' src='/images/Paw_Print.svg' alt='free' />
-          <h5 class='text-4xl font-light'>There's no cost to start!</h5>
+    <div class='xl:grid grid-cols-2 gap-10 mx-auto lg:w-7/12 xl:w-7/12'>
+      <div class='flex flex-col justify-center items-center'>
+        <img
+          class='w-[42.5rem] rounded-xl'
+          src='/images/freeaccount.png'
+          alt='a cat holding a sign'
+        />
+      </div>
+      <div>
+        <div class='flex justify-start items-center gap-3 pt-6'>
+          <img class='w-10' src='/images/Paw_Print.svg' alt='free' />
+          <h5 class='text-2xl font-light'>There's no cost to start!</h5>
         </div>
-        <p class='text-5xl font-extralight xl:leading-loose'>
+        <p class='text-3xl font-extralight leading-loose'>
           You can start finding your pet's playmate for free!
         </p>
       </div>
 
       <div class=''>
-        <div class='flex justify-start items-center gap-6 pt-6'>
-          <img class='w-[40px]' src='/images/Paw_Print.svg' />
-          <h5 class='text-4xl font-light'>Unlimited Photo Storage</h5>
+        <div class='flex justify-end items-center gap-3 pt-6'>
+          <img class='w-10' src='/images/Paw_Print.svg' alt='free' />
+          <h5 class='text-2xl font-light'>Unlimited Photo Storage</h5>
         </div>
-        <p class='text-5xl font-extralight xl:leading-loose'>
+        <p class='text-right text-3xl font-extralight leading-loose'>
           Your pictures are saved securely in our cloud storage.
         </p>
       </div>
-      <img
-        class='self-auto rounded-lg'
-        src='/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg'
-        alt=''
-      />
+      <div class='flex flex-col justify-center items-center'>
+        <img
+          class='w-[42.5rem] rounded-xl mx-auto'
+          src='/images/unlimited.png'
+          alt='a cat in a server room'
+        />
+      </div>
 
-      <img
-        class='self-auto rounded-lg'
-        src='/images/alvan-nee-T-0EW-SEbsE-unsplash.jpg'
-        alt=''
-      />
-      <div class=''>
-        <div class='flex justify-start items-center gap-6 pt-6'>
-          <img class='w-[40px]' src='/images/Paw_Print.svg' />
-          <h5 class='text-4xl font-light'>Easily reach out to other users</h5>
+      <div class='flex flex-col justify-center items-center'>
+        <img
+          class='w-[42.5rem] self-end rounded-xl mx-auto'
+          src='/images/contactothers.png'
+          alt=''
+        />
+      </div>
+      <div>
+        <div class='flex justify-start items-center gap-3 pt-6'>
+          <img class='w-10' src='/images/Paw_Print.svg' alt='free' />
+          <h5 class='text-2xl font-light'>Easily reach out to other users</h5>
         </div>
-        <p class='text-5xl font-extralight xl:leading-loose'>
+        <p class='text-3xl font-extralight leading-loose'>
           Our profile page makes it easy to reach out to other users.
         </p>
       </div>
@@ -201,7 +207,7 @@
           class='btn__tab text-[1.5rem] mr-[2.5rem] translate-y-[-50%] bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-full'
         >
           <span class='mr-[1rem] font-bold'>02</span>
-          See Pets' Pictures
+          Checkout Others
         </button>
         <button
           id='btn__tab-03'
@@ -229,15 +235,13 @@
             Upload your pet's pictures
           </h5>
         </div>
-        <p
-          class='self-center text-[1.75rem] font-light px-[10rem] py-[2.5rem] font-light'
-        >
-          Upload your pet's pictures to our gallery. Upload your pet's pictures
-          to our gallery. Upload your pet's pictures to our gallery. Upload your
-          pet's pictures to our gallery. Upload your pet's pictures to our
-          gallery.Upload your pet's pictures to our gallery. Upload your pet's
-          pictures to our gallery. Upload your pet's pictures to our gallery.
-        </p>
+        <div class='mx-auto flex flex-row justify-between w-[80rem]'>
+          <img class='py-6 w-[40rem] rounded-xl' src='/images/petpage.png' />
+          <p class='text-[2rem] font-light px-[10rem] py-[2.5rem] font-light'>
+            Add your first pet and start uploading pet's pictures to pet's
+            profile page.
+          </p>
+        </div>
       </div>
       <div id='tabContent__2' class='tabContent hidden flex flex-col'>
         <div class='flex justify-center items-center ml-[-5rem]'>
@@ -245,13 +249,15 @@
             <img class='w-[55px]' src='/images/share.png' />
           </div>
           <h5 class='self-center text-[2.75rem] font-bold'>
-            Share your pet-pictures with others
+            Share your pictures with others
           </h5>
         </div>
-        <p
-          class='self-center text-[1.75rem] font-light px-[10rem] py-[2.5rem] font-light'
-        >Check out pics!
-        </p>
+        <div class='mx-auto flex flex-row justify-between w-[80rem]'>
+          <img class='py-6 w-[40rem] rounded-xl' src='/images/locator.png' />
+          <p class='text-[2rem] font-light px-[10rem] py-[2.5rem] font-light'>
+            Nearby users' will show up in Locator along with trending pictures!
+          </p>
+        </div>
       </div>
       <div id='tabContent__3' class='tabContent hidden flex flex-col'>
         <div class='flex justify-center items-center ml-[-5rem]'>
@@ -259,13 +265,20 @@
             <img class='w-[55px]' src='/images/likencomment.png' />
           </div>
           <h5 class='self-center text-[2.75rem] font-bold'>
-            Like and comment on cute pets
+            Like and comment on pictures
           </h5>
         </div>
-        <p
-          class='self-center text-[1.75rem] font-light px-[10rem] py-[2.5rem] font-light'
-        >Check out pics!
-        </p>
+        <div class='mx-auto flex flex-row justify-between w-[80rem]'>
+          <img
+            class='py-6 w-[40rem] rounded-xl'
+            src='/images/commentnlike.png'
+          />
+          <p class='text-[2rem] font-light px-[10rem] py-[2.5rem] font-light'>
+            Start liking
+            <img class='inline w-4' src='/images/heart.svg' alt='Heart' />
+            other pets' pictures and leave comments on it.
+          </p>
+        </div>
       </div>
       <div id='tabContent__4' class='tabContent hidden flex flex-col'>
         <div class='flex justify-center items-center ml-[-5rem]'>
@@ -273,13 +286,19 @@
             <img class='w-[55px]' src='/images/calendar.png' />
           </div>
           <h5 class='self-center text-[2.75rem] font-bold'>
-            Set up a playdate with your pet's friends
+            Set up a playdate with other pets
           </h5>
         </div>
-        <p
-          class='self-center text-[1.75rem] font-light px-[10rem] py-[2.5rem] font-light'
-        >Check out pics!
-        </p>
+        <div class='mx-auto flex flex-row justify-between w-[80rem]'>
+          <img
+            class='py-6 w-[40rem] rounded-xl'
+            src='/images/messageother.png'
+          />
+          <p class='text-[2rem] font-light px-[10rem] py-[2.5rem] font-light'>
+            You can easily reach out to other users to set up a play-date! You
+            can either reach out to them using SNS or use our messenger.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -301,19 +320,13 @@
       >
         <div class='relative w-[65%]'>
           <h5 class='text-[4rem] font-bold mb-[1.5rem]'>"My pet is very happy.."</h5>
-          <p class='text-[1rem] mb-[3.5rem] text-[424242]'>
+          <p class='text-[1.5rem] mb-[3.5rem] text-[424242]'>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Accusantium quas quisquam non? Quas voluptate nulla minima deleniti
             optio ullam nesciunt, numquam corporis et asperiores laboriosam
             sunt, praesentium suscipit blanditiis. Necessitatibus id alias
             reiciendis, perferendis facere pariatur dolore veniam autem esse non
-            voluptatem saepe provident nihil molestiae. Lorem ipsum dolor sit,
-            amet consectetur adipisicing elit. Accusantium quas quisquam non?
-            Quas voluptate nulla minima deleniti optio ullam nesciunt, numquam
-            corporis et asperiores laboriosam sunt, praesentium suscipit
-            blanditiis. Necessitatibus id alias reiciendis, perferendis facere
-            pariatur dolore veniam autem esse non voluptatem saepe provident
-            nihil molestiae.
+            voluptatem saepe provident nihil molestiae.
           </p>
           <address
             class='absolute grid grid-cols-1 gap-x-5 right-0 font-normal'
@@ -333,20 +346,15 @@
         class='slide slide__2 pb-[15rem] flex items-center justify-center absolute top-0 w-[100%] h-[50rem] transition-transform duration-1000'
       >
         <div class='relative w-[65%]'>
-          <h5 class='text-[4rem] font-bold mb-[1.5rem]'>"Nice pictures.."</h5>
-          <p class='text-[1rem] mb-[3.5rem] text-[424242]'>
+          <h5 class='text-[4rem] font-bold mb-[1.5rem]'>"Locator feature is my favorite.."</h5>
+          <p class='text-[1.5rem] mb-[3.5rem] text-[424242]'>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Accusantium quas quisquam non? Quas voluptate nulla minima deleniti
             optio ullam nesciunt, numquam corporis et asperiores laboriosam
             sunt, praesentium suscipit blanditiis. Necessitatibus id alias
             reiciendis, perferendis facere pariatur dolore veniam autem esse non
             voluptatem saepe provident nihil molestiae. Lorem ipsum dolor sit,
-            amet consectetur adipisicing elit. Accusantium quas quisquam non?
-            Quas voluptate nulla minima deleniti optio ullam nesciunt, numquam
-            corporis et asperiores laboriosam sunt, praesentium suscipit
-            blanditiis. Necessitatibus id alias reiciendis, perferendis facere
-            pariatur dolore veniam autem esse non voluptatem saepe provident
-            nihil molestiae.
+            amet consectetur adipisicing elit.
           </p>
           <address
             class='absolute grid grid-cols-1 gap-x-5 right-0 font-normal'
@@ -366,20 +374,14 @@
         class='slide slide__3 pb-[15rem] flex items-center justify-center absolute top-0 w-[100%] h-[50rem] transition-transform duration-1000'
       >
         <div class='relative w-[65%]'>
-          <h5 class='text-[4rem] font-bold mb-[1.5rem]'>"Great website.."</h5>
-          <p class='text-[1rem] mb-[3.5rem] text-[424242]'>
+          <h5 class='text-[4rem] font-bold mb-[1.5rem]'>"I was able to find my pet a friend.."</h5>
+          <p class='text-[1.5rem] mb-[3.5rem] text-[424242]'>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Accusantium quas quisquam non? Quas voluptate nulla minima deleniti
             optio ullam nesciunt, numquam corporis et asperiores laboriosam
             sunt, praesentium suscipit blanditiis. Necessitatibus id alias
             reiciendis, perferendis facere pariatur dolore veniam autem esse non
-            voluptatem saepe provident nihil molestiae. Lorem ipsum dolor sit,
-            amet consectetur adipisicing elit. Accusantium quas quisquam non?
-            Quas voluptate nulla minima deleniti optio ullam nesciunt, numquam
-            corporis et asperiores laboriosam sunt, praesentium suscipit
-            blanditiis. Necessitatibus id alias reiciendis, perferendis facere
-            pariatur dolore veniam autem esse non voluptatem saepe provident
-            nihil molestiae.
+            voluptatem saepe provident nihil molestiae.
           </p>
           <address
             class='absolute grid grid-cols-1 gap-x-5 right-0 font-normal'

@@ -60,16 +60,13 @@
             </div>
           </div>
         {{/each}}
-         <form class='border-2' action='/messages/send' method='POST'>
-  <div class='py-5'>
-    <input type='hidden' name='userId' value='{{conversation.recipient_id}}' />
-    <input
-      class='w-full text-3xl bg-white py-5 px-3 rounded-xl'
-      type='text' name="message"
-      placeholder='type your message here...'
-    />
+<form class='' action='/messages/send' method='POST'>
+  <div class="py-5 flex">
+    <input type="hidden" name="userId" value="{{conversation.recipient_id}}" />
+    <input class="w-full text-2xl bg-white py-5 px-3 rounded-xl" type="text" name="message" placeholder="Type your message here..." />
+    <button type="submit"><img class="w-16 px-2" src="/images/paper.png"></button>
   </div>
-   </form>
+</form>
       </div>
     {{/each}}
     <!-- end message -->
