@@ -1,5 +1,4 @@
 const { User, Pets, Likes, Comments, Pictures } = require('../models/index');
-const { Op } = require('sequelize');
 const { Storage } = require('@google-cloud/storage');
 const tmp = require('tmp');
 const fs = require('fs');
@@ -12,11 +11,9 @@ const storage = new Storage({
 
 const bucketName = process.env.GOOGLE_CLOUD_BUCKET;
 
-
 exports.getPets = async (req, res) => {
   const { petId, pictureId } = req.params;
   const userId = req.session.user.id;
-  const user = await User.findByPk(userId);
   const pet = await Pets.findByPk(petId, {
     include: { model: User, as: 'owner' },
   });
@@ -96,8 +93,8 @@ exports.postAddPet = async (req, res) => {
 };
 
 exports.getEditPet = (req, res) => {
-  const petId = req.body.petId*1
-  console.log(petId)
+  const petId = req.body.petId * 1;
+  console.log(petId);
   res.render('addPet', {
     isLoggedIn: req.session.isLoggedIn,
     isEdit: true,
@@ -106,7 +103,7 @@ exports.getEditPet = (req, res) => {
 };
 
 exports.uploadPetProfilePicture = async (req, res) => {
-  const petId = req.body.petId*1;
+  const petId = req.body.petId * 1;
   const pet = await Pets.findByPk(petId);
   const pictureName = uuidv4();
 
@@ -126,9 +123,9 @@ exports.uploadPetProfilePicture = async (req, res) => {
   try {
     await storage.bucket(bucketName).upload(tempFilePath, options);
     await pet.update({
-      profile_picture: `https://storage.googleapis.com/${process.env.GOOGLE_CLOUD_BUCKET}/pet-pictures/${pictureName}`
+      profile_picture: `https://storage.googleapis.com/${process.env.GOOGLE_CLOUD_BUCKET}/pet-pictures/${pictureName}`,
     });
-      res.redirect(`/`);
+    res.redirect(`/`);
   } catch (err) {
     res.status(500).send('Error uploading file');
   } finally {

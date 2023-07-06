@@ -10,4 +10,16 @@ module.exports = {
   time_passed: function (date) {
     return dayjs(date).fromNow();
   },
+
+  latestIndex: function (array) {
+    return array[array.length - 1];
+  },
+
+  sentOrReceived: function (string) {
+    if (string.startsWith('Sent')) {
+      return true;
+    } else {
+      return false;
+    }
+  },
 };

@@ -1,5 +1,4 @@
 const { User, Pets, Likes, Comments, Pictures } = require('../models/index');
-const { Op } = require('sequelize');
 
 exports.getUser = async (req, res) => {
   const currentUser = await User.findByPk(req.session.user.id, {
@@ -10,18 +9,22 @@ exports.getUser = async (req, res) => {
     },
   });
 
+  const hasAccess = req.session.user.id === currentUser.id;
+
   const petData = currentUser.pets.reduce((data, pet) => {
     const { name: petName, id: petId, pictures } = pet;
     if (pictures.length > 0) {
       const latestPicture = pictures[pictures.length - 1];
       const latestPictureId = latestPicture.id;
       const profilePicture = pet.profile_picture;
-      data.push({ petName, petId, latestPictureId, profilePicture });
+      const isOwner = currentUser.id === req.session.user.id;
+      data.push({ petName, petId, latestPictureId, profilePicture, isOwner });
     }
     return data;
   }, []);
 
   res.render('user', {
+    hasAccess: hasAccess,
     isUserPage: true,
     petData: petData.length > 0 ? petData : null,
     userId: currentUser.id,
@@ -48,6 +51,8 @@ exports.getOtherUser = async (req, res) => {
     },
   });
 
+  const hasAccess = req.session.user.id === otherUser.id;
+
   const petData = otherUser.pets.reduce((data, pet) => {
     const { name: petName, id: petId, pictures } = pet;
     if (pictures.length > 0) {
@@ -60,6 +65,7 @@ exports.getOtherUser = async (req, res) => {
   }, []);
 
   res.render('user', {
+    hasAccess: hasAccess,
     isUserPage: true,
     petData: petData.length > 0 ? petData : null,
     userPicture: otherUser.userPicture,

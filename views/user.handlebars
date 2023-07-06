@@ -5,106 +5,86 @@
     class='flex flex-row gap-12 md:flex md:flex-col shrink-1 md:mb-6 md:p-12 lg:border-r-2 mr-[4rem]'
   >
     <img
-      class='w-48 h-48 md:w-96 md:h-96 md:mb-[4rem] rounded-full'
+      class='w-48 h-48 md:w-96 md:h-96 md:mb-[4rem] rounded-2xl'
       src='{{this.userPicture}}'
       alt='Profile Image'
     />
-    <div class='flex flex-col mb-12'>
-      <p class=''>Your likes</p>
-      <div class='w-50 border-t-2'></div>
-      <div class='flex flex-col'>
-        <div class=''>
-          <ul class='flex wrap'>
-            <li class=''><a href=''><img
-                  class='w-16 h-16'
-                  src='/images/Paw_Print.svg'
-                /></a>
-            </li>
-            <li class=''><a href=''><img
-                  class='w-16 h-16'
-                  src='/images/Paw_Print.svg'
-                /></a>
-            </li>
-            <li class=''><a href=''><img
-                  class='w-16 h-16'
-                  src='/images/Paw_Print.svg'
-                /></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class='flex flex-col mb-12'>
-      <p class=''>Liked you</p>
-      <div class='w-50 border-t-2'></div>
-      <div class='flex flex-col'>
-        <div class=''>
-          <ul class='flex'>
-            <li class=''><a href=''><img
-                  class='w-16 h-16'
-                  src='/images/Paw_Print.svg'
-                /></a>
-            </li>
-            <li class=''><a href=''><img
-                  class='w-16 h-16'
-                  src='/images/Paw_Print.svg'
-                /></a>
-            </li>
-            <li class=''><a href=''><img
-                  class='w-16 h-16'
-                  src='/images/Paw_Print.svg'
-                /></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class='flex shrink-1 flex-col mb-6'>
-    <div class='flex flex-col h-[30vh] pb-12'>
-      <p class='text-[5rem]'>
-        {{this.username}}
-        <span class='text-[2rem]'>{{this.city}}, {{this.state}}</span></p>
-      <p class='text-[1.5rem]'>{{this.pronouns}} </p>
-      <div class='flex py-12 gap-12'>
-        <form action='/messages/send' method='POST'>
-          <input type='text' name='message' />
-          <input type='hidden' name='userId' value='{{this.userId}}' />
-          <button type='submit'>Send Message</button>
-        </form>
-        <button>Report User</button>
-      </div>
-    </div>
-    <div class='flex h-[3.25rem] mt-[1.5rem] border-b-2'>
+    <form class='border-2' action='/messages/send' method='POST'>
+      <input
+        class='text-xl'
+        type='text'
+        name='message'
+        placeholder='Start typing..'
+      />
+      <input type='hidden' name='userId' value='{{this.userId}}' />
       <button
-        id='btn__about'
-        class='text-4xl self-start btn mr-6'
-      >About</button>
-      <button id='btn__pets' class='text-4xl self-start btn mr-6'>Pets</button>
-    </div>
+        type='submit'
+        class='px-5 py-2.5 text-lg font-medium text-white inline-flex items-center bg-red-400 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800'
+      >
+        <svg
+          class='w-3.5 h-3.5 text-white mr-2'
+          aria-hidden='true'
+          xmlns='http://www.w3.org/2000/svg'
+          fill='currentColor'
+          viewBox='0 0 20 16'
+        >
+          <path
+            d='m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z'
+          />
+          <path
+            d='M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z'
+          />
+        </svg>
+        Message This User
+      </button>
+    </form>
     <div
       id='div__about'
       class='h-[30vh] flex flex-col gap-6 mt-6 text-gray-600'
     >
       <ul class=''>
         <li class='mb-6'>
-          <p class='text-2xl'>Phone: {{this.phone_number}} </p>
+          <p class='text-2xl'>Phone:
+            <a href='tel:{{this.phone_number}}'>{{this.phone_number}}</a></p>
         </li>
         <li class='mb-6'>
-          <p class='text-2xl'>Email: {{this.email}} </p>
+          <p class='text-2xl'>Email:
+            <a href='mailto:{{this.email}}'>{{this.email}}</a></p>
         </li>
         <li class='mb-6'>
-          <p class='text-2xl'>Twitter: {{this.twitter}}</p>
+          <p class='text-2xl'>Twitter:
+            <a
+              href='https://www.twitter.com/{{this.twitter}}'
+            >{{this.twitter}}</a></p>
         </li>
         <li class='mb-6'>
-          <p class='text-2xl'>Facebook: {{this.facebook}}</p>
+          <p class='text-2xl'>Facebook:
+            <a
+              href='https://www.facebook.com/{{this.facebook}}'
+            >{{this.facebook}}</a></p>
         </li>
         <li class='mb-6'>
-          <p class='text-2xl'>Instagram: {{this.instagram}}</p>
+          <p class='text-2xl'>Instagram:
+            <a
+              href='https://www.instagram.com/{{this.instagram}}'
+            >{{this.instagram}}</a></p>
         </li>
       </ul>
+
     </div>
-    <div id='div__pets' class='hidden mb-6'>
+
+  </div>
+  <div class='flex shrink-1 flex-col mb-6'>
+    <div class='flex flex-col h-[30vh] pb-12'>
+      <p class='text-[5rem]'>
+        {{this.username}}
+        <span class='text-[2rem]'>{{this.city}}, {{this.state}}</span></p>
+      <p class='text-[1.5rem]'> Pronouns: {{this.pronouns}} </p>
+    </div>
+    <div class='flex h-[3.25rem] mt-[1.5rem] border-b-2'>
+      <button id='btn__pets' class='text-4xl self-start btn mr-6'>My Pets</button>
+    </div>
+    <div id='div__pets' class='mb-6'>
       <div class='flex flex-col'>
         <ul class='list-disc list-inside pt-6 pb-12'>
           {{#each petData as |pet|}}
@@ -116,20 +96,38 @@
                 action='/pets/{{pet.petId}}/{{pet.latestPictureId}}'
                 href='/pets/{{pet.petId}}/{{pet.latestPictureId}}'
               >{{pet.petName}}</a>
-              <form action="/pets/edit" method="POST">
-              <input type="hidden" name="petId" value="{{pet.petId}}">
-                <button type="submit">Edit</button>
+              {{#if pet.isOwner}}
+                <form action='/pets/edit' method='POST'>
+                  <input type='hidden' name='petId' value='{{pet.petId}}' />
+                  <button class='mx-6' type='submit'>Click to Edit</button>
                 </form>
-                </li>
+              {{/if}}
+            </li>
           {{/each}}
         </ul>
-        <form action='/pets/addPet' method='GET'>
-          <button
-            id='btn__addPet'
-            type='submit'
-            class='grow-0 bg-red-500 text-white px-4 py-2 rounded-full mt-2'
-          >Add Pet</button>
-        </form>
+        {{#if hasAccess}}
+          <form action='/pets/addPet' method='GET'>
+            <button
+              type='submit'
+              class='float-right px-5 py-2.5 text-xl font-medium text-white inline-flex items-center bg-red-400 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-200 rounded-lg text-center dark:bg-red-300 dark:hover:bg-red-400 dark:focus:ring-red-200'
+            >
+              <svg
+                style='color: white'
+                xmlns='http://www.w3.org/2000/svg'
+                width='16'
+                height='16'
+                fill='currentColor'
+                class='bi bi-plus'
+                viewBox='0 0 16 16'
+              >
+                <path
+                  d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'
+                  fill='white'
+                ></path>
+              </svg>
+              Add Pet</button>
+          </form>
+        {{/if}}
       </div>
     </div>
   </div>

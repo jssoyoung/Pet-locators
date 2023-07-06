@@ -1,85 +1,105 @@
 const User = require('../models/User');
 const validator = require('validator');
-
+const { Op } = require('sequelize');
 exports.userSignup = async (req, res) => {
-  const username = validator.isAlpha(req.body.username)
-    ? req.body.username
-    : res.status(404).json({
-        Status: 404,
-        Message: 'Username must only consist lower and upper characters.',
-      });
-  const email = validator.isEmail(req.body.email)
-    ? req.body.email
-    : res
-        .status(404)
-        .json({ Status: 404, Message: 'Enter a valid email address' });
-  const password = req.body.password //validator.isStrongPassword(req.body.password)
-    ? req.body.password
-    : res.status(404).json({
-        Status: 404,
-        Message:
-          'Password must be a minimum length of 8 characters, at least one lowercase letter, one uppercase letter, one numerical digit, and one symbol.',
-      });
-  const confirmPassword = req.body.confirmPassword;
-  const { pronouns, city, state } = req.body;
+  // Destructure signup form data:
+  const { username, email, password, confirmPassword, pronouns, city, state } =
+    req.body;
+  // Check if passwords match:
   const passwordsMatch = password === confirmPassword;
-  if (!passwordsMatch) {
-    res.status(404).json({
-      Status: 404,
-      Message: 'Passwords must match!',
-    });
+
+  let status = null;
+  let message = null;
+
+  if (!username || !email || !password || !confirmPassword || !city || !state) {
+    status = 400;
+    message = 'Invalid input. Please provide valid values for all fields.';
+  } else if (!validator.isAlpha(username)) {
+    status = 400;
+    message = 'Username must only consist of lower and upper characters.';
+  } else if (!validator.isEmail(email)) {
+    status = 400;
+    message = 'Enter a valid email address.';
+  } else if (!passwordsMatch) {
+    status = 400;
+    message = 'Passwords must match.';
+  } else if (!validator.isStrongPassword(password)) {
+    status = 400;
+    message =
+      'Password must include at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.';
   } else {
-    const newUser = await User.create(
-      {
-        user_name: username,
-        email: email,
-        password: password,
-        city: city,
-        state: state,
-        pronouns: pronouns,
-      },
-      { individualHooks: true, returning: true }
-    );
-    req.session.isLoggedIn = true;
-    req.session.user = newUser;
-    res.redirect('/user');
+    try {
+      const existingUser = await User.findOne({
+        where: {
+          [Op.or]: [{ user_name: username }, { email: email }],
+        },
+      });
+
+      if (existingUser) {
+        status = 409;
+        message = 'Username or email address is already registered.';
+      } else {
+        const newUser = await User.create(
+          {
+            user_name: username,
+            email: email,
+            password: password,
+            city: city,
+            state: state,
+            pronouns: pronouns,
+          },
+          { individualHooks: true, returning: true }
+        );
+        req.session.isLoggedIn = true;
+        req.session.user = newUser;
+        status = 200;
+        message = `Welcome, ${username}`;
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      status = 500;
+      message = 'An error occurred while creating the user.';
+    }
   }
+
+  res.status(status).json({ Status: status, Message: message });
 };
 
 exports.userLogin = async (req, res) => {
-  const email = validator.isEmail(req.body.email)
-    ? req.body.email
-    : res.json({ Status: 404, Message: 'Enter a valid email address' });
-  const password = req.body.password;
+  const { email, password } = req.body;
   const user = await User.findOne({
     where: {
       email: email,
     },
   });
 
+  let status = null;
+  let message = null;
+
   if (user && validator.isEmail(email)) {
-    const checkPassword = user.checkPassword(password)
-      ? user.checkPassword(password)
-      : res.json({ Status: 404, Message: 'Wrong password!' });
+    const checkPassword = user.checkPassword(password);
 
     if (checkPassword) {
       req.session.isLoggedIn = true;
       req.session.user = user;
-      res.render('home', {
-        isLoggedIn: req.session.isLoggedIn,
-      });
+      status = 200;
+      message = `Welcome back, ${req.session.user.user_name}!`;
     } else {
-      console.error('Incorrect password');
+      status = 400;
+      message = 'Incorrect password, please try again.';
     }
   } else {
-    console.error('User not found');
+    status = 404;
+    message = 'User not found, please try again.';
   }
+
+  res.status(status).json({ Status: status, Message: message });
 };
 
 exports.userLogout = (req, res) => {
   if (req.session.isLoggedIn) {
     req.session.destroy(() => {
-      res.redirect('/');
+      res.status(204).redirect('/');
     });
   } else {
     res.status(404).end();

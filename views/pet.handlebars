@@ -9,7 +9,7 @@
           src='{{this.mainPicture}}'
           alt='Image'
         />
-        <h1>Likes: {{this.totalLikes}} </h1>
+        <h1 class="float-right">Likes: {{this.totalLikes}} </h1>
         <div
           class='absolute left-0 top-0 w-full h-full flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity'
         >
@@ -29,21 +29,11 @@
           </form>
         </div>
       </div>
-      <div class='relative comments mt-4'>
-        <ul class='comments-ul'>
-          {{#each comments as |comment|}}
-            <li class='comments mb-2'>
-              <span>{{lookup comment 'user.user_name'}}</span>
-              <span>{{comment.comment}}</span>
-              <span>{{time_passed comment.createdAt}}</span>
-              <button>**Delete Comment**</button></li>
-          {{/each}}
-        </ul>
-      </div>
     </div>
-    <div class='flex justify-between'>
-      <form action='/comment' method='POST' class='flex mb-8'>
+    <div class='flex justify-center'>
+      <form id='form__postComment' class='flex mb-8'>
         <input
+          class='w-[20rem] lg:w-[50rem]'
           type='text'
           name='comment'
           placeholder='Add a comment...'
@@ -56,21 +46,20 @@
           class='bg-blue-500 text-white px-4 py-2 rounded-md'
         >Post</button>
       </form>
-      <form
-        action='/upload'
-        method='POST'
-        enctype='multipart/form-data'
-        class='flex mb-8'
-      >
-        <input type='hidden' name='petId' value='{{this.petId}}' />
-        <input type='hidden' name='pictureId' value='{{this.pictureId}}' />
-        <input type='hidden' name='currentUser' value='{{this.userId}}' />
-        <input type='file' name='file' required />
-        <button
-          type='submit'
-          class='bg-blue-500 text-white px-4 py-2 rounded-md'
-        >+Picture</button>
-      </form>
+    </div>
+    <div class='relative comments mt-4'>
+      <ul class='flex flex-col justify-center comments-ul'>
+        {{#each comments as |comment|}}
+          <li class='comments mb-2'>
+            <span>{{lookup comment 'user.user_name'}}</span>
+            <span>{{comment.comment}}</span>
+            <span>{{time_passed comment.createdAt}}</span>
+            <form class='form__deleteComment'>
+              <input type='hidden' name='commentId' value='{{comment.id}}' />
+              <button type='submit'>**Delete Comment**</button></form></li>
+        {{/each}}
+      </ul>
+      <p id='message__comment'></p>
     </div>
   </div>
   <div
@@ -100,7 +89,7 @@
         {{/each}}
       </ul>
     </div>
-    <div class=''>
+    <div class='flex flex-col justify-between'>
       <ul
         class='grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-8 gap-6'
       >
@@ -111,6 +100,23 @@
               /></a></li>
         {{/each}}
       </ul>
+      <form
+        action='/upload'
+        method='POST'
+        enctype='multipart/form-data'
+        class='self-center flex flex-col gap-2 mb-8 w-[20rem] mt-6'
+      >
+        <input type='hidden' name='petId' value='{{this.petId}}' />
+        <input type='hidden' name='pictureId' value='{{this.pictureId}}' />
+        <input type='hidden' name='currentUser' value='{{this.userId}}' />
+        <input type='file' name='file' required />
+        <button
+          type='submit'
+          class='bg-blue-500 text-white px-4 py-2 rounded-md'
+        >+Upload</button>
+        <p class='text-center py-4 text-xl'>PNG or JPG Only</p>
+      </form>
     </div>
+
   </div>
 </main>

@@ -1,14 +1,76 @@
-<main class='h-auto py-12'>
-  <div>Received Messages
-    {{#each receivedMessages as |message|}}
-    <p>{{message.sender}}</p>
-      <p>{{message.message}}</p>
-      <p>{{message.createdAt}}</p>
-    {{/each}}
+<div class='container flex flex-col justify-between max-w-[120rem] h-auto mx-auto py-12'>
+  <!-- Chatting -->
+  <div class='flex flex-row justify-between bg-white h-[70vh] rounded-lg shadow-lg'>
+    <!-- chat list -->
+    <div class='flex flex-col w-2/5 border-r-2 overflow-y-auto'>
+      <!-- search compt -->
+      <div class='border-b-2 py-4 px-2'>
+        <input
+          type='text'
+          placeholder='search chatting'
+          class='py-2 px-2 border-2 border-gray-200 rounded-2xl w-full'
+        />
+      </div>
+      <!-- end search compt -->
+      <!-- user list -->
+      {{#each conversations as |conversation|}}
+        <div
+          data-conversationId='{{conversation.conversation_id}}'
+          class='container__user cursor-pointer flex flex-row py-4 px-2 justify-center items-center border-b-2 hover:border-blue-400 focus:border-blue-400 focus:outline-none'
+        >
+          <div class='w-1/4'>
+            <img src='{{conversation.recipient_picture}}' class='object-cover h-12 w-12 rounded-full' alt='' />
+          </div>
+          <div class='w-full'>
+            <div class='text-lg font-semibold'>{{conversation.recipient}}</div>
+            {{#with (latestIndex conversation.messages)}}
+              <span class='text-gray-500'>{{this}}</span>
+            {{/with}}
+          </div>
+        </div>
+      {{/each}}
+    </div>
+    <!-- message -->
+    {{#each conversations as |conversation|}}
+      <div
+        data-conversationIdMessage='{{this.conversation_id}}'
+        class='hidden container__messages w-full h-[70vh] px-5 flex flex-col justify-end'
+      >
+        {{#each conversation.messages as |message|}}
+          <div>
+            <div class='flex flex-col-reverse mt-5'>
+              <div class='flex {{#if (sentOrReceived message) }} justify-end {{else}} justify-start {{/if}}mb-4'>
+               <img
+                  src="{{#if (sentOrReceived message)}}{{conversation.user_picture}}{{else}}{{conversation.recipient_picture}}{{/if}}"
+                  class='{{#if (sentOrReceived message)}} hidden {{/if}} object-cover h-12 w-12 rounded-full'
+                  alt=''
+                />
+                <div
+                  class='mx-2 py-3 px-4 {{#if (sentOrReceived message) }} bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl {{else}} bg-green-600 rounded-br-3xl rounded-tr-3xl rounded-tl-xl {{/if}} text-white'
+                >
+                  {{this}}
+                </div>
+                <img
+                  src="{{#if (sentOrReceived message)}}{{conversation.user_picture}}{{else}}{{conversation.recipient_picture}}{{/if}}"
+                  class='{{#unless (sentOrReceived message)}} hidden {{/unless}} object-cover h-12 w-12 rounded-full'
+                  alt=''
+                />
+              </div>
+            </div>
+          </div>
+        {{/each}}
+         <form class='border-2' action='/messages/send' method='POST'>
+  <div class='py-5'>
+    <input type='hidden' name='userId' value='{{conversation.recipient_id}}' />
+    <input
+      class='w-full bg-red-100 py-5 px-3 rounded-xl'
+      type='text' name="message"
+      placeholder='type your message here...'
+    />
   </div>
-  <div>Sent Messages
-    {{#each sentMessages as |message|}}
-      <p>{{message.message}}</p>
+   </form>
+      </div>
     {{/each}}
+    <!-- end message -->
   </div>
-</main>
+</div>
