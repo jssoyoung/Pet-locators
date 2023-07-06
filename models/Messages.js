@@ -7,19 +7,19 @@ Messages.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    sender_id: {
+    conversation_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'user',
+        model: 'conversation',
         key: 'id',
       },
     },
-    receiver_id: {
+    user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
@@ -30,11 +30,6 @@ Messages.init(
     message: {
       type: DataTypes.STRING,
       allowNull: true,
-    },
-    isDeleted: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
     },
   },
   {

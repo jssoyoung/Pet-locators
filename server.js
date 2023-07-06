@@ -3,20 +3,27 @@ const routes = require('./routes/index');
 const sequelize = require('./config/connection');
 const session = require('express-session');
 const SequelizeStore = require('./utils/session');
-const handlebars = require('express-handlebars');
+const exphbs = require('express-handlebars');
 const helpers = require('./utils/helpers');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const hbs = exphbs.create({ helpers });
+
 app.use(
   session({
     secret: 'team pet locators',
+    cookie: {
+      maxAge: 3600000,
+      httpOnly: true,
+      secure: false,
+      sameSite: 'strict',
+    },
     store: new SequelizeStore({
       db: sequelize,
     }),
     resave: false, // we support the touch method so per the express-session docs this should be set to false
-    proxy: true, // if you do SSL outside of node.
     saveUninitialized: false,
   })
 );
@@ -24,34 +31,25 @@ app.use(
 app.use(express.static('public'));
 app.use(express.static('dist'));
 
-app.engine(
-  'handlebars',
-  handlebars({
-    defaultLayout: 'main',
-    helpers: helpers,
-  })
-);
-
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-app.set('views', 'views');
+
 app.use(express.json());
 app.use(
   express.urlencoded({
-    extended: false,
+    extended: true,
   })
 );
 
 app.use(routes);
 
-sequelize
-  .sync({
-    force: false,
-  })
-  .then(() => {
+(async () => {
+  try {
+    await sequelize.sync({ force: false });
     app.listen(PORT, () => {
-      console.log('Server running on port 3001');
+      console.log('Server is running..');
     });
-  })
-  .catch((error) => {
+  } catch (error) {
     console.log(`Error ${error}`);
-  });
+  }
+})();

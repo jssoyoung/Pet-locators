@@ -23,21 +23,22 @@ User.init(
     user_name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     city: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     state: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     pronouns: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     phone_number: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     twitter: {
@@ -56,16 +57,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      validate: {
-        isEmail: true,
-      },
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [8],
-      },
     },
   },
   {
@@ -93,10 +88,24 @@ User.init(
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(
-          updatedUserData.password,
-          10
-        );
+        if (updatedUserData.password) {
+          const userId = updatedUserData.id;
+
+          try {
+            const existingUser = await User.findByPk(userId);
+            const existingPassword = existingUser.password;
+
+            if (updatedUserData.password !== existingPassword) {
+              updatedUserData.password = await bcrypt.hash(
+                updatedUserData.password,
+                10
+              );
+            }
+          } catch (error) {
+            console.error('Error retrieving user data:', error);
+            throw new Error('Error retrieving user data');
+          }
+        }
         return updatedUserData;
       },
     },

@@ -115,8 +115,11 @@ for (const btn of btnSignup) {
 overlay.addEventListener('click', closeModal);
 
 document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape' && !modalSignup.classList.contains('hidden')) {
-    closeModal();
+  if (
+    (e.key === 'Escape' && !modalSignup.classList.contains('hidden')) ||
+    (e.key === 'Escape' && !modalLogin.classList.contains('hidden'))
+  ) {
+    closeModal(e);
   }
 });
 
@@ -131,4 +134,3 @@ linkSignup.addEventListener('click', (e) => {
   modalSignup.classList.remove('hidden');
   modalLogin.classList.add('hidden');
 });
-
