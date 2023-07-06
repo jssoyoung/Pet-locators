@@ -83,7 +83,7 @@ Messages.belongsTo(User, {
   foreignKey: 'user_id',
 });
 
-User.hasMany(Conversation, {
+User.belongsToMany(Conversation, {
   through: 'UserConversation',
   foreignKey: 'user_id',
   // otherKey: 'conversation_id',
