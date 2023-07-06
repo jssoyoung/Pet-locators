@@ -46,7 +46,7 @@
                   alt=''
                 />
                 <div
-                  class='mx-2 py-3 px-4 {{#if (sentOrReceived message) }} bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl {{else}} bg-green-600 rounded-br-3xl rounded-tr-3xl rounded-tl-xl {{/if}} text-white'
+                  class='mx-2 py-3 px-4 text-2xl {{#if (sentOrReceived message) }} bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl {{else}} bg-green-600 rounded-br-3xl rounded-tr-3xl rounded-tl-xl {{/if}} text-white'
                 >
                   {{this}}
                 </div>
@@ -63,7 +63,7 @@
   <div class='py-5'>
     <input type='hidden' name='userId' value='{{conversation.recipient_id}}' />
     <input
-      class='w-full bg-red-100 py-5 px-3 rounded-xl'
+      class='w-full text-3xl bg-white py-5 px-3 rounded-xl'
       type='text' name="message"
       placeholder='type your message here...'
     />
