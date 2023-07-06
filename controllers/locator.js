@@ -13,11 +13,8 @@ exports.getLocator = async (req, res) => {
     },
   });
 
-  const allPictures = await Pictures.findAll({
-    include: {
-      model: Likes,
-    },
-  });
+  const allPictures = await Pictures.findAll();
+
   const likedPictures = [];
   for (const picture of allPictures) {
     const pictureLikeCount = await Likes.findAndCountAll({
