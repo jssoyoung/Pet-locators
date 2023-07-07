@@ -43,7 +43,7 @@ This web application is divided into different sections. The header of the web a
 The Google storage API was used to store all of the pictures that users upload onto our web application.
 
 ## Credits
-
+* Icons from [www.flaticon.com/free-icons/]
 * Background Image from 
 * Google Storage API from 
 * Special thanks to UC Berkeley Coding Boot Camp staff: Samantha (Instructor), Jin Yi (TA), Lalith (TA) and Gunjan (TA) for helping us with this project.

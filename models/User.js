@@ -67,24 +67,7 @@ User.init(
     hooks: {
       beforeCreate: async (newUserData) => {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        if (newUserData.pronouns !== undefined) {
-          if (newUserData.pronouns.includes('He/Him')) {
-            newUserData.userPicture = `https://randomuser.me/api/portraits/men/${Math.trunc(
-              Math.random() * 50 + 1
-            )}.jpg`;
-          } else if (newUserData.pronouns.includes('She/Her')) {
-            newUserData.userPicture = `https://randomuser.me/api/portraits/women/${Math.trunc(
-              Math.random() * 50 + 1
-            )}.jpg`;
-          } else if (
-            newUserData.pronouns === null ||
-            newUserData.pronouns.includes('They/Them')
-          ) {
-            const randomNumber = Math.trunc(Math.random() * 50 + 1);
-            const gender = randomNumber % 2 === 0 ? 'men' : 'women';
-            newUserData.userPicture = `https://randomuser.me/api/portraits/${gender}/${randomNumber}.jpg`;
-          }
-        }
+        newUserData.userPicture = '/images/profile-placeholder.jpg';
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
