@@ -12,8 +12,6 @@ Here is the link to the repository: https://github.com/jssoyoung/Pet-locators
 
 Here is the link to the deployed application: https://lit-retreat-91915-8f068b8cfb99.herokuapp.com/
 
-Here is a link to the walkthrough video of our website: 
-
 Here is an image of the website: ![Portfolio](public/images/website-screenshot.png)
 
 
@@ -46,7 +44,7 @@ The Google storage API was used to store all of the pictures that users upload o
 * Icons from Flaticon
 * Background Image from Unsplash
 * Google Cloud Storage API from Google
-* Special thanks to UC Berkeley Coding Boot Camp staff: Samantha (Instructor), Jin Yi (TA), Lalith (TA) and Gunjan (TA) for helping us with this project.
+* Special thanks to UC Berkeley Coding Boot Camp staff: Samantha (Instructor), Jin Yi (TA), and Gunjan (TA) for helping us with this project.
 
 ## License
 
