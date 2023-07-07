@@ -102,10 +102,11 @@
         class='grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-8 gap-6'
       >
         {{#each pictures}}
-          <li class=''><a href='/pets/{{this.pet_id}}/{{this.id}}'><img
-                class='w-36 rounded opacity-75 hover:opacity-100 transition duration-300'
-                src='{{this.pictureUrl}}'
-              /></a></li>
+          <li class=''><a href='/pets/{{this.pet_id}}/{{this.id}}'>
+              <div
+                class='rounded-xl mx-auto rounded-2xl shadow-2xl mb-4 w-[9rem] h-[9rem] bg-cover bg-center bg-no-repeat brightness-90 hover:brightness-105'
+                style="background-image: url('{{this.pictureUrl}}');"
+              ></div></a></li>
         {{/each}}
       </ul>
       <form
