@@ -1,10 +1,14 @@
+// Import sequelize to create connection to database
 const Sequelize = require('sequelize');
+// Import dotenv to hide sensitive data
 require('dotenv').config();
 
 let sequelize;
 
+// JAWDB is for Heroku deployment; it is a remote database
 if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
+  // If not JAWSDB, then use local database
 } else {
   sequelize = new Sequelize(
     process.env.DB_NAME,
@@ -13,10 +17,10 @@ if (process.env.JAWSDB_URL) {
     {
       host: 'localhost',
       dialect: 'mysql',
-      // port: 3001, 
+      // port: 3001,
       dialectOptions: {
-        decimalNumbers: true
-      }
+        decimalNumbers: true,
+      },
     }
   );
 }

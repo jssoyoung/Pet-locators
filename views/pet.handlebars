@@ -2,13 +2,18 @@
   <div
     class='flex flex-col h-auto w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md'
   >
-    <div class='mb-4 h-auto'>
+    <div class='mb-12 h-auto'>
       <div class='mx-auto relative w-[70%]'>
         <div
           id='div__mainPicture'
           class='rounded-md mx-auto mb-4 w-[70rem] h-[50rem] bg-cover bg-center bg-no-repeat'
           style="background-image: url('{{this.mainPicture}}');"
         ></div>
+        <a
+          href='{{this.mainPicture}}'
+          class='absolute right-[3rem] z-50'
+          target='_blank'
+        >View Full Size</a>
         <h1 class='text-center text-lg'>TOTAL
           <img class='inline w-4' src='/images/heart.svg' alt='Heart' />:
           {{this.totalLikes}}</h1>
@@ -45,7 +50,7 @@
         <input type='hidden' name='pictureId' value='{{this.pictureId}}' />
         <button
           type='submit'
-          class='bg-blue-500 text-white px-4 py-2 rounded-md'
+          class='bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md'
         >Post</button>
       </form>
     </div>
@@ -53,11 +58,14 @@
       <ul class='flex flex-col justify-center comments-ul w-[50rem]'>
         {{#each comments as |comment|}}
           <li class='border-b-2 comments mb-2'>
-            <span class='inline-block text-3xl py-3'>{{lookup
-                comment
-                'user.user_name'
-              }}
-            </span><span class='text-md'>
+            <a
+              class='text-blue-500 hover:text-blue-600'
+              href='/user/{{lookup comment "user.id"}}'
+            >
+              <span class='inline-block text-3xl py-3 underline'>
+                {{lookup comment 'user.user_name'}}
+              </span>
+            </a><span class='text-lg px-2'>
               ({{time_passed comment.createdAt}})</span><br />
             <span class='text-3xl pl-12'>{{comment.comment}} </span><br />
             <form class='float-right form__deleteComment'>
@@ -74,14 +82,22 @@
   <div
     class='flex flex-1 h-auto w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md'
   >
-    <div class='border-r-2 ml-2 mr-8 w-[17.5rem]'>
+    <div class='relative border-r-2 ml-2 mr-8 w-[17.5rem]'>
       <img
         class='rounded-full max-w-[12rem] m-8'
         src='{{this.pet.dataValues.profile_picture}}'
         alt='Pet Profile'
       />
+      <form class='absolute right-4 top-[21.25rem]'>
+        <button
+          disabled
+          class='bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md'
+        >
+          Profile Picture
+        </button>
+      </form>
       <h3 class='text-5xl font-bold mb-4'>{{this.pet.dataValues.name}}</h3>
-      <a href='/user/{{this.ownerId}}' class='text-xl text-blue-500'>Owner:
+      <a href='/user/{{this.ownerId}}' class='text-xl text-blue-600'>Owner:
         {{this.owner}}</a>
       <ul class='py-6'>
         <li class='text-xl'>Age: {{this.pet.dataValues.age}}</li>
@@ -102,7 +118,7 @@
         class='grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-8 gap-6'
       >
         {{#each pictures}}
-          <li class=''><a href='/pets/{{this.pet_id}}/{{this.id}}'>
+          <li class='hover:z-50'><a href='/pets/{{this.pet_id}}/{{this.id}}'>
               <div
                 class='rounded-xl mx-auto rounded-2xl shadow-2xl mb-4 w-[9rem] h-[9rem] bg-cover bg-center bg-no-repeat brightness-90 hover:brightness-105'
                 style="background-image: url('{{this.pictureUrl}}');"
@@ -121,7 +137,7 @@
         <input type='file' name='file' required />
         <button
           type='submit'
-          class='bg-blue-500 text-white px-4 py-2 rounded-md'
+          class='bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md'
         >+Upload</button>
         <p class='text-center py-4 text-xl'>PNG or JPG Only</p>
       </form>

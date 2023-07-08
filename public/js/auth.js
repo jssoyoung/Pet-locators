@@ -1,11 +1,16 @@
+// Grab the form elements:
 const loginForm = document.getElementById('form__login');
 const signupForm = document.getElementById('form__signup');
 
+// Add event listener to login form:
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  // Use FormData to grab the form data:
+  // Fyi, FormData is a built-in browser API that allows us to grab the form data:
   const formData = new FormData(loginForm);
   const loginData = Object.fromEntries(formData);
 
+  // Send a POST request to the server with the form data:
   try {
     const response = await fetch('/user/login', {
       method: 'POST',
@@ -15,6 +20,8 @@ loginForm.addEventListener('submit', async (e) => {
       },
     });
 
+    // If the response is ok, grab the data from the response and display the message:
+    // It also checks for any errors and displays the error message:
     if (response.ok) {
       const data = await response.json();
       const message = data.message;
@@ -35,11 +42,13 @@ loginForm.addEventListener('submit', async (e) => {
   }
 });
 
+// Add event listener to signup form:
 signupForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const formData = new FormData(signupForm);
   const signupData = Object.fromEntries(formData);
 
+  // Send a POST request to the server with the form data:
   try {
     const response = await fetch('/user/signup', {
       method: 'POST',
@@ -49,6 +58,8 @@ signupForm.addEventListener('submit', async (e) => {
       },
     });
 
+    // If the response is ok, grab the data from the response and display the message:
+    // It also checks for any errors and displays the error message:
     if (response.ok) {
       const data = await response.json();
       const message = data.message;

@@ -1,5 +1,5 @@
 <main
-  class='flex flex-col h-auto mx-auto bg-white shadow-lg rounded-md overflow-hidden'
+  class='flex flex-col justify-center items-center h-auto mx-auto bg-white shadow-lg rounded-md overflow-hidden'
 >
   <div
     class="relative w-[100%] h-[30rem] bg-[url('/images/eugene-chystiakov-3HltpNx6ZSA-unsplash.jpg')] bg-cover bg-bottom backdrop-blur-sm"
@@ -8,18 +8,20 @@
       class='absolute right-0 bottom-0 p-12 text-2xl text-white font-extrabold tracking-wide'
     >Photo by Eugene Chystiakov</p>
     <img
-      class='absolute inset-x-0 mx-auto min-w-[20] w-[50rem] max-w-[60rem] top-[4.5rem]'
+      class='absolute inset-x-0 mx-auto min-w-[20] w-[80rem] top-[2.5rem]'
       src='/images/banner.png'
     />
   </div>
 
-  <div class='flex flex-col w-[100vw] mt-12'>
-    <div class='flex gap-6 xl:w-[70%] mx-auto py-12 h-[30vh] overflow-x-auto'>
-      <p class='justify-self-end text-4xl text-black px-6'>Nearby users:</p>
-      {{#each usersInTheSameCity}}
-        <div class='flex flex-shrink-0'>
+  <div class='flex flex-col w-[80vw] mt-12'>
+    <div class='flex flex-col gap-6 flex-wrap xl:w-[90%] mx-auto py-12 h-auto'>
+      <p class='justify-self-end text-4xl text-black px-6'>Nearby</p>
+      <div
+        class='flex flex-wrap gap-12 flex-shrink-0 max-h-[60vh] overflow-y-scroll p-12'
+      >
+        {{#each usersInTheSameCity}}
           <div
-            class='relative flex flex-col w-[20rem] max-h-[20rem] bg-white rounded-2xl shadow-2xl'
+            class='relative flex flex-col w-[15rem] max-h-[15rem] bg-white rounded-2xl shadow-2xl'
           >
             <a
               action='/user/{{this.dataValues.id}}'
@@ -28,7 +30,7 @@
               <img
                 src='{{this.dataValues.userPicture}}'
                 alt='User Profile Image'
-                class='min-w-[20rem] w-[100%] mx-auto rounded-3xl mb-4 brightness-75 hover:brightness-100'
+                class='min-w-[15rem] max-w-[15rem] w-[100%] mx-auto rounded-3xl mb-4 brightness-75 hover:brightness-100'
               />
             </a>
             <div class='absolute bottom-0 right-0'>
@@ -38,7 +40,7 @@
                 href='/user/{{this.dataValues.id}}'
               >
                 <h3
-                  class='px-2 text-2xl text-white font-bold tracking-wide'
+                  class='px-4 text-2xl text-white font-semibold tracking-wide text-right'
                 >{{this.dataValues.user_name}}</h3>
               </a>
               <a
@@ -47,30 +49,34 @@
                 href='/user/{{this.dataValues.id}}'
               >
                 <h4
-                  class='p-2 text-white text-xl font-bold tracking-wide'
+                  class='p-2 text-white text-xl font-semibold tracking-wide text-right'
                 >{{this.dataValues.city}}, {{this.dataValues.state}}</h4>
               </a>
             </div>
           </div>
-        </div>
-      {{/each}}
+        {{/each}}
+      </div>
     </div>
   </div>
-  <div class='flex flex-col w-[100vw] mt-12'>
-    <div class='flex gap-6 xl:w-[70%] mx-auto py-12 h-[30vh] overflow-x-auto'>
-      <p class='justify-self-end text-4xl text-black px-6'>Trending:</p>
-      {{#each trendingPictures}}
-        <a
-          action='/pets/{{this.pet_id}}/{{this.picture_id}}'
-          href='/pets/{{this.pet_id}}/{{this.picture_id}}'
-        >
-          <div
-            class='rounded-md mx-auto rounded-2xl shadow-2xl mb-4 w-[20rem] h-[20rem] bg-cover bg-center bg-no-repeat brightness-90 hover:brightness-105'
-            style="background-image: url('{{this.pictureUrl}}');"
-          ></div>
-        </a>
-      {{/each}}
-
+  <div class='flex flex-col w-[80vw] h-auto mt-12'>
+    <div class='flex flex-col gap-6 flex-wrap xl:w-[90%] mx-auto py-12 h-auto'>
+      <p class='justify-self-end text-4xl text-black px-6'>Trending
+        <img class='inline w-4' src='/images/heart.svg' alt='Heart' /></p>
+      <div
+        class='flex flex-wrap gap-12 flex-shrink-0 max-h-[60vh] overflow-y-scroll p-12'
+      >
+        {{#each trendingPictures}}
+          <a
+            action='/pets/{{this.pet_id}}/{{this.picture_id}}'
+            href='/pets/{{this.pet_id}}/{{this.picture_id}}'
+          >
+            <div
+              class='rounded-md mx-auto rounded-2xl shadow-2xl mb-4 w-[27.5rem] h-[27.5rem] bg-cover bg-center bg-no-repeat brightness-90 hover:brightness-105'
+              style="background-image: url('{{this.pictureUrl}}');"
+            ></div>
+          </a>
+        {{/each}}
+      </div>
     </div>
   </div>
 </main>
