@@ -1,12 +1,18 @@
-<main class='w-[90vw] h-auto py-12'>
-  <div
-    class='flex flex-col mx-auto w-[100%] sm:w-[80%] md:w-[70%] lg:w-[50%] xl:w-[50%] h-[90vh]'
-  >
-    <form action='/settings' method='POST'>
+<main class='w-[90vw] h-auto py-12 mx-auto'>
+  <div class='flex flex-col items-center mx-auto'>
+    <form id='form__settings'>
       <div class='border-b border-gray-900/10 pb-12'>
         <h2 class='text-base font-semibold leading-7 text-gray-900'>Personal
           Information</h2>
-        <div class='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
+        <p class='mt-1 text-xl leading-6 text-gray-600'>
+          Please capitalize the first letter of your city's name (e.g. "San
+          Francisco")
+          <br />
+          and use the two-letter uppercase abbreviation for your state
+          <br />
+          for optimal performance of our app and to effectively find users
+          nearby.</p>
+        <div class='mt-10 flex flex-col w-[40rem]'>
           <div class='sm:col-span-4'>
             <label
               for='phone_number'
@@ -18,7 +24,7 @@
                 name='phone_number'
                 type='number'
                 placeholder='{{this.phone_number}}'
-                class='text-xl block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
+                class='text-xl px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
               />
             </div>
           </div>
@@ -34,7 +40,7 @@
                 name='pronoun'
                 type='text'
                 placeholder='{{this.pronouns}}'
-                class='text-xl block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
+                class='text-xl block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
               />
             </div>
           </div>
@@ -50,7 +56,7 @@
                 name='city'
                 id='city'
                 placeholder='{{this.city}}'
-                class='text-xl block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
+                class='text-xl block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
               />
             </div>
           </div>
@@ -66,7 +72,7 @@
                 name='state'
                 id='state'
                 placeholder='{{this.state}}'
-                class='text-xl block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
+                class='text-xl block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
               />
             </div>
           </div>
@@ -78,7 +84,7 @@
         <h2 class='text-base font-semibold leading-7 text-gray-900'>Social Media</h2>
         <p class='mt-1 text-xl leading-6 text-gray-600'>Optional ways users
           could contact you.</p>
-        <div class='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
+        <div class='mt-10 flex flex-col w-[40rem]'>
           <div class='sm:col-span-4'>
             <label
               for='twitter'
@@ -90,7 +96,7 @@
                 name='twitter'
                 type='twitter'
                 placeholder='{{this.twitter}}'
-                class='text-xl block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
+                class='text-xl block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
               />
             </div>
           </div>
@@ -106,7 +112,7 @@
                 name='facebook'
                 type='facebook'
                 placeholder='{{this.facebook}}'
-                class='text-xl block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
+                class='text-xl block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
               />
             </div>
           </div>
@@ -122,23 +128,77 @@
                 name='instagram'
                 type='instagram'
                 placeholder='{{this.instagram}}'
-                class='text-xl block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
+                class='text-xl block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
               />
             </div>
           </div>
         </div>
       </div>
-
+      <div class='border-b border-gray-900/10 pb-12'>
+        <h2
+          class='text-base font-semibold leading-7 text-gray-900'
+        >Security</h2>
+        <p class='mt-1 text-xl leading-6 text-gray-600'>Update your password.</p>
+        <div class='mt-10 flex flex-col w-[40rem]'>
+          <div class='sm:col-span-4'>
+            <label
+              for='currentPassword'
+              class='block text-xl font-medium leading-6 text-gray-900'
+            >Current Password</label>
+            <div class='mt-2'>
+              <input
+                id='currentPassword'
+                name='currentPassword'
+                type='password'
+                placeholder='********'
+                class='text-xl block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
+              />
+            </div>
+          </div>
+          <div class='sm:col-span-4'>
+            <label
+              for='newPassword'
+              class='block text-xl font-medium leading-6 text-gray-900'
+            >New Password</label>
+            <div class='mt-2'>
+              <input
+                id='newPassword'
+                name='newPassword'
+                type='password'
+                placeholder='********'
+                class='text-xl block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
+              />
+            </div>
+          </div>
+          <div class='sm:col-span-4'>
+            <label
+              for='newPasswordConfirm'
+              class='block text-xl font-medium leading-6 text-gray-900'
+            >Confirm New Password</label>
+            <div class='mt-2'>
+              <input
+                id='newPasswordConfirm'
+                name='newPasswordConfirm'
+                type='password'
+                placeholder='********'
+                class='text-xl block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6'
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       <div class='mt-6 flex items-center justify-end gap-x-6'>
-        <a
-          href='/user'
-          class='text-xl font-semibold leading-6 text-gray-900'
-        >Cancel</a>
         <button
+          id='btn__userEditUpdate'
           type='submit'
-          class='rounded-md bg-green-600 px-3 py-2 text-xl font-semibold text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-200'
-        >Save</button>
+          class='bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md mr-2'
+        >Update</button>
+        <a
+          href='javascript:history.back()'
+          class='bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-md'
+        >Cancel</a>
       </div>
     </form>
   </div>
+  <p id='message__settings' class='text-red-600 text-2xl block text-center mx-auto'></p>
 </main>

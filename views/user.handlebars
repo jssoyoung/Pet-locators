@@ -1,14 +1,56 @@
 <main
-  class='h-auto flex flex-col md:flex md:flex-row h-[90vh] w-[95%] md:w-[100%] lg:w-[80%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md'
+  class='h-auto flex flex-col md:flex md:flex-row h-auto w-[95%] md:w-[100%] lg:w-[80%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md'
 >
   <div
-    class='flex flex-row gap-12 md:flex md:flex-col shrink-1 md:mb-6 md:p-12 lg:border-r-2 mr-[4rem]'
+    class='flex flex-row gap-12 md:flex md:flex-col md:justify-center shrink-1 md:mb-6 md:p-12 lg:border-r-2 mr-[4rem]'
   >
-    <img
-      class='w-48 h-48 md:w-96 md:h-96 md:mb-[1.5rem] rounded-2xl'
-      src='{{this.userPicture}}'
-      alt='Profile Image'
-    />
+    <div
+      id='picture__userProfile'
+      class='relative my-6 rounded-full mx-auto mb-4 w-48 h-48 md:w-96 md:h-96 md:mb-[1.5rem] rounded-2xl bg-cover bg-center bg-no-repeat group'
+      style="background-image: url('{{this.userPicture}}');"
+      alt='User Profile Image'
+    >
+      {{#if hasAccess}}
+        <button
+          id='btn__changeUserProfilePicture'
+          class='absolute bottom-0 left-[50%] translate-x-[-50%] p-[0.5rem] bg-blue-400 text-white font-semibold rounded-2xl uppercase shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300'
+        >
+          CHANGE
+        </button>
+        <div
+          id='modal__changeUserProfilePicture'
+          class='hidden rounded-lg flex flex-col justify-between items-center fixed w-[30rem] h-auto bg-white left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-50'
+        >
+          <h3 class='p-6 text-2xl font-semibold'>Change User Profile Picture</h3>
+          <div
+            id='picture__changeUserProfilePicture'
+            class='my-6 rounded-full mx-auto mb-4 w-[15rem] h-[15rem] bg-cover bg-center bg-no-repeat'
+            style="background-image: url('{{this.userPicture}}');"
+          ></div>
+          <form
+            id='form__changeUserProfilePicture'
+            class='self-center flex flex-col gap-2 my-6 w-[20rem]'
+          >
+            <input type='hidden' name='currentUser' value='{{this.userId}}' />
+            <input type='file' name='file' required />
+            <button
+              type='submit'
+              class='bg-blue-400 hover:bg-blue-500 text-white px-4 py-2 rounded-md'
+            >Change</button>
+            <p class='text-center text-xl'>PNG or JPG Only</p>
+            <button
+              id='btn__closeChangeUserProfilePicture'
+              class='self-end w-24 bg-blue-400 hover:bg-blue-500 text-white font-normal p-2 rounded-md'
+            >Done</button>
+          </form></div>
+        <div
+          id='overlay__changeUserProfilePicture'
+          class='hidden fixed w-[100%] h-[100%] bg-gray-200 bg-opacity-50 top-0 left-0 z-40 backdrop-blur-sm'
+          aria-hidden='true'
+        ></div>
+      {{/if}}
+    </div>
+
     <form
       class='border-2 rounded-md mx-auto'
       action='/messages/send'
@@ -23,7 +65,7 @@
       <input type='hidden' name='userId' value='{{this.userId}}' />
       <button
         type='submit'
-        class='px-12 py-2.5 text-lg font-medium text-white inline-flex items-center bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center'
+        class='px-12 py-2.5 text-lg font-medium text-white inline-flex items-center bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center'
       >
         <svg
           class='w-3.5 h-3.5 text-white mr-2'
@@ -83,50 +125,200 @@
       <p class='text-[5rem]'>
         {{this.username}}
         <span class='text-[2rem]'>{{this.city}}, {{this.state}}</span></p>
-      <p class='text-[1.5rem]'> Pronouns: {{this.pronouns}} </p>
+      <p class='text-[1.25rem]'> Pronouns: {{this.pronouns}} </p>
+      <p class='text-[1.25em]'>
+        Member Since:
+        {{time_passed this.createdAt}}
+      </p>
     </div>
-    <div class='flex h-[3.25rem] mt-[1.5rem] border-b-2'>
-      <button id='btn__pets' class='text-4xl self-start btn mr-6'>My Pets</button>
+    <div class='flex h-[3.25rem] my-[2rem] border-b-2'>
+      <button id='btn__pets' class='text-4xl font-light'>Pets</button><img
+        class='w-12'
+        src='/images/Paw_Print.svg'
+      />
     </div>
-    <div id='div__pets' class='mb-6'>
-      <div class='flex flex-col'>
-        <ul class='list-disc list-inside pt-6 pb-12'>
-          {{#each petData as |pet|}}
-            <li class='flex items-center my-6'><img
-                class='rounded-full w-24 mx-6'
+    <div id='div__pets' class='mx-auto mb-6 w-auto h-auto'>
+      <div
+        class='flex gap-8 flex-wrap w-[65rem] h-[30rem] justify-start items-start m-12 overflow-scroll'
+      >
+        {{#each petData as |pet|}}
+          <div
+            class='flex items-center w-42 h-42 brightness-75 hover:brightness-100'
+          >
+            <a
+              class='text-2xl'
+              action='/pets/{{pet.petId}}/{{pet.latestPictureId}}'
+              href='/pets/{{pet.petId}}/{{pet.latestPictureId}}'
+            ><p
+                class='text-3xl font-semibold hover:underline'
+              >{{pet.petName}}</p><img
+                class='rounded-full w-48 h-48 mx-6'
                 src='{{pet.profilePicture}}'
-              /><a
-                class='text-2xl'
-                action='/pets/{{pet.petId}}/{{pet.latestPictureId}}'
-                href='/pets/{{pet.petId}}/{{pet.latestPictureId}}'
-              >{{pet.petName}}</a>
-            </li>
-          {{/each}}
-        </ul>
-        {{#if hasAccess}}
-          <form action='/pets/addPet' method='GET'>
-            <button
-              type='submit'
-              class='float-right px-5 py-2.5 text-xl font-medium text-white inline-flex items-center bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-200 rounded-lg text-center'
-            >
-              <svg
-                style='color: white'
-                xmlns='http://www.w3.org/2000/svg'
-                width='16'
-                height='16'
-                fill='currentColor'
-                class='bi bi-plus'
-                viewBox='0 0 16 16'
-              >
-                <path
-                  d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'
-                  fill='white'
-                ></path>
-              </svg>
-              Add Pet</button>
-          </form>
-        {{/if}}
+              /></a>
+          </div>
+        {{/each}}
       </div>
+      {{#if hasAccess}}
+        <div class='relative w-[100%]'>
+          <button
+            id='btn__openAddPet'
+            class='absolute right-[50%] translate-x-[50%] w-36 h-12 px-5 py-2.5 text-xl font-medium text-white inline-flex items-center bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-green-200 rounded-lg text-center'
+          >
+            <svg
+              style='color: white'
+              xmlns='http://www.w3.org/2000/svg'
+              width='16'
+              height='16'
+              fill='currentColor'
+              class='bi bi-plus'
+              viewBox='0 0 16 16'
+            >
+              <path
+                d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'
+                fill='white'
+              ></path>
+            </svg>
+            Add Pet</button>
+          <div
+            id='modal__addPet'
+            class='hidden rounded-lg flex flex-col justify-between items-center fixed w-[30rem] h-auto bg-white left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-50'
+          >
+            <div
+              id='picture__addPetProfilePicture'
+              class='my-6 rounded-full mx-auto mb-4 w-[15rem] h-[15rem] bg-cover bg-center bg-no-repeat'
+              style="background-image: url('/images/Paw_Print.svg');"
+            ></div>
+            <h3 class='text-xl text-center p-6'>You will be able to update your
+              pet's profile picture in pet's page ("Edit") after adding your
+              pet.</h3>
+            <form id='form__addPetDetails'>
+              <div class='flex flex-col gap-6 w-[25rem] pb-6'>
+                <div>
+                  <label
+                    for='name'
+                    class='block text-sm font-medium leading-6 text-gray-900'
+                  >Name</label>
+                  <div class='mt-2 w-[100%]'>
+                    <input
+                      type='text'
+                      name='name'
+                      id='name'
+                      class='block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200 sm:text-sm sm:leading-6'
+                    />
+                  </div>
+                </div>
+                <div class='flex justify-between'>
+                  {{! <div class='w-[12rem]'>
+                    <label
+                      for='dob'
+                      class='block text-sm font-medium leading-6 text-gray-900'
+                    >DOB</label>
+                    <div class='mt-2'>
+                      <input
+                        type='date'
+                        name='dob'
+                        id='dob'
+                        class='block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200 sm:text-sm sm:leading-6'
+                      />
+                    </div>
+                  </div> }}
+                  <div class='w-[12rem]'>
+                    <label
+                      for='age'
+                      class='block text-sm font-medium leading-6 text-gray-900'
+                    >Age</label>
+                    <div class='mt-2'>
+                      <input
+                        type='text'
+                        name='age'
+                        id='age'
+                        class='block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200 sm:text-sm sm:leading-6'
+                      />
+                    </div>
+                  </div>
+                  <div class='w-[12rem]'>
+                    <label
+                      for='gender'
+                      class='block text-sm font-medium leading-6 text-gray-900'
+                    >Gender</label>
+                    <div class='mt-2'>
+                      <select
+                        id='gender'
+                        name='gender'
+                        class='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-200 sm:max-w-xs sm:text-sm sm:leading-6'
+                      >
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Non-binary</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class='sm:col-span-4'>
+                  <label
+                    for='breed'
+                    class='block text-sm font-medium leading-6 text-gray-900'
+                  >Breed</label>
+                  <div class='mt-2'>
+                    <input
+                      id='breed'
+                      name='breed'
+                      type='breed'
+                      class='block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200 sm:text-sm sm:leading-6'
+                    />
+                  </div>
+                </div>
+
+                <div class='col-span-full'>
+                  <label
+                    for='likes'
+                    class='block text-sm font-medium leading-6 text-gray-900'
+                  >Likes (single words separate by ","s)</label>
+                  <div class='mt-2'>
+                    <input
+                      type='text'
+                      name='likes'
+                      id='likes'
+                      class='block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200 sm:text-sm sm:leading-6'
+                    />
+                  </div>
+                </div>
+
+                <div class='sm:col-span-2 sm:col-start-1'>
+                  <label
+                    for='description'
+                    class='block text-sm font-medium leading-6 text-gray-900'
+                  >Short Description</label>
+                  <div class='mt-2'>
+                    <textarea
+                      type='text'
+                      name='description'
+                      id='description'
+                      class='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200 sm:text-sm sm:leading-6'
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class='flex justify-center gap-6 pt-6'>
+                <button
+                  type='submit'
+                  class='bg-blue-400 hover:bg-blue-500 text-white px-4 py-2 rounded-md mr-2'
+                >Add</button>
+                <button
+                  id='btn__closeAddPet'
+                  class='bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-md'
+                >Cancel</button>
+              </div>
+            </form>
+          </div>
+          <div
+            id='overlay__addPet'
+            class='hidden fixed w-[100%] h-[100%] bg-gray-200 bg-opacity-50 top-0 left-0 z-40 backdrop-blur-sm'
+            aria-hidden='true'
+          ></div>
+        </div>
+      {{/if}}
     </div>
   </div>
 </main>

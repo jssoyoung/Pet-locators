@@ -12,7 +12,19 @@
       <script defer src='/js/main.js'></script>
       <script defer src='/js/auth.js'></script>
     {{/if}}
-    <script defer src='/js/comment.js'></script>
+    {{#if isPetPage}}
+      <script defer src='/js/pet.js'></script>
+      <script defer src='/js/comment.js'></script>
+    {{/if}}
+    {{#if isUserPage}}
+      <script defer src='/js/user.js'></script>
+    {{/if}}
+    {{#if isMessagesPage}}
+      <script defer src='/js/message.js'></script>
+    {{/if}}
+    {{#if isSettingsPage}}
+      <script defer src='/js/settings.js'></script>
+    {{/if}}
     <link
       rel='shortcut icon'
       type='image/png'
@@ -356,9 +368,8 @@
     </div>
     <div
       id='overlay'
-      class='hidden fixed w-[100%] h-[100%] top-0 left-0 z-50 backdrop-blur-sm'
+      class='hidden fixed w-[100%] h-[100%] bg-gray-200 bg-opacity-50 top-0 left-0 z-50 backdrop-blur-sm'
     ></div>
-    <script defer src='/js/message.js'></script>
   </body>
 
 </html>
