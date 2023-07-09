@@ -117,12 +117,17 @@ exports.userLogin = async (req, res) => {
   res.status(status).json({ Status: status, Message: message });
 };
 
-exports.userLogout = (req, res) => {
-  if (req.session.isLoggedIn) {
-    req.session.destroy(() => {
-      res.status(204).redirect('/');
-    });
-  } else {
-    res.status(404).end();
+exports.userLogout = async (req, res) => {
+  try {
+    if (req.session.isLoggedIn) {
+      req.session.destroy(() => {
+        res.status(204).redirect('/');
+      });
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).end();
   }
 };

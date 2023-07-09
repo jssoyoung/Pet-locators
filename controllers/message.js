@@ -65,6 +65,7 @@ exports.displayMessages = async (req, res) => {
     }
 
     res.render('messages', {
+      isMessagesPage: true,
       isLoggedIn: req.session.isLoggedIn,
       conversations: messagesByConversationId,
     });

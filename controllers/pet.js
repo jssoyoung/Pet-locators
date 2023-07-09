@@ -61,6 +61,8 @@ exports.getPets = async (req, res) => {
   });
 
   res.render('pet', {
+    isOwner: userId === ownerId,
+    isPetPage: true,
     totalLikes: totalLikes.count,
     userId,
     pictureId,
@@ -76,37 +78,6 @@ exports.getPets = async (req, res) => {
   });
 };
 
-// Render addPet page:
-exports.getAddPet = (req, res) => {
-  res.render('addPet', {
-    isLoggedIn: req.session.isLoggedIn,
-  });
-};
-
-// Cancel adding pet and return the user to user page:
-exports.getCancel = (req, res) => {
-  res.render('user', {
-    isLoggedIn: req.session.isLoggedIn,
-  });
-};
-
-// Add pet to database:
-exports.postAddPet = async (req, res) => {
-  const currentUserId = req.session.user.id;
-  await Pets.create({
-    profile_picture: null,
-    name: req.body.name,
-    age: req.body.age,
-    gender: req.body.gender,
-    likes: req.body.likes,
-    breed: req.body.breed,
-    description: req.body.description,
-    user_id: currentUserId,
-  });
-  res.redirect('/user');
-};
-
-// TODO: uploadPetProfilePicture function:
 exports.uploadPetProfilePicture = async (req, res) => {
   const petId = req.body.petId * 1;
   const pet = await Pets.findByPk(petId);
@@ -130,10 +101,32 @@ exports.uploadPetProfilePicture = async (req, res) => {
     await pet.update({
       profile_picture: `https://storage.googleapis.com/${process.env.GOOGLE_CLOUD_BUCKET}/pet-pictures/${pictureName}`,
     });
-    res.redirect(`/`);
+    res
+      .status(200)
+      .json({
+        profile_picture: pet.profile_picture,
+        message: 'Pet profile picture uploaded successfully',
+      });
   } catch (err) {
     res.status(500).send('Error uploading file');
   } finally {
     fs.unlinkSync(tempFilePath);
+  }
+};
+
+exports.updatePetDetails = async (req, res) => {
+  try {
+    const petId = req.body.petId * 1;
+    const pet = await Pets.findByPk(petId);
+    const { gender, breed, likes, description } = req.body;
+    await pet.update({
+      gender: gender || pet.gender,
+      likes: likes || pet.likes,
+      breed: breed || pet.breed,
+      description: description || pet.description,
+    });
+    res.status(200).json({ message: 'Pet details updated successfully' });
+  } catch (err) {
+    res.status(500).send('Error updating pet details');
   }
 };

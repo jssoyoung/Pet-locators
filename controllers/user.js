@@ -1,4 +1,17 @@
 const { User, Pets, Likes, Comments, Pictures } = require('../models/index');
+const { Storage } = require('@google-cloud/storage');
+const tmp = require('tmp');
+const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
+
+// Define Google Cloud Storage credentials:
+const storage = new Storage({
+  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+  projectId: process.env.GOOGLE_CLOUD_PROJECT_ID,
+});
+
+// Define Google Cloud Storage bucket name:
+const bucketName = process.env.GOOGLE_CLOUD_BUCKET;
 
 exports.getUser = async (req, res) => {
   const currentUser = await User.findByPk(req.session.user.id, {
@@ -39,6 +52,7 @@ exports.getUser = async (req, res) => {
     facebook: currentUser.facebook,
     instagram: currentUser.instagram,
     isLoggedIn: req.session.isLoggedIn,
+    createdAt: currentUser.createdAt,
   });
 };
 
@@ -80,5 +94,59 @@ exports.getOtherUser = async (req, res) => {
     facebook: otherUser.facebook,
     instagram: otherUser.instagram,
     isLoggedIn: req.session.isLoggedIn,
+    createdAt: otherUser.createdAt,
   });
+};
+
+exports.addPetDetails = async (req, res) => {
+  try {
+    const currentUserId = req.session.user.id;
+    await Pets.create({
+      profile_picture: null,
+      name: req.body.name,
+      age: req.body.age,
+      gender: req.body.gender,
+      likes: req.body.likes,
+      breed: req.body.breed,
+      description: req.body.description,
+      user_id: currentUserId,
+    });
+    res.status(200).json({ message: 'Pet added successfully' });
+  } catch (err) {
+    res.status(500).json({ message: 'Something went wrong' });
+  }
+};
+
+exports.changeProfilePicture = async (req, res) => {
+  const currentUserId = req.session.user.id;
+  const user = await User.findByPk(currentUserId);
+  const pictureName = uuidv4();
+
+  const file = req.file;
+
+  const tempFilePath = tmp.tmpNameSync();
+  fs.writeFileSync(tempFilePath, file.buffer);
+
+  const filePath = `user-pictures/${pictureName}`;
+
+  const options = {
+    destination: filePath,
+    metadata: {
+      contentType: file.mimetype,
+    },
+  };
+  try {
+    await storage.bucket(bucketName).upload(tempFilePath, options);
+    await user.update({
+      userPicture: `https://storage.googleapis.com/${process.env.GOOGLE_CLOUD_BUCKET}/user-pictures/${pictureName}`,
+    });
+    res.status(200).json({
+      userPicture: user.userPicture,
+      message: 'User profile picture changed successfully',
+    });
+  } catch (err) {
+    res.status(500).send('Error uploading file');
+  } finally {
+    fs.unlinkSync(tempFilePath);
+  }
 };

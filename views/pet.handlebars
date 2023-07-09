@@ -6,15 +6,15 @@
       <div class='mx-auto relative w-[70%]'>
         <div
           id='div__mainPicture'
-          class='rounded-md mx-auto mb-4 w-[70rem] h-[50rem] bg-cover bg-center bg-no-repeat'
+          class='rounded-md mx-auto mb-4 w-[35rem] h-[27.5rem] xl:w-[70rem] xl:h-[50rem] bg-cover bg-center bg-no-repeat'
           style="background-image: url('{{this.mainPicture}}');"
         ></div>
         <a
           href='{{this.mainPicture}}'
-          class='absolute right-[3rem] z-50'
+          class='absolute right-[3rem] z-30'
           target='_blank'
-        >View Full Size</a>
-        <h1 class='text-center text-lg'>TOTAL
+        >View Full Size Image</a>
+        <h1 class='absolute text-center text-lg left-[2.85rem]'>TOTAL
           <img class='inline w-4' src='/images/heart.svg' alt='Heart' />:
           {{this.totalLikes}}</h1>
         <div
@@ -62,7 +62,7 @@
               class='text-blue-500 hover:text-blue-600'
               href='/user/{{lookup comment "user.id"}}'
             >
-              <span class='inline-block text-3xl py-3 underline'>
+              <span class='inline-block text-3xl py-3'>
                 {{lookup comment 'user.user_name'}}
               </span>
             </a><span class='text-lg px-2'>
@@ -80,23 +80,166 @@
     </div>
   </div>
   <div
+    id='modal__petProfileUpdate'
+    class='hidden rounded-lg flex flex-col justify-between items-center fixed w-[30rem] h-auto bg-white left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-50'
+  >
+    <div
+      id='picture__petProfileUpdate'
+      class='my-6 rounded-full mx-auto mb-4 w-[15rem] h-[15rem] bg-cover bg-center bg-no-repeat'
+      style="background-image: url('{{this.pet.dataValues.profile_picture}}');"
+    ></div>
+    <form
+      id='form__updatePetProfilePicture'
+      class='self-center flex flex-col gap-2 my-6 w-[20rem]'
+    >
+      <input type='hidden' name='petId' value='{{this.petId}}' />
+      <input type='hidden' name='pictureId' value='{{this.pictureId}}' />
+      <input type='hidden' name='currentUser' value='{{this.userId}}' />
+      <input type='file' name='file' required />
+      <button
+        type='submit'
+        class='bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md'
+      >+Update</button>
+      <p class='text-center text-xl'>PNG or JPG Only</p>
+    </form>
+    <form id='form__updatePetProfileDetails'>
+      <div class='flex flex-col gap-6 w-[25rem] pb-6'>
+        <input type='hidden' name='petId' value='{{this.petId}}' />
+        <div>
+          <label
+            for='name'
+            class='block text-sm font-medium leading-6 text-gray-900'
+          >Name</label>
+          <div class='mt-2 w-[100%]'>
+            <input
+              disabled
+              readonly
+              type='text'
+              name='name'
+              id='name'
+              value='{{this.pet.dataValues.name}}'
+              class='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200 sm:text-sm sm:leading-6'
+            />
+          </div>
+        </div>
+        <div class='flex justify-between'>
+          <div class='w-[12rem]'>
+            <label
+              for='dob'
+              class='block text-sm font-medium leading-6 text-gray-900'
+            >DOB</label>
+            <div class='mt-2'>
+              <input
+                type='date'
+                name='dob'
+                id='dob'
+                class='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200 sm:text-sm sm:leading-6'
+              />
+            </div>
+          </div>
+          <div class='w-[12rem]'>
+            <label
+              for='gender'
+              class='block text-sm font-medium leading-6 text-gray-900'
+            >Gender</label>
+            <div class='mt-2'>
+              <select
+                id='gender'
+                name='gender'
+                class='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-200 sm:max-w-xs sm:text-sm sm:leading-6'
+              >
+                <option>Male</option>
+                <option>Female</option>
+                <option>Non-binary</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class='sm:col-span-4'>
+          <label
+            for='breed'
+            class='block text-sm font-medium leading-6 text-gray-900'
+          >Breed</label>
+          <div class='mt-2'>
+            <input
+              id='breed'
+              name='breed'
+              type='breed'
+              class='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200 sm:text-sm sm:leading-6'
+            />
+          </div>
+        </div>
+
+        <div class='col-span-full'>
+          <label
+            for='likes'
+            class='block text-sm font-medium leading-6 text-gray-900'
+          >Likes (single words separate by ","s)</label>
+          <div class='mt-2'>
+            <input
+              type='text'
+              name='likes'
+              id='likes'
+              class='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200 sm:text-sm sm:leading-6'
+            />
+          </div>
+        </div>
+
+        <div class='sm:col-span-2 sm:col-start-1'>
+          <label
+            for='description'
+            class='block text-sm font-medium leading-6 text-gray-900'
+          >Short Description</label>
+          <div class='mt-2'>
+            <input
+              type='text'
+              name='description'
+              id='description'
+              class='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200 sm:text-sm sm:leading-6'
+            />
+          </div>
+        </div>
+      </div>
+      <div class='flex justify-center gap-6'>
+        <button
+          id='btn__petEditUpdate'
+          type='submit'
+          class='bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md mr-2'
+        >Update</button>
+        <button
+          id='btn__closeEditPetProfile'
+          class='bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-md'
+        >Cancel</button>
+      </div>
+    </form>
+  </div>
+  <div
+    id='overlay__petProfileUpdate'
+    class='hidden fixed w-[100%] h-[100%] bg-gray-200 bg-opacity-50 top-0 left-0 z-40 backdrop-blur-sm'
+    aria-hidden='true'
+  ></div>
+  <div
     class='flex flex-1 h-auto w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md'
   >
-    <div class='relative border-r-2 ml-2 mr-8 w-[17.5rem]'>
-      <img
-        class='rounded-full max-w-[12rem] m-8'
-        src='{{this.pet.dataValues.profile_picture}}'
+    <div class='relative border-r-2 ml-2 mr-8 pr-12 w-[27.5rem]'>
+      <div
+        id='div__petProfilePicture'
+        class='mb-12 rounded-full mx-auto pb-6 w-[13.5rem] h-[13.5rem] bg-cover bg-center bg-no-repeat'
+        style="background-image: url('{{this.pet.dataValues.profile_picture}}')"
         alt='Pet Profile'
-      />
-      <form class='absolute right-4 top-[21.25rem]'>
-        <button
-          disabled
-          class='bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md'
-        >
-          Profile Picture
-        </button>
-      </form>
-      <h3 class='text-5xl font-bold mb-4'>{{this.pet.dataValues.name}}</h3>
+      ></div>
+      <div class='flex justify-between gap-4'>
+        <h3 class='text-5xl font-bold mb-4'>{{this.pet.dataValues.name}}</h3>
+        {{#if isOwner}}
+          <button
+            id='btn__editPetProfile'
+            class='w-[5rem] max-w-[10rem] h-[2.5rem] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md'
+          >
+            Edit
+          </button>
+        {{/if}}
+      </div>
       <a href='/user/{{this.ownerId}}' class='text-xl text-blue-600'>Owner:
         {{this.owner}}</a>
       <ul class='py-6'>
@@ -118,29 +261,31 @@
         class='grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-8 gap-6'
       >
         {{#each pictures}}
-          <li class='hover:z-50'><a href='/pets/{{this.pet_id}}/{{this.id}}'>
+          <li class='hover:z-30'><a href='/pets/{{this.pet_id}}/{{this.id}}'>
               <div
                 class='rounded-xl mx-auto rounded-2xl shadow-2xl mb-4 w-[9rem] h-[9rem] bg-cover bg-center bg-no-repeat brightness-90 hover:brightness-105'
                 style="background-image: url('{{this.pictureUrl}}');"
               ></div></a></li>
         {{/each}}
       </ul>
-      <form
-        action='/upload'
-        method='POST'
-        enctype='multipart/form-data'
-        class='self-center flex flex-col gap-2 mb-8 w-[20rem] mt-6'
-      >
-        <input type='hidden' name='petId' value='{{this.petId}}' />
-        <input type='hidden' name='pictureId' value='{{this.pictureId}}' />
-        <input type='hidden' name='currentUser' value='{{this.userId}}' />
-        <input type='file' name='file' required />
-        <button
-          type='submit'
-          class='bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md'
-        >+Upload</button>
-        <p class='text-center py-4 text-xl'>PNG or JPG Only</p>
-      </form>
+      {{#if isOwner}}
+        <form
+          action='/upload'
+          method='POST'
+          enctype='multipart/form-data'
+          class='self-center flex flex-col gap-2 mb-0 w-[20rem]'
+        >
+          <input type='hidden' name='petId' value='{{this.petId}}' />
+          <input type='hidden' name='pictureId' value='{{this.pictureId}}' />
+          <input type='hidden' name='currentUser' value='{{this.userId}}' />
+          <input type='file' name='file' required />
+          <button
+            type='submit'
+            class='bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md'
+          >+Upload</button>
+          <p class='text-center py-2 text-xl'>PNG or JPG Only</p>
+        </form>
+      {{/if}}
     </div>
 
   </div>
