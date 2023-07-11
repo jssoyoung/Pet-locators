@@ -1,13 +1,16 @@
-<main class='h-auto py-12'>
+<main class='h-auto py-2'>
   <div
-    class='flex flex-col mx-auto w-[100%] sm:w-[80%] md:w-[70%] lg:w-[50%] xl:w-[50%] h-[90vh]'
+    class='flex flex-col mx-auto w-[90%] sm:w-[80%] md:w-[70%] lg:w-[50%] xl:w-[50%] h-auto'
   >
-    <div class='py-12 mx-auto'>
+    <div class='py-2 sm:py-12 mx-auto'>
       <img class='w-[70rem]' src='/images/listening.png' />
     </div>
-    <div class='flex flex-col justfiy-center xl:flex xl:flex-row items-center'>
-      <img class='w-[45rem] h-[30rem]' src='/images/dog-png-9104.png' />
-      <form action='/contact' method='POST' class='w-[65rem] max-w-xl mx-auto'>
+    <div class='flex flex-col justify-center xl:flex xl:flex-row items-center'>
+      <img
+        class='w-[30rem] h-[15rem] sm:w-[45rem] sm:h-[30rem]'
+        src='/images/dog-png-9104.png'
+      />
+      <form action='/contact' method='POST' class='w-[100%] max-w-xl mx-auto'>
         <label for='name' class='block mb-2'>Name:</label>
         <input
           type='text'
@@ -43,7 +46,7 @@
 
         <button
           type='submit'
-          class='bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md'
+          class='float-right bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md'
         >Send</button>
         <span id='message_contact'></span>
       </form>

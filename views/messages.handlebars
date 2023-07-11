@@ -20,7 +20,7 @@
           class='container__user cursor-pointer flex flex-row py-4 px-2 justify-center items-center border-b-2 hover:border-blue-400 focus:border-blue-400 focus:outline-none'
         >
           <div class='w-1/4'>
-            <img src='{{conversation.recipient_picture}}' class='object-cover h-12 w-12 rounded-full' alt='' />
+            <img src='{{conversation.recipient_picture}}' class='object-cover h-12 w-12 rounded-full' alt='user picture' />
           </div>
           <div class='w-full'>
             <div class='text-lg font-semibold'>{{conversation.recipient}}</div>
@@ -35,16 +35,16 @@
     {{#each conversations as |conversation|}}
       <div
         data-conversationIdMessage='{{this.conversation_id}}'
-        class='hidden container__messages w-full h-[70vh] px-5 flex flex-col justify-end overflow-scroll'
+        class='hidden container__messages w-full h-[70vh] px-5 flex flex-col justify-end overflow-y-auto'
       >
         {{#each conversation.messages as |message|}}
           <div>
             <div class='flex flex-col-reverse mt-5'>
-              <div class='flex {{#if (sentOrReceived message) }} justify-end {{else}} justify-start {{/if}}mb-4'>
+              <div class='flex {{#if (sentOrReceived message) }} justify-end {{else}} justify-start {{/if}} mb-4'>
                <img
                   src="{{#if (sentOrReceived message)}}{{conversation.user_picture}}{{else}}{{conversation.recipient_picture}}{{/if}}"
                   class='{{#if (sentOrReceived message)}} hidden {{/if}} object-cover h-12 w-12 rounded-full'
-                  alt=''
+                  alt='user picture'
                 />
                 <div
                   class='mx-2 py-3 px-4 text-2xl {{#if (sentOrReceived message) }} bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl {{else}} bg-green-600 rounded-br-3xl rounded-tr-3xl rounded-tl-xl {{/if}} text-white'
@@ -54,7 +54,7 @@
                 <img
                   src="{{#if (sentOrReceived message)}}{{conversation.user_picture}}{{else}}{{conversation.recipient_picture}}{{/if}}"
                   class='{{#unless (sentOrReceived message)}} hidden {{/unless}} object-cover h-12 w-12 rounded-full'
-                  alt=''
+                  alt='user picture'
                 />
               </div>
             </div>
@@ -63,7 +63,7 @@
 <form class='' action='/messages/send' method='POST'>
   <div class="py-5 flex">
     <input type="hidden" name="userId" value="{{conversation.recipient_id}}" />
-    <input class="w-full text-2xl bg-white py-5 px-3 rounded-xl" type="text" name="message" placeholder="Type your message here..." />
+    <input class="w-full text-2xl bg-white py-2 sm:py-5 px-3 rounded-xl" type="text" name="message" placeholder="Type your message here..." />
     <button type="submit"><img class="w-16 px-2" src="/images/paper.png"></button>
   </div>
 </form>

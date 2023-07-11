@@ -12,18 +12,19 @@ const homeRoutes = require('./homeRoutes');
 const uploadRoutes = require('./uploadRoutes');
 const settingsRoutes = require('./settingsRoutes');
 const messageRoutes = require('./messageRoutes')
+const withAuth = require('../utils/auth');
 
 router.use('/', homeRoutes);
 router.use('/user', authRoutes);
-router.use('/user', userRoutes);
-router.use('/pets', petRoutes);
-router.use('/comment', commentRoutes);
-router.use('/contact', contactRoutes);
-router.use('/like', likeRoutes);
-router.use('/locator', locatorRoutes);
-router.use('/messages', messageRoutes)
-router.use('/upload', uploadRoutes);
-router.use('/settings', settingsRoutes);
+router.use('/user', withAuth, userRoutes);
+router.use('/pets', withAuth, petRoutes);
+router.use('/comment', withAuth, commentRoutes);
+router.use('/contact', withAuth, contactRoutes);
+router.use('/like', withAuth, likeRoutes);
+router.use('/locator', withAuth, locatorRoutes);
+router.use('/messages', withAuth, messageRoutes);
+router.use('/upload', withAuth, uploadRoutes);
+router.use('/settings', withAuth, settingsRoutes);
 
 
 module.exports = router;

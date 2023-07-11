@@ -2,26 +2,30 @@
   class='flex flex-col justify-center items-center h-auto mx-auto bg-white shadow-lg rounded-md overflow-hidden'
 >
   <div
-    class="relative w-[100%] h-[30rem] bg-[url('/images/eugene-chystiakov-3HltpNx6ZSA-unsplash.jpg')] bg-cover bg-bottom backdrop-blur-sm"
+    class="relative w-[100%] h-[20rem] sm:h-[30rem] bg-[url('/images/eugene-chystiakov-3HltpNx6ZSA-unsplash.jpg')] bg-cover bg-bottom backdrop-blur-sm"
   >
     <p
       class='absolute right-0 bottom-0 p-12 text-2xl text-white font-extrabold tracking-wide'
     >Photo by Eugene Chystiakov</p>
     <img
-      class='absolute inset-x-0 mx-auto min-w-[20] w-[80rem] top-[2.5rem]'
+      class='absolute inset-x-0 mx-auto min-w-[20rem] w-[80rem] top-[2.5rem]'
       src='/images/banner.png'
     />
   </div>
 
-  <div class='flex flex-col w-[80vw] mt-12'>
-    <div class='flex flex-col gap-6 flex-wrap xl:w-[90%] mx-auto py-12 h-auto'>
-      <p class='justify-self-end text-4xl text-black px-6'>Users Near You:</p>
+  <div class='flex flex-col w-[100vw] lg:w-[80vw] mt-2 lg:mt-12'>
+    <div
+      class='flex flex-col gap-6 flex-wrap xl:w-[90%] mx-auto py-6 lg:py-12 h-auto'
+    >
+      <p class='justify-self-end text-4xl text-black px-6'>Nearby Users
+        <img class='inline w-4' src='/images/heart.svg' alt='Heart' /></p>
       <div
-        class='flex flex-wrap gap-12 flex-shrink-0 max-h-[60vh] overflow-y-scroll p-12'
+        class='m-auto container grid grid-cols-4 sm:grid-cols-5 lg:grid-cols-5 2xl:grid-cols-6 gap-4 max-h-[30vh] lg:max-h-[20vh] p-6 lg:p-12 overflow-scroll'
+        style='place-items: center;'
       >
         {{#each usersInTheSameCity}}
           <div
-            class='relative flex flex-col w-[15rem] max-h-[15rem] bg-white rounded-2xl shadow-2xl'
+            class='relative flex flex-col w-[7rem] max-h-[7rem] md:w-[10rem] md:max-h-[10rem] lg:w-[15rem] lg:max-h-[15rem] bg-white rounded-3xl shadow-2xl'
           >
             <a
               action='/user/{{this.dataValues.id}}'
@@ -30,7 +34,7 @@
               <img
                 src='{{this.dataValues.userPicture}}'
                 alt='User Profile Image'
-                class='min-w-[15rem] max-w-[15rem] w-[100%] min-h-[15rem] max-h-[15rem] mx-auto rounded-3xl mb-4 brightness-75 hover:brightness-100'
+                class='min-w-[7rem] max-w-[7rem] min-h-[7rem] max-h-[7rem] md:w-[10rem] md:min-w-[10rem] md:h-[10rem] md:max-h-[10rem] lg:min-w-[15rem] lg:max-w-[15rem] w-[100%] lg:min-h-[15rem] lg:max-h-[15rem] mx-auto rounded-3xl mb-4 brightness-75 hover:brightness-100'
               />
             </a>
             <div class='absolute bottom-0 right-0'>
@@ -40,7 +44,7 @@
                 href='/user/{{this.dataValues.id}}'
               >
                 <h3
-                  class='px-4 text-2xl text-white font-semibold tracking-wide text-right'
+                  class='px-2 lg:px-4 text-md lg:text-2xl text-white font-semibold tracking-wide text-right'
                 >{{this.dataValues.user_name}}</h3>
               </a>
               <a
@@ -49,7 +53,7 @@
                 href='/user/{{this.dataValues.id}}'
               >
                 <h4
-                  class='p-2 text-white text-xl font-semibold tracking-wide text-right'
+                  class='hidden lg:inline p-2 text-white text-sm lg:text-xl font-semibold tracking-wide text-right'
                 >{{this.dataValues.city}}, {{this.dataValues.state}}</h4>
               </a>
             </div>
@@ -58,12 +62,14 @@
       </div>
     </div>
   </div>
-  <div class='flex flex-col w-[80vw] h-auto mt-12'>
-    <div class='flex flex-col gap-6 flex-wrap xl:w-[90%] mx-auto py-12 h-auto'>
+  <div class='flex flex-col w-[100vw] lg:w-[80vw] h-auto mt-6 lg:mt-12'>
+    <div
+      class='flex flex-col gap-6 flex-wrap xl:w-[90%] mx-auto py-6 lg:py-12 h-auto'
+    >
       <p class='justify-self-end text-4xl text-black px-6'>Trending
         <img class='inline w-4' src='/images/heart.svg' alt='Heart' /></p>
       <div
-        class='flex flex-wrap gap-12 flex-shrink-0 max-h-[60vh] overflow-y-scroll p-12'
+        class='m-auto container grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 flex-shrink-0 max-h-[60vh] overflow-y-scroll p-6 lg:p-12'
       >
         {{#each trendingPictures}}
           <a
@@ -71,7 +77,7 @@
             href='/pets/{{this.pet_id}}/{{this.picture_id}}'
           >
             <div
-              class='rounded-md mx-auto rounded-2xl shadow-2xl mb-4 w-[27.5rem] h-[27.5rem] bg-cover bg-center bg-no-repeat brightness-90 hover:brightness-105'
+              class='rounded-md mx-auto rounded-2xl shadow-2xl mb-4 w-[12rem] h-[12rem] lg:w-[18rem] lg:h-[18rem] 2xl:w-[24.5rem] 2xl:h-[24.5rem] bg-cover bg-center bg-no-repeat brightness-90 hover:brightness-105'
               style="background-image: url('{{this.pictureUrl}}');"
             ></div>
           </a>

@@ -2,11 +2,15 @@
   class='h-auto flex flex-col md:flex md:flex-row h-auto w-[95%] md:w-[100%] lg:w-[80%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md'
 >
   <div
-    class='flex flex-row gap-12 md:flex md:flex-col md:justify-center shrink-1 md:mb-6 md:p-12 lg:border-r-2 mr-[4rem]'
+    class='flex flex-col gap-2 md:gap-12 justify-center items-center shrink-1 mb-6 md:p-12 md:border-r-2 md:mr-[4rem]'
   >
+    <div class='block md:hidden flex flex-col'>
+      <p class='text-[4.5rem] font-light'>
+        {{this.username}}</p>
+    </div>
     <div
       id='picture__userProfile'
-      class='relative my-6 rounded-full mx-auto mb-4 w-48 h-48 md:w-96 md:h-96 md:mb-[1.5rem] rounded-2xl bg-cover bg-center bg-no-repeat group'
+      class='relative my-2 lg:my-6 rounded-full mx-auto mb-4 w-[17.5rem] h-[17.5rem] md:w-96 md:h-96 md:mb-[1.5rem] rounded-2xl bg-cover bg-center bg-no-repeat group'
       style="background-image: url('{{this.userPicture}}');"
       alt='User Profile Image'
     >
@@ -50,14 +54,21 @@
         ></div>
       {{/if}}
     </div>
-
+    <div class='py-6 block md:hidden flex flex-col'>
+      <p class='text-[1.5rem]'> Location: {{this.city}}, {{this.state}}</p>
+      <p class='text-[1.5rem]'> Pronouns: {{this.pronouns}} </p>
+      <p class='text-[1.5rem]'>
+        Member Since:
+        {{time_passed this.createdAt}}
+      </p>
+    </div>
     <form
-      class='border-2 rounded-md mx-auto'
+      class='border-2 w-[100%] flex rounded-md mx-auto'
       action='/messages/send'
       method='POST'
     >
       <input
-        class='text-xl'
+        class='text-xl w-[100%]'
         type='text'
         name='message'
         placeholder='Start typing..'
@@ -88,7 +99,9 @@
       id='div__about'
       class='h-[30vh] flex flex-col gap-6 mt-6 text-gray-600'
     >
-      <ul class=''>
+      <ul
+        class='grid grid-cols-2 gap-4 sm:gap-24 md:gap-6 md:translate-x-[-5rem] md:flex md:flex-col md:flex-wrap md:content-start'
+      >
         <li class='mb-6'>
           <p class='text-2xl'>Phone:
             <a href='tel:{{this.phone_number}}'>{{this.phone_number}}</a></p>
@@ -121,7 +134,7 @@
 
   </div>
   <div class='flex shrink-1 flex-col mb-6'>
-    <div class='flex flex-col h-[30vh] pb-12'>
+    <div class='hidden md:block flex flex-col h-[30vh] pb-12'>
       <p class='text-[5rem]'>
         {{this.username}}
         <span class='text-[2rem]'>{{this.city}}, {{this.state}}</span></p>
@@ -139,22 +152,21 @@
     </div>
     <div id='div__pets' class='mx-auto mb-6 w-auto h-auto'>
       <div
-        class='flex gap-8 flex-wrap w-[65rem] h-[30rem] justify-start items-start m-12 overflow-scroll'
+        class='flex flex-col justify-items-center lg:flex gap-8 flex-wrap w-[75vw] md:w-[37.5rem] lg:w-[37.5rem] 2xl:w-[50rem] h-[30rem] justify-start items-start overflow-scroll'
       >
         {{#each petData as |pet|}}
           <div
-            class='flex items-center w-42 h-42 brightness-75 hover:brightness-100'
+            class='flex gap-12 items-center w-42 h-42 lg:w-42 lg:h-42 brightness-75 hover:brightness-100'
           >
             <a
-              class='text-2xl'
+              class='text-2xl flex justify-center items-center gap-6'
               action='/pets/{{pet.petId}}/{{pet.latestPictureId}}'
               href='/pets/{{pet.petId}}/{{pet.latestPictureId}}'
-            ><p
-                class='text-3xl font-semibold hover:underline'
-              >{{pet.petName}}</p><img
-                class='rounded-full w-48 h-48 mx-6'
-                src='{{pet.profilePicture}}'
-              /></a>
+            ><img class='rounded-full w-28 h-28' src='{{pet.profilePicture}}' />
+              <p
+                class='lg:block text-3xl font-semibold hover:underline'
+              >{{pet.petName}}</p>
+            </a>
           </div>
         {{/each}}
       </div>
@@ -180,19 +192,19 @@
             </svg>
             Add Pet</button>
           <div
+            id='overlay__addPet'
+            class='hidden fixed w-[100%] h-[100%] bg-gray-200 bg-opacity-50 top-0 left-0 z-40 backdrop-blur-sm'
+            aria-hidden='true'
+          ></div>
+          <div
             id='modal__addPet'
-            class='hidden rounded-lg flex flex-col justify-between items-center fixed w-[30rem] h-auto bg-white left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-50'
+            class='hidden rounded-lg flex flex-col gap-6 items-center fixed w-[27.5rem] h-[38.5rem] bg-white left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-50'
           >
-            <div
-              id='picture__addPetProfilePicture'
-              class='my-6 rounded-full mx-auto mb-4 w-[15rem] h-[15rem] bg-cover bg-center bg-no-repeat'
-              style="background-image: url('/images/Paw_Print.svg');"
-            ></div>
-            <h3 class='text-xl text-center p-6'>You will be able to update your
-              pet's profile picture in pet's page ("Edit") after adding your
-              pet.</h3>
-            <form id='form__addPetDetails'>
-              <div class='flex flex-col gap-6 w-[25rem] pb-6'>
+            <h3 class='text-md 2xl:text-lg text-center p-2 mt-6'>You will be
+              able to update your pet's profile picture in pet's page ("Edit")
+              after adding your pet.</h3>
+            <form id='form__addPetDetails' class='h-[25rem]'>
+              <div class='flex flex-col gap-2 w-[18rem] h-[25rem]'>
                 <div>
                   <label
                     for='name'
@@ -299,24 +311,19 @@
                     ></textarea>
                   </div>
                 </div>
-              </div>
-              <div class='flex justify-center gap-6 pt-6'>
-                <button
-                  type='submit'
-                  class='bg-blue-400 hover:bg-blue-500 text-white px-4 py-2 rounded-md mr-2'
-                >Add</button>
-                <button
-                  id='btn__closeAddPet'
-                  class='bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-md'
-                >Cancel</button>
+                <div class='flex justify-center gap-6 pt-6'>
+                  <button
+                    type='submit'
+                    class='bg-blue-400 hover:bg-blue-500 text-white px-4 py-2 rounded-md mr-2'
+                  >Add</button>
+                  <button
+                    id='btn__closeAddPet'
+                    class='bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-md'
+                  >Cancel</button>
+                </div>
               </div>
             </form>
           </div>
-          <div
-            id='overlay__addPet'
-            class='hidden fixed w-[100%] h-[100%] bg-gray-200 bg-opacity-50 top-0 left-0 z-40 backdrop-blur-sm'
-            aria-hidden='true'
-          ></div>
         </div>
       {{/if}}
     </div>
