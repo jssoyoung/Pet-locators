@@ -52,7 +52,10 @@
           class='flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8'
         >
           <div class='p-4 flex flex-row items-center justify-between'>
-            <a href='/'><img class='w-[200px] p-4' src='/images/logo.png' /></a>
+            <a href='/'><img
+                class='w-[80px] sm:w-[100] md:w-[150px] p-2'
+                src='/images/logo.png'
+              /></a>
             <button
               class='md:hidden rounded-lg focus:outline-none focus:shadow-outline'
               @click='open = !open'
@@ -165,37 +168,42 @@
       </div>
     </header>
     {{{body}}}
-    <footer class='bg-[424242] py-20'>
+    <footer class='h-auto bg-[424242] py-12 sm:py-20'>
       <div class='container mx-auto flex flex-col items-center'>
         <ul class='flex justify-center mb-10'>
           <li class='mr-6'>
             <a
-              class='text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300'
+              class='text-white text-[1rem] sm:text-[1.5rem] hover:text-red-500 transition-colors duration-300'
               href='#'
             >About</a>
           </li>
           <li class='mr-6'>
             <a
-              class='text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300'
+              class='text-white text-[1rem] sm:text-[1.5rem] hover:text-red-500 transition-colors duration-300'
               href='#'
             >Terms of Use</a>
           </li>
           <li class='mr-6'>
             <a
-              class='text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300'
+              class='text-white text-[1rem] sm:text-[1.5rem] hover:text-red-500 transition-colors duration-300'
               href='#'
             >Privacy Policy</a>
           </li>
           <li>
             <a
-              class='text-white text-[1.5rem] hover:text-red-500 transition-colors duration-300'
+              class='text-white text-[1rem] sm:text-[1.5rem] hover:text-red-500 transition-colors duration-300'
               href='/contact'
             >Contact Us</a>
           </li>
         </ul>
-        <img src='/images/logo-dark.png' class='w-64 mb-6' alt='Hero Image' />
-        <p class='text-white text-[1.5rem]'>©2023 All Rights Reserved</p>
-        <p class='text-white text-[1.5rem]'>
+        <img
+          src='/images/logo-dark.png'
+          class='w-[80px] sm:w-[100] md:w-[150px] p-2'
+          alt='Logo'
+        />
+        <p class='text-white text-[1rem] sm:text-[1.5rem]'>©2023 All Rights
+          Reserved</p>
+        <p class='text-white text-[1rem] sm:text-[1.5rem]'>
           Made with
           <i
             class='em em-coffee'
@@ -209,19 +217,21 @@
             aria-label='HEAVY BLACK HEART'
           ></i>
         </p>
-        <p class='text-white text-[1.5rem]'>by Team Pet Locators</p>
+        <p class='text-white text-[1rem] sm:text-[1.5rem]'>by Team Pet Locators</p>
       </div>
     </footer>
 
     <div
       id='modal__signup'
-      class='hidden fixed top-0 left-[20%] md:left-[35%] xl:left-[40%] z-[9999] bg-grey-lighter min-h-screen flex flex-col'
+      class='hidden fixed top-[5%] sm:top-0 left-[5%] sm:left-[30%] md:left-[35%] xl:left-[40%] z-[9999] bg-grey-lighter h-auto sm:min-h-screen flex flex-col'
     >
       <div
         class='max-w-lg mx-auto flex-1 flex flex-col items-center justify-center px-2'
       >
-        <div class='bg-white px-6 py-8 rounded shadow-md text-black w-full'>
-          <h1 class='mb-8 text-3xl text-center'>Sign up</h1>
+        <div
+          class='bg-white px-6 py-2 sm:py-8 rounded shadow-md text-black w-full'
+        >
+          <h1 class='mb-2 sm:mb-8 text-3xl text-center'>Sign up</h1>
           <form id='form__signup'>
             <input
               type='text'
@@ -295,21 +305,22 @@
             </a>
           </div>
         </div>
-        <div class='text-grey-dark mt-6'>
+        <div class='text-black text-2xl mt-6'>
           Already have an account?
           <a
             id='link__login'
-            class='no-underline border-grey-dark text-grey-dark border-b text-2xl px-4'
+            class='font-extrabold text-black no-underline border-grey-dark text-grey-dark border-b text-2xl px-4 hover:text-blue-500'
             href=''
           >
             LOG IN
-          </a>.
+          </a>
         </div>
+
       </div>
     </div>
     <div
       id='modal__login'
-      class='hidden fixed top-0 left-[20%] md:left-[35%] xl:left-[40%] z-[9999] bg-grey-lighter min-h-screen flex flex-col'
+      class='hidden fixed top-[20%] sm:top-0 left-[5%] sm:left-[30%] md:left-[35%] xl:left-[40%] z-[9999] bg-grey-lighter h-auto sm:min-h-screen flex flex-col'
     >
       <div
         class='max-w-lg mx-auto flex-1 flex flex-col items-center justify-center px-2'
@@ -354,16 +365,17 @@
             </a>
           </div>
         </div>
-        <div class='text-grey-dark mt-6'>
+        <div class='text-black text-2xl mt-6'>
           Don't have an account?
           <a
             id='link__signup'
-            class='no-underline border-grey-dark text-grey-dark border-b text-2xl px-4'
+            class='font-extrabold text-black no-underline border-grey-dark text-grey-dark border-b text-2xl px-4 hover:text-blue-500'
             href=''
           >
             SIGN UP
           </a>.
         </div>
+
       </div>
     </div>
     <div

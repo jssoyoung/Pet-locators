@@ -1,22 +1,21 @@
 <main class='h-auto'>
   <div
-    class='flex flex-col h-auto w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md'
+    class='flex flex-col h-auto w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 sm:p-12 rounded-md'
   >
     <div class='mb-12 h-auto'>
-      <div class='mx-auto relative w-[70%]'>
+      <div class='mx-auto relative w-[100%]'>
         <div
           id='div__mainPicture'
-          class='rounded-md mx-auto mb-4 w-[35rem] h-[27.5rem] xl:w-[70rem] xl:h-[50rem] bg-cover bg-center bg-no-repeat'
+          class='rounded-md mx-auto mb-4 w-[28.5rem] h-[19.5rem] sm:w-[35rem] sm:h-[27.5rem] lg:w-[50rem] lg:h-[39.5rem] 2xl:w-[60rem] 2xl:h-[47.5rem] bg-cover bg-center bg-no-repeat'
           style="background-image: url('{{this.mainPicture}}');"
         ></div>
-        <a
-          href='{{this.mainPicture}}'
-          class='absolute right-[3rem] z-30'
-          target='_blank'
-        >View Full Size Image</a>
-        <h1 class='absolute text-center text-lg left-[2.85rem]'>TOTAL
-          <img class='inline w-4' src='/images/heart.svg' alt='Heart' />:
-          {{this.totalLikes}}</h1>
+        <div class='flex justify-evenly'>
+          <h1 class='text-center text-lg'>TOTAL
+            <img class='inline w-4' src='/images/heart.svg' alt='Heart' />:
+            {{this.totalLikes}}</h1>
+          <a href='{{this.mainPicture}}' class='z-30' target='_blank'>View Full
+            Size Image</a>
+        </div>
         <div
           class='absolute left-0 top-0 w-full h-full flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity'
         >
@@ -40,7 +39,7 @@
     <div class='flex justify-center'>
       <form id='form__postComment' class='flex mb-8'>
         <input
-          class='w-[20rem] lg:w-[50rem]'
+          class='w-[22.5rem] md:w-[30rem] lg:w-[35rem] xl:w-[40rem] 2xl:w-[50rem] rounded-md border-2 border-gray-300 py-2 px-4 mr-2 focus:outline-none focus:ring-2 focus:ring-blue-200'
           type='text'
           name='comment'
           placeholder='Add a comment...'
@@ -54,10 +53,12 @@
         >Post</button>
       </form>
     </div>
-    <div class='flex justify-center relative comments mt-4'>
-      <ul class='flex flex-col justify-center comments-ul w-[50rem]'>
+    <div class='flex justify-center relative comments px-4 mt-4'>
+      <ul
+        class='flex flex-col justify-center comments-ul w-[90%] sm:w-[35rem] md:w-[38.5rem] lg:w-[48.5rem] xl:w-[50rem] 2xl:w-[60rem]'
+      >
         {{#each comments as |comment|}}
-          <li class='border-b-2 comments mb-2'>
+          <li class='border-b-2 comments block h-auto mb-2 group'>
             <a
               class='text-blue-500 hover:text-blue-600'
               href='/user/{{lookup comment "user.id"}}'
@@ -67,14 +68,20 @@
               </span>
             </a><span class='text-lg px-2'>
               ({{time_passed comment.createdAt}})</span><br />
-            <span class='text-3xl pl-12'>{{comment.comment}} </span><br />
-            <form class='float-right form__deleteComment'>
+            <span class='text-xl lg:text-2xl pl-12'>{{comment.comment}}
+            </span><br />
+            <form
+              class='float-right form__deleteComment opacity-0 group-hover:opacity-100'
+            >
               <input type='hidden' name='commentId' value='{{comment.id}}' />
               <button
                 type='submit'
                 class='px-3 py-2 text-sm font-medium text-center text-white bg-red-400 rounded-lg hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800'
-              >Delete</button></form></li>
+              >Delete</button>
+            </form>
+          </li>
         {{/each}}
+
       </ul>
       <p id='message__comment'></p>
     </div>
@@ -220,9 +227,11 @@
     aria-hidden='true'
   ></div>
   <div
-    class='flex flex-1 h-auto w-[95%] xl:w-[60%] mx-auto pt-12 bg-white shadow-lg m-12 p-12 rounded-md'
+    class='flex flex-col sm:flex-row flex-1 h-auto w-[95%] xl:w-[60%] mx-auto bg-white shadow-lg m-12 p-12 rounded-md'
   >
-    <div class='relative border-r-2 ml-2 mr-8 pr-12 w-[27.5rem]'>
+    <div
+      class='relative sm:border-r-2 sm:ml-2 sm:mr-8 sm:pr-12 w-[100%] sm:w-[27.5rem]'
+    >
       <div
         id='div__petProfilePicture'
         class='mb-12 rounded-full mx-auto pb-6 w-[13.5rem] h-[13.5rem] bg-cover bg-center bg-no-repeat'
@@ -256,9 +265,11 @@
         {{/each}}
       </ul>
     </div>
-    <div class='flex flex-col justify-between'>
+    <div
+      class='mt-10 sm:mt-0 border-t-2 sm:border-t-0 flex flex-col justify-between'
+    >
       <ul
-        class='grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-8 gap-6'
+        class='py-6 sm:py-0 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-6'
       >
         {{#each pictures}}
           <li class='hover:z-30'><a href='/pets/{{this.pet_id}}/{{this.id}}'>
