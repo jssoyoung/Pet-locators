@@ -1,5 +1,5 @@
 const withAuth = (req, res, next) => {
-  if (!req.session || !req.session.isLoggedIn || !req.session.user.id) {
+  if (!req.session.isLoggedIn || !req.session.user.id) {
     req.session.destroy(() => {
       res.status(204).redirect('/');
     });
